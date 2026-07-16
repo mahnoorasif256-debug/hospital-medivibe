@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services - MediCare Hospital</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>MediCare Hospital</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -16,9 +16,9 @@
           Medi<span>Care</span>
         </a>
         <nav class="nav">
-          <a href="about.html">About Us</a>
-          <a href="services.html" class="active">Services</a>
-          <a href="#" class="btn-appointment">Appointment</a>
+          <a href="index.html" class="active">Home</a>
+          <a href="#services">Services</a>
+          <a href="#appointment" class="btn-appointment">Appointment</a>
         </nav>
         <div class="hamburger">
           <span></span>
@@ -31,14 +31,110 @@
 
   <section class="page-hero">
     <div class="container">
-      <h1>Our Services</h1>
+      <h1>Welcome to MediCare Hospital</h1>
       <div class="breadcrumb">
-        <span class="current">Services</span>
+        <span class="current">Home</span>
       </div>
     </div>
   </section>
 
-  <section class="services-grid-section section-padding">
+  <section class="counters-section section-padding">
+    <div class="container">
+      <div class="counters-grid">
+        <div class="counter-item fade-in">
+          <div class="counter-icon">🏥</div>
+          <div class="counter-number" data-target="25" data-suffix="+"></div>
+          <div class="counter-label">Years of Experience</div>
+        </div>
+        <div class="counter-item fade-in">
+          <div class="counter-icon">❤️</div>
+          <div class="counter-number" data-target="15000" data-suffix="+"></div>
+          <div class="counter-label">Happy Patients</div>
+        </div>
+        <div class="counter-item fade-in">
+          <div class="counter-icon">👨‍⚕️</div>
+          <div class="counter-number" data-target="200" data-suffix="+"></div>
+          <div class="counter-label">Expert Doctors</div>
+        </div>
+        <div class="counter-item fade-in">
+          <div class="counter-icon">🏆</div>
+          <div class="counter-number" data-target="50" data-suffix="+"></div>
+          <div class="counter-label">Awards Won</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="legacy-section section-padding">
+    <div class="container">
+      <div class="legacy-grid">
+        <div class="legacy-image fade-in">
+          <span>🏥</span>
+          <div class="overlay-text">Est. 2001 • 25+ Years of Excellence</div>
+        </div>
+        <div class="legacy-content fade-in">
+          <h2>Our Legacy & Story</h2>
+          <p>Founded in 2001, MediCare Hospital began with a simple vision — to provide world-class healthcare that is accessible, compassionate, and affordable for everyone. What started as a small 50-bed facility has grown into a premier multi-specialty hospital serving thousands of patients annually.</p>
+          <p>Over the past two decades, we have continuously evolved with advancements in medical science, investing in cutting-edge technology and attracting some of the finest medical professionals in the country. Our commitment to excellence has made us a trusted name in healthcare.</p>
+          <div class="mission-vision">
+            <div class="mv-card">
+              <h4>🎯 Our Mission</h4>
+              <p>To deliver exceptional healthcare services with compassion, integrity, and innovation, ensuring every patient receives personalized care of the highest standard.</p>
+            </div>
+            <div class="mv-card">
+              <h4>🔭 Our Vision</h4>
+              <p>To be a globally recognized healthcare institution that sets benchmarks in medical excellence, research, and patient-centered care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section section-padding">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Leadership & Management</h2>
+        <p>Meet our dedicated team of medical professionals who lead with expertise and compassion.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card fade-in">
+          <div class="team-img">👨‍⚕️</div>
+          <div class="team-info">
+            <h3>Dr. John Smith</h3>
+            <p class="designation">Director & Chief Medical Officer</p>
+            <p class="message">"Our commitment is to provide healthcare that combines medical excellence with genuine compassion."</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-img">👩‍⚕️</div>
+          <div class="team-info">
+            <h3>Dr. Sarah Johnson</h3>
+            <p class="designation">Medical Superintendent</p>
+            <p class="message">"Every patient deserves the best possible care delivered with dignity, respect, and understanding."</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-img">👨‍⚕️</div>
+          <div class="team-info">
+            <h3>Dr. Michael Chen</h3>
+            <p class="designation">Head of Cardiology</p>
+            <p class="message">"Advancing cardiac care through innovation and a patient-first approach is our driving force."</p>
+          </div>
+        </div>
+        <div class="team-card fade-in">
+          <div class="team-img">👩‍⚕️</div>
+          <div class="team-info">
+            <h3>Dr. Emily Davis</h3>
+            <p class="designation">Head of Neurology</p>
+            <p class="message">"We combine cutting-edge neuroscience with compassionate care to transform lives."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services-grid-section section-padding">
     <div class="container">
       <div class="section-title fade-in">
         <h2>Medical Services</h2>
@@ -243,7 +339,7 @@
     </div>
   </section>
 
-  <section class="appointment-section section-padding">
+  <section id="appointment" class="appointment-section section-padding">
     <div class="container">
       <div class="section-title fade-in">
         <h2>Book an Appointment</h2>
@@ -345,7 +441,47 @@
   </section>
 
   <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <span class="logo-icon">+</span>
+            Medi<span>Care</span>
+          </a>
+          <p>Providing compassionate, world-class healthcare since 2001. Your health and well-being are our top priorities.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#appointment">Appointment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Orthopedics</a></li>
+            <li><a href="#">Pediatrics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><span class="fc-icon">📍</span> 123 Healthcare Ave, Medical City</li>
+            <li><span class="fc-icon">📞</span> +1 (555) 123-4567</li>
+            <li><span class="fc-icon">✉️</span> info@medicarehospital.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 MediCare Hospital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-  <script src="js/script.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
