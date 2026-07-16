@@ -1,0 +1,26 @@
+/* css/global.css */
+
+:root {
+    /* Main Theme Colors */
+    --primary-blue: #135dd8;       /* Standard blue jo buttons/hovers par hai */
+    --navy-dark: #0c1a30;          /* Dropdown background color */
+    --deep-blue: #121095;          /* Social icon hover aur button gradient color */
+    --text-dark: #444444;          /* Nav links text color */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Gradients */
+    --top-bar-gradient: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    --btn-gradient-start: linear-gradient(to right, #121095 0%, #121095 50%, #00f0ff 100%);
+    --btn-gradient-hover: linear-gradient(to left, #121095 0%, #121095 50%, #00f0ff 100%);
+
+    /* Fonts */
+    --font-roboto: 'Roboto', sans-serif;
+
+    /* Transitions & Shadows */
+    --transition-smooth: all 0.3s ease;
+    --transition-btn: background-position 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+    --nav-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --btn-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
+    --btn-shadow-hover: 0 6px 20px rgba(0, 240, 255, 0.3);
+}
