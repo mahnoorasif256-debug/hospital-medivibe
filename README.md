@@ -1,2 +1,2 @@
-# pro-care-hospital-system
+# Medivibe
 team-project 
