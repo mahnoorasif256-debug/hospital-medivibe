@@ -255,7 +255,7 @@ function initBrochures() {
       content += 'Thank you for your interest in our hospital services.\n';
       content += 'For detailed information, please contact our help desk.\n';
       content += 'Phone: +1 (555) 123-4567\n';
-      content += 'Email: info@medicarehospital.com\n\n';
+      content += 'Email: info@medivibehospital.com\n\n';
       content += 'This document contains general information about our services.\n';
       content += 'For specific medical advice, please consult with our specialists.\n';
 
