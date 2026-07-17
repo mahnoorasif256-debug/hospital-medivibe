@@ -336,8 +336,25 @@ box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background: linear-gradient(to left , #121095 0%, #121095 50%, #00f0ff 100%) !important;
 
 }
-/* navbar end   */ 
 
+/* Arrow slide out animation - continuous nudge */
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.btn-arrow-circle i {
+  animation: arrowNudge 1.2s ease-in-out infinite;
+}
+
+.btn-arrow-circle i {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.custom-gradient-btn:hover .btn-arrow-circle i {
+  transform: translateX(6px) scale(1.1) !important;
+}
+/* navbar end   */ 
 
 
 
@@ -580,6 +597,44 @@ bottom: 53px;
         display: none; 
     }
 }
+
+
+
+/* Animation 1: gentle up-down float */
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Animation 2: soft sway/rotate */
+@keyframes floatSway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(2deg); }
+}
+
+/* Apply Animation 1 to these */
+.patients-card,
+.doctors-badge-wrap,
+.syrup-icon {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+/* Apply Animation 2 to these */
+.rating-badge-wrap,
+.thumbstar-icon,
+.doctor-plain-icon {
+  animation: floatSway 3.4s ease-in-out infinite;
+}
+
+/* thoda delay taake sab ek saath na hilein */
+.doctors-badge-wrap { animation-delay: 0.3s; }
+.rating-badge-wrap { animation-delay: 0.6s; }
+.thumbstar-icon { animation-delay: 0.9s; }
+
+
+
+
+
 
 
                      /* Hero sec end */
