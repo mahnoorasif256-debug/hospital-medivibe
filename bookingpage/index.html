@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Appointment</title>
+
+    <!-- Tailwind CDN (JIT, no build step needed) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom base styles / CSS variables -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-[#FDFCFB] font-sans text-[#4A4944] antialiased selection:bg-[#5A5A40] selection:text-white pb-12">
+    <!-- Real-time Status Navigation Bar -->
+    <header id="sync-header" class="border-b border-[#EAE7E1] bg-[#F9F7F4]/95 backdrop-blur-md sticky top-0 z-30 px-4 lg:px-8 py-3.5"></header>
+
+    <!-- Main Single-View Booking Stage -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-6">
+      <!-- Step 1: Provider & Service Selection -->
+      <section class="bg-white border border-[#EAE7E1] rounded-2xl p-4 sm:p-6 shadow-xs space-y-6">
+        <div id="provider-container"></div>
+        <div id="service-container"></div>
+      </section>
+
+      <!-- Step 2: Date Calendar & Time Slot Selection -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div id="calendar-container" class="lg:col-span-7"></div>
+        <div id="timeslot-container" class="lg:col-span-5"></div>
+      </div>
+    </main>
+
+    <!-- Modals & Slide-over Drawers -->
+    <div id="booking-modal-container"></div>
+    <div id="my-bookings-drawer-container"></div>
+    <div id="live-sync-demo-modal-container"></div>
+
+    <!-- Plain <script> tags (ES6+ syntax, no bundler / module server required) -->
+    <script src="icons.js"></script>
+    <script src="data.js"></script>
+    <script src="dateUtils.js"></script>
+    <script src="sync.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Healthcare Portal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+    <main class="contact-container">
+        
+        <!-- Page Hero Banner (Inside Container Now) -->
+        <header class="page-banner">
+            <div class="banner-bg"></div>
+            <div class="banner-overlay"></div>
+            
+            <div class="banner-content">
+                <span class="badge" role="text">
+                    <i class="ri-pulse-line" aria-hidden="true"></i> Get In Touch
+                </span>
+                <h1>Contact <span class="highlight">Us</span></h1>
+                <p>We're here to help! Reach out to us for appointments, inquiries, or any assistance you need.</p>
+                
+                <!-- Breadcrumb Navigation -->
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <a href="#">Home</a>
+                    <span class="separator"><i class="ri-arrow-right-s-line"></i></span>
+                    <span class="current">Contact Us</span>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Main 3-Column Layout -->
+        <section class="contact-grid">
+            
+            <!-- Column 1: Info Details Card -->
+            <div class="info-card">
+                <h3>Get in Touch</h3>
+                <p class="sub-text">Choose the best way to reach out to us.</p>
+
+                <div class="contact-list">
+                    <!-- Phone Item -->
+                    <div class="contact-item">
+                        <div class="icon-box">
+                            <svg class="contact-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>(123) 456-7890</p>
+                            <span class="meta">Mon - Sat: 8:00 AM - 8:00 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- Email Item -->
+                    <div class="contact-item">
+                        <div class="icon-box">
+                            <svg class="contact-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@healthcare.com</p>
+                            <span class="meta">We'll reply within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <!-- Location Item -->
+                    <div class="contact-item">
+                        <div class="icon-box">
+                            <svg class="contact-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>123 Medical Blvd, Health City, HC12345, USA</p>
+                        </div>
+                    </div>
+
+                    <!-- Working Hours Item -->
+                    <div class="contact-item">
+                        <div class="icon-box">
+                            <svg class="contact-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <span class="meta">Mon - Sat: 8:00 AM - 8:00 PM</span>
+                            <span class="meta">Sunday: 9:00 AM - 2:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Contact Form Card -->
+            <div class="form-card">
+                <h3>Send Us a Message</h3>
+                <p class="sub-text">Please fill out the form and our team will get back to you shortly.</p>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <div class="input-wrapper">
+                                <i class="ri-user-line"></i>
+                                <input type="text" placeholder="Enter your full name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <div class="input-wrapper">
+                                <i class="ri-phone-line"></i>
+                                <input type="tel" placeholder="Enter your phone number" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <div class="input-wrapper">
+                            <i class="ri-questionnaire-line"></i>
+                            <input type="text" placeholder="How can we help you?" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <div class="input-wrapper textarea-wrapper">
+                            <i class="ri-pencil-line"></i>
+                            <textarea rows="3" placeholder="Type your message here..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <!-- VIP Uiverse Button -->
+                        <button type="submit" class="button">
+                            <span class="fold"></span>
+
+                            <div class="points_wrapper">
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                                <i class="point"></i>
+                            </div>
+
+                            <span class="inner">
+                                <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                                    <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+                                </svg>
+                                Send Message
+                            </span>
+                        </button>
+
+                        <div class="security-tag">
+                            <i class="ri-shield-check-line"></i>
+                            <span>Your information is safe with us.</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Column 3: Live Google Map Card -->
+            <div class="clinic-card">
+                <div class="clinic-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=800&auto=format&fit=crop" alt="Medical Center">
+                </div>
+                
+                <div class="clinic-info">
+                    <h4>Visit Our Clinic</h4>
+                    <p>We're conveniently located and always happy to welcome you.</p>
+                    <a href="https://maps.google.com" target="_blank" class="directions-btn">
+                        <i class="ri-map-pin-2-line"></i> Get Directions
+                    </a>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450937!2d144.9537353153169!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Feature Cards Section -->
+        <section class="features-section">
+            <div class="features-grid">
+                
+                <article class="feature-card">
+                    <div class="card-inner">
+                        <div class="icon-container">
+                            <div class="circle-expansion"></div>
+                            <svg class="feature-icon-svg" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Fast Assistance</h3>
+                        <p class="feature-desc">Experience lightning-fast emergency responsiveness with modern care.</p>
+                        <a href="#" class="feature-action">
+                            <span>Learn More</span>
+                            <i class="ri-arrow-right-line action-arrow"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-inner">
+                        <div class="icon-container">
+                            <div class="circle-expansion"></div>
+                            <svg class="feature-icon-svg" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Data Protection</h3>
+                        <p class="feature-desc">End-to-end encrypted protocol to keep your health data secure.</p>
+                        <a href="#" class="feature-action">
+                            <span>Learn More</span>
+                            <i class="ri-arrow-right-line action-arrow"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-inner">
+                        <div class="icon-container">
+                            <div class="circle-expansion"></div>
+                            <svg class="feature-icon-svg" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">24/7 Availability</h3>
+                        <p class="feature-desc">Always active support teams ready to assist you anytime, anywhere.</p>
+                        <a href="#" class="feature-action">
+                            <span>Learn More</span>
+                            <i class="ri-arrow-right-line action-arrow"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GSAP Animation Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="./contact.js"></script>
+</body>
+</html>
