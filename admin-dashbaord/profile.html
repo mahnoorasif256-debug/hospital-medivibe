@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile page</title>
+
+    <!-- Google Fonts: Roboto -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+                      <!--fontawesome cdn  -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+                 <!-- bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+              <!-- global cdn  -->
+    <link rel="stylesheet" href="../css/global.css">
+
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- SIDEBAR START (Dark Theme Ke Sath Unchanged) -->
+  <aside class="sidebar">
+    <!-- Logo Section -->
+    <div class="sidebar-header">
+      <img src="../images/image.png" alt="Medivibe icon" class="footer-logo-icon" style="width:45px; height:auto;">
+      <h2>Medivibe</h2>
+       <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+    </div>
+
+    <!-- User Profile Card -->
+    <div class="user-card">
+      <div class="avatar">MA</div>
+      <div class="user-info">
+        <h4>Mahnoor Asif</h4>
+        <p>Hospital administrator</p>
+        <span class="role-badge"><i class="fa-solid fa-shield-halved"></i> Role: Admin</span>
+      </div>
+    </div>
+
+    <!-- Navigation Section -->
+    <div class="menu-section">
+      <span class="menu-label">WORKSPACE</span>
+      
+      <ul class="nav-list">
+        <!-- 1. Overview -->
+        <li class="nav-item">
+          <a href="admin-dashboard.html" class="nav-link active">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Overview</span>
+          </a>
+        </li>
+
+        <!-- 2. Doctors -->
+        <li class="nav-item dropdown">
+          <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="doctorsToggle">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Doctors</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="doctors.html">Doctors Directory</a></li>
+            <li><a href="doctor-schedule.html">Doctor Schedule</a></li>
+            <li><a href="doctor-profile.html">Doctor Profile</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDoctorModal">+ Add New Doctor</a></li>
+          </ul>
+        </li>
+
+        <!-- 3. Patients -->
+        <li class="nav-item dropdown">
+          <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="patientsToggle">
+            <i class="fa-solid fa-users-rectangle"></i>
+            <span>Patients</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="patients.html">Patients Directory</a></li>
+            <li><a href="patient-profile.html">Patient Profile & Records</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#addPatientModal">+ Register New Patient</a></li>
+          </ul>
+        </li>
+
+        <!-- 4. Appointments -->
+        <li class="nav-item dropdown">
+          <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="appointmentsToggle">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Appointments</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="appointments.html">Master Schedule</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal">+ Book Appointment</a></li>
+          </ul>
+        </li>
+
+        <!-- 5. Departments -->
+        <li class="nav-item dropdown">
+          <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="departmentsToggle">
+            <i class="fa-solid fa-hospital-user"></i>
+            <span>Departments</span>
+          </a>
+          <ul class="sub-menu">
+            <li><a href="departments.html">Hospital Departments</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDepartmentModal">+ Add New Department</a></li>
+          </ul>
+        </li>
+
+        <!-- 6. Invoices -->
+        <li class="nav-item">
+          <a href="invoices.html" class="nav-link">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+            <span>Invoices & Billing</span>
+          </a>
+        </li>
+
+        <!-- 7. Settings -->
+        <li class="nav-item">
+          <a href="settings.html" class="nav-link">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <!-- SIDEBAR END -->
+
+  <!-- MAIN CONTENT AREA START -->
+  <main class="main-content">
+    
+    <!-- TOP HEADER (Naya Light Header) -->
+    <header class="main-header">
+       <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+      <!-- Search Box (Left) -->
+<div class="header-search">
+  <input type="text" placeholder="Search patients, doctors, reports..." />
+  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+</div>
+
+
+      <!-- Controls & Profile (Right) -->
+      <div class="header-actions">
+        <!-- appoirtment btn  -->
+<div class="button-icon">
+  <div class="icon">
+    <!-- Plus Icon for New Appointment -->
+    <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="12" y1="5" x2="12" y2="19"></line>
+      <line x1="5" y1="12" x2="19" y2="12"></line>
+    </svg>
+    <!-- Calendar/Check Icon for Book Now -->
+    <svg class="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+      <line x1="16" y1="2" x2="16" y2="6"></line>
+      <line x1="8" y1="2" x2="8" y2="6"></line>
+      <line x1="3" y1="10" x2="21" y2="10"></line>
+      <path d="M9 16l2 2 4-4"></path>
+    </svg>
+  </div>
+  <div class="cube">
+    <span class="side front">NEW APPOINTMENT</span>
+    <span class="side top">BOOK NOW</span>
+  </div>
+</div>
+
+        <!-- Notification Bell -->
+
+                            
+<!-- Notification Dropdown Wrapper -->
+<div class="dropdown notification-dropdown">
+  
+  <!-- Trigger Button -->
+  <button type="button"  class="notification-btn border-0 bg-transparent p-0 position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+    <i class="fa-regular fa-bell"></i>
+    <span class="notification-dot"></span>
+  </button>
+
+  <!-- Popup Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end notif-dropdown-menu shadow-lg border-0 p-0" aria-labelledby="notifDropdown">
+    <!-- Header -->
+    <div class="notif-header d-flex align-items-center justify-content-between px-3 py-2 border-bottom">
+      <h6 class="m-0 fw-bold fs-6">Notifications</h6>
+    </div>
+
+    <!-- JS Injected List (Is ID me sara dynamic list render hoga) -->
+    <div class="notif-body" id="notifContainer"></div>
+
+    <!-- Footer Link -->
+    <div class="notif-footer text-center py-2 px-3 border-top bg-light">
+      <a href="./notifications.html" class="text-primary fw-medium fs-7 ">View All Notifications</a>
+    </div>
+  </div>
+
+</div>
+
+
+           <!--notification  end -->
+
+        <!-- Dark/Light Mode Toggle -->
+    <label class="ui-switch" title="Toggle Theme">
+  <input type="checkbox" id="theme-toggle">
+  <div class="slider">
+    <div class="circle"></div>
+  </div>
+</label>
+
+        <!-- Admin Profile Dropdown -->
+       <div class="dropdown profile-dropdown">
+  <a href="#" class="profile-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    <img src="../images/adminpic.webp" class="avatar-img">
+    <div class="user-info-text">
+      <span class="user-name">Mahnoor Asif</span>
+      <span class="user-role">Administrator</span>
+    </div>
+    <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+  </a>
+
+  <!-- Preclinic Style Admin Dropdown -->
+  <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-2" style="width: 220px;">
+    <!-- Profile Header Info -->
+    <li class="px-3 py-2 bg-light drop rounded mb-2">
+      <span class="d-block fw-bold text-dark fs-6">Mahnoor Asif</span>
+      <small class="text-muted">Administrator</small>
+    </li>
+    
+    <li>
+      <a class="dropdown-item rounded py-2" href="#">
+        <i class="fa-regular fa-user me-2 text-primary"></i> Profile Settings
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item rounded py-2" href="#">
+        <i class="fa-solid fa-gear me-2 text-secondary"></i> Account Settings
+      </a>
+    </li>
+    
+    <!-- Quick Toggle Notifications -->
+    <li class="dropdown-item rounded py-2 d-flex align-items-center justify-content-between">
+      <span class="not"><i class="fa-regular fa-bell me-2" ></i> Notifications</span>
+      <div class="form-check form-switch m-0">
+        <input class="form-check-input" type="checkbox" id="notifSwitch" checked style="cursor: pointer;">
+      </div>
+    </li>
+
+    <li>
+      <a class="dropdown-item rounded py-2" href="invoices.html">
+        <i class="fa-solid fa-receipt me-2 text-success"></i> Transactions
+      </a>
+    </li>
+
+    <li><hr class="dropdown-divider my-2"></li>
+
+    <li>
+      <a class="dropdown-item rounded py-2 text-danger fw-medium" href="login.html">
+        <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+    </header>
+
+    <!-- DASHBOARD BODY CONTENT -->
+    <div class="content-body" style="padding: 24px;">
+<div class="container-fluid p-4">
+  
+  <!-- Main White Card Container -->
+  <div class="card border-0 shadow-sm rounded-4 bg-white p-4">
+    
+    <!-- Title & Top Horizontal Tabs (No Weird Side Buttons) -->
+    <div class="d-flex justify-content-between align-items-center  border-bottom  pb-3 mb-4">
+      <h4 class="fw-bold text-dark m-0">Account Settings</h4>
+
+      <!-- Top Horizontal Tabs -->
+      <ul class="nav nav-pills custom-profile-tabs" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+          <button class="nav-link active fw-semibold" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" title="Profile">
+            <i class="fa-solid fa-user me-2"></i><span class="tab-label">Profile</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-semibold" id="pills-security-tab" data-bs-toggle="pill" data-bs-target="#pills-security" type="button" role="tab" title="Security">
+            <i class="fa-solid fa-lock me-2"></i><span class="tab-label">Security</span>
+          </button>
+        </li>
+        <li class="nav-item noti" role="presentation">
+          <button class="nav-link fw-semibold" id="pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#pills-notifications" type="button" role="tab" title="Notifications">
+            <i class="fa-solid fa-bell me-2"></i><span class="tab-label">Notifications</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-content" id="pills-tabContent">
+      
+      <!-- TAB 1: PROFILE FORM -->
+      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel">
+        
+        <!-- Profile Photo Area -->
+        <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
+          <img src="../images/adminpic.webp" alt="Profile" class="rounded-circle border" width="80" height="80">
+          <div>
+            <button type="button" class="btn change  btn-sm rounded-pill px-3" id="changePhotoBtn">
+              <i class="fa-solid fa-upload me-1"></i> Change Photo
+            </button>
+            <input type="file" id="profilePhotoInput" accept="image/png, image/jpeg" hidden>
+            <div class="text-muted small mt-1">JPG, PNG max 2MB</div>
+          </div>
+        </div>
+
+        <form>
+          <!-- Basic Info -->
+          <h6 class="fw-bold form-section-title  text-uppercase mb-3">Basic Information</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">First Name</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">Last Name</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">Email Address</label>
+              <input type="email" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">Phone Number</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" placeholder="92+">
+            </div>
+          </div>
+
+          <!-- Address Details -->
+          <h6 class="fw-bold form-section-title  text-uppercase mb-3">Address Details</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-12">
+              <label class="form-label text-secondary small fw-semibold">Address Line</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">City</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">Country</label>
+              <input type="text" class="form-control bg-light border p-2.5 rounded-3" >
+            </div>
+          </div>
+
+          <!-- Save Button -->
+          <div class="text-end border-top pt-3">
+            <button type="submit" class="btn sub-btn-anim px-4 py-2 rounded-3 fw-bold">
+    <span class="wave-text">
+      <span style="--i:0">S</span><span style="--i:1">a</span><span style="--i:2">v</span><span style="--i:3">e</span><span style="--i:4">&nbsp;</span><span style="--i:5">C</span><span style="--i:6">h</span><span style="--i:7">a</span><span style="--i:8">n</span><span style="--i:9">g</span><span style="--i:10">e</span><span style="--i:11">s</span>
+    </span>
+  </button>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- TAB 2: SECURITY -->
+
+      <div class="tab-pane fade" id="pills-security" role="tabpanel">
+        <h6 class="fw-bold form-section-title  text-uppercase mb-3">Password Management</h6>
+        <form>
+          <div class="row g-3 max-w-md mb-4">
+            <div class="col-12">
+              <label class="form-label text-secondary small fw-semibold">Current Password</label>
+              <input type="password" class="form-control bg-light border p-2.5 rounded-3">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">New Password</label>
+              <input type="password" class="form-control bg-light border p-2.5 rounded-3">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label text-secondary small fw-semibold">Confirm New Password</label>
+              <input type="password" class="form-control bg-light border p-2.5 rounded-3">
+            </div>
+          </div>
+          <div class="text-end border-top pt-3">
+            <button type="submit" class="btn sub-btn-anim px-4 py-2 rounded-3 fw-bold">
+  <span class="wave-text">
+    <span style="--i:0">U</span><span style="--i:1">p</span><span style="--i:2">d</span><span style="--i:3">a</span><span style="--i:4">t</span><span style="--i:5">e</span><span style="--i:6">&nbsp;</span><span style="--i:7">P</span><span style="--i:8">a</span><span style="--i:9">s</span><span style="--i:10">s</span><span style="--i:11">w</span><span style="--i:12">o</span><span style="--i:13">r</span><span style="--i:14">d</span>
+  </span>
+</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 3: NOTIFICATIONS -->
+      <div class="tab-pane fade" id="pills-notifications" role="tabpanel">
+        <h6 class="fw-bold form-section-title  text-uppercase mb-3">Alert Preferences</h6>
+        <div class="d-flex justify-content-between em align-items-center p-3 bg-light rounded-3 mb-2 border">
+          <div>
+            <div class="fw-bold text-dark">Email Notifications</div>
+            <div class="small text-muted">Receive email updates for new patient appointments</div>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" checked>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>       
+    </div>
+
+  </main>
+  <!-- MAIN CONTENT AREA END -->
+
+
+
+  
+</div>
+
+
+
+
+
+
+
+ 
+<!-- <div class="glow-cursor-dot"></div>
+<div class="glow-cursor-trail"></div> -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+    <script src="./admin.js"></script>
+</body>
+</html>

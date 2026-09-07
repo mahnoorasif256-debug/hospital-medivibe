@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medivide</title>
 
-                 <!--animate.css cdn   -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+                 <!--popup model cdn   -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.css" />
 
 <!-- Google Fonts: Roboto -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +37,7 @@
 
      <nav class="navbar navbar-expand-lg  top ">
   <div class="container-lg ">
-    <a class="navbar-brand p-0" href="#" ><p class="text-white  para mt-1" style="font-size: 14px;"><i class="fa-regular fa-envelope "></i>  contact@example.com</p></a>
+    <a class="navbar-brand p-0" href="#" ><p class="text-white  para mt-1" style="font-size: 14px;"><i class="fa-regular fa-envelope "></i>  info@medivibe.com</p></a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
@@ -81,7 +82,7 @@
 
               <!--  Navbar start -->
 
-<nav class="navbar navbar-expand-lg  my-nav" >
+<nav class="navbar navbar-expand-lg  my-nav " >
   <div class="container-lg">
     <a class="navbar-brand " href="#"><img src="images/logo.png.png" alt="MediVibe Logo" class="nav-logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,8 +121,8 @@
         <i class="fas fa-plus dropdown-icon"></i>
       </a>
       <ul class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="./gallery.html">Doctors</a></li>
-        <li><a class="dropdown-item" href="./team.html">Doctors Details</a></li>
+        <li><a class="dropdown-item" href="./html/doctors.html">Doctors</a></li>
+        <li><a class="dropdown-item" href="./html/doctor1.html">Doctors Details</a></li>
       </ul>
     </li>
   
@@ -152,6 +153,9 @@
     <i class="fa-solid fa-chevron-right"></i>
   </span>
 </button>
+<!-- <a href="./admin/login.html" class="text-sm font-medium text-slate-600 hover:text-cyan-600 transition">
+    <i class="fa-solid fa-user-shield mr-1"></i> Admin Portal
+  </a> -->
     </div>
   </div>
 </nav>
@@ -170,7 +174,8 @@
     <div class="row align-items-center gy-5">
       
       <div class="col-lg-6 col-md-12 text-center text-lg-start">
-        <span class="badge text-bg-primary px-3 py-2 rounded-pill mb-3">Our Best Doctors</span>
+         <span class="m-badge-pill mb-3"><i class="fa-solid fa-user-doctor fs-6"></i> Our Best Doctors</span>
+
         <h1 class="display-4 fw-bold mb-3" style="color: var(--deep-blue);">
           Get Online Medical <br class="d-none d-lg-block"> Care With <span style="color: var(--accent-light-blue);">Best Doctors</span>
         </h1>
@@ -179,12 +184,20 @@
         </p>
         
         <div class="d-flex justify-content-center justify-content-lg-start">
-          <button class="custom-gradient-btn text-center fw-medium" type="submit">
-            <span>Sign Up</span>
-            <span class="btn-arrow-circle">
-              <i class="fa-solid fa-chevron-right"></i>
-            </span>
-          </button>
+          <div class="d-flex justify-content-center justify-content-lg-start cta-buttons-wrap">
+  <button class="custom-gradient-btn text-center fw-medium" type="submit">
+    <span>Book an appointment</span>
+    <span class="btn-arrow-circle">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+  </button>
+  <button class="custom-gradient-btn  ms-4 text-center fw-medium" type="submit">
+    <span>Our Services</span>
+    <span class="btn-arrow-circle">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+  </button>
+</div>
         </div>
       </div>
 
@@ -257,72 +270,692 @@
 
   
 
+                        <!-- Services start -->
+
+
+<section class="services-section  py-5 bg-white" style="background-image: url(./images/cards-bg.png);">
+    <div class="container my-4 ">
+        <!-- Section Header -->
+        <div class="row mt-5 text-center">
+            <div class="col-12 mt-5 pt-5" >
+                         <span class="m-badge-pill mt-5"> <i class="fa-solid fa-wave-square"></i>
+         OUR SERVICES</span>
+
+        <h2 class="fw-bold section-title ">Our Core Services</h2>                
+                <p class="text-muted fs-6 mb-5">Providing cutting-edge medical solutions with a human touch.</p>
+            </div>
+        </div>
+        
+        <!-- Services Cards Grid -->
+        <div class="row g-4 justify-content-center">
+            <!-- Service 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-truck-medical fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Emergency Services</h3>
+                    <p class="text-muted small mb-4">24/7 prompt and efficient emergency medical care for acute illnesses and injuries.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-user-doctor fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Specialist Consultation</h3>
+                    <p class="text-muted small mb-4">Connect with top-tier medical specialists across various departments for expert care.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-laptop-medical fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Online Checkup</h3>
+                    <p class="text-muted small mb-4">Consult with our qualified doctors virtually from the comfort of your home.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-microscope fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Diagnostic & Lab Tests</h3>
+                    <p class="text-muted small mb-4">Accurate testing, pathology, imaging, and full digital report processing.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-pills fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Pharmacy Support</h3>
+                    <p class="text-muted small mb-4">Genuine medical equipment, prescribed medicines, and fast doorstep delivery.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card text-center p-4 h-100 border-0 rounded-4 bg-light shadow-sm d-flex flex-column">
+                    <div class="service-icon d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4">
+                        <i class="fa-solid fa-heart-pulse fs-4"></i>
+                    </div>
+                    <h3 class="h5 fw-bold card-heading mb-3">Preventive Care</h3>
+                    <p class="text-muted small mb-4">Comprehensive health checkups, wellness packages, and regular monitoring.</p>
+                    <a href="#" class="service-btn mt-auto text-decoration-none fw-semibold">Read More <i class="fa-solid fa-arrow-right ms-1 btn-arrow"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 2. COUNTERS SECTION (Style 4 Custom Optimized) -->
+
+<section class="counters-section py-5 mb-3 var-bg-light">
+    <div class="container my-2">
+        
+        <!-- Section Header for Counters -->
+        <div class="row mb-5 text-center">
+            <div class="col-12">
+        <span class="m-badge-pill rounded-pill px-3 py-2 mb-3 fs-7 fw-bold   text-uppercase tracking-wider">
+            <i class="fa-solid fa-award"></i>Milestones
+        </span>
+                <h2 class="fw-bold section-title mb-2"> Our Achievements</h2>
+                <p class="text-muted fs-6">Delivering excellence and trust in healthcare everyday.</p>
+            </div>
+        </div>
+
+        <!-- Bootstrap row with row-cols classes makes it perfectly responsive -->
+        <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center align-items-center">
+            
+            <!-- Counter 1: Doctors -->
+            <div class="col text-center">
+                <div class="ring-badge d-flex flex-column align-items-center justify-content-center bg-white border rounded-circle mx-auto mb-3 shadow-sm">
+                    <i class="fa-solid fa-user-md mb-1"></i>
+                    <span class="counter-number fw-bold" data-target="150" data-symbol="+">0</span>
+                </div>
+                <p class="counter-label fw-bold mb-0">Doctors</p>
+            </div>
+
+            <!-- Counter 2: Patients -->
+            <div class="col text-center">
+                <div class="ring-badge d-flex flex-column align-items-center justify-content-center bg-white border rounded-circle mx-auto mb-3 shadow-sm">
+                    <i class="fa-solid fa-users mb-1"></i>
+                    <span class="counter-number fw-bold" data-target="10" data-symbol="K+">0</span>
+                </div>
+                <p class="counter-label fw-bold mb-0">Patients</p>
+            </div>
+
+            <!-- Counter 3: Awards Won (New) -->
+            <div class="col text-center">
+                <div class="ring-badge d-flex flex-column align-items-center justify-content-center bg-white border rounded-circle mx-auto mb-3 shadow-sm">
+                    <i class="fa-solid fa-trophy mb-1"></i>
+                    <span class="counter-number fw-bold" data-target="25" data-symbol="+">0</span>
+                </div>
+                <p class="counter-label fw-bold mb-0">Awards Won</p>
+            </div>
+
+            <!-- Counter 4: Emergency -->
+            <div class="col text-center">
+                <div class="ring-badge d-flex flex-column align-items-center justify-content-center bg-white border rounded-circle mx-auto mb-3 shadow-sm">
+                    <i class="fa-solid fa-clock mb-1"></i>
+                    <span class="counter-number fw-bold" data-type="time">0/0</span>
+                </div>
+                <p class="counter-label fw-bold mb-0">Emergency</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+                           <!-- Services end -->
+
+
+
+                              <!--About sec start   -->
+
+                             
+
+<section class="medivibe-about-section">
+  <div class="m-about-container">
+    
+    <!-- LEFT COLUMN: IMAGES WRAPPER -->
+    <div class="m-about-left">
+      <div class="m-img-block  mx-4 mb-5">
+            <div class="m-blue-circle-bg"></div>
+
+        <!-- Main Image -->
+        <img src="./images/about_img_1.jpg" alt="Doctors Team" class="m-main-doc-img">
+        
+        <!-- Experience Badge over the main image -->
+        <div class="m-exp-badge">
+          <h2>26+</h2>
+          <p>Experience</p>
+        </div>
+        <!-- Bottom Left Dots Pattern Image -->
+    <img src="./images/about_shape_1.png" alt="Dots Pattern" class="m-dots-pattern-img">
+
+        <!-- Bottom Overlapping Image -->
+        <img src="./images/about_img_2.jpg" alt="Patient Care" class="m-bottom-patient-img">
+      </div>
+    </div>
+
+    <!-- MIDDLE COLUMN: VERTICAL DIVIDER & BIG PLAY BUTTON -->
+    <div class="m-about-middle">
+      <div class="m-vertical-line-box">
+        <span class="m-vertical-txt" >How We Work</span>
+         <a href="./images/videos.mp4" data-lity>
+      <button class="m-template-play-btn">
+        <i class="fas fa-play"></i>
+      </button>
+    </a>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: TEXT CONTENT -->
+    <div class="m-about-right">
+      <!-- Milestone Style Badge -->
+      <div class="m-badge-pill">
+<i class="fa-solid fa-circle-info fs-6"></i>  <span>About Medivibe</span>
+</div>
+      <h2 class="m-heading-title">More Than 26+ Years Of Medical Excellence</h2>
+      <p class="m-para-desc">
+        We are privileged to work with hundreds of future-thinking medial, including many of the world's top hardware, software, and brands, feel safe and comfortable in establishing.
+      </p>
+
+      <!-- Features Row (Flexbox columns) -->
+      <div class="m-features-flex">
+        <div class="m-feat-card">
+          <div class="m-feat-top">
+            <div class="m-large-icon-box"><i class="fas fa-headphones"></i></div>
+            <h4>Client Support</h4>
+          </div>
+          <p>But must explain to you medical of and pain was.</p>
+        </div>
+
+        <div class="m-feat-card">
+          <div class="m-feat-top">
+            <div class="m-large-icon-box"><i class="fas fa-user-md"></i></div>
+            <h4>Doctor Support</h4>
+          </div>
+          <p>But must explain to you medical of and pain was.</p>
+        </div>
+      </div>
+
+      <!-- Bottom Status Row -->
+      <div class="m-status-notice">
+        <div class="m-check-icon"><i class="fa-regular fa-circle-check"></i></div>
+        <p>There are many variations of pass available this medical service the team <a href="javascript:void(0);" class="m-readmore-ln fs-6" style="text-decoration: underline;">READ MORE +</a></p>
+      </div>
+
+      <!-- Your Custom Style Button -->
+      <div class="m-btn-wrapper">
+  <a href="#" class="custom-gradient-btn about text-center ankr fw-medium">
+    <span>About More</span>
+    <span class="btn-arrow-circle arrow-about">
+      <i class="fa-solid fa-chevron-right"></i>
+    </span>
+  </a>
+</div>
+    </div>
+
+  </div>
+</section>
+                              <!--About sec end  -->
+
+
+ 
+
+                          <!-- Doctors sec start -->
+
+<section class="doctors-section py-5 ">
+  <div class="container">
+    
+    <div class="text-center mb-5" data-aos="fade-up">
+      <p class=" mb-1 m-badge-pill"> <i class="fa-solid fa-users fs-6"></i>Our Team Member</p>
+      <h2 class="fw-bold mt-2">Meet Our Specialist Doctors</h2>
+    </div>
+
+    <div class="row g-4">
+      
+      <!-- Doctor Card 1 -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="doctor-card">
+          <div class="doctor-card-inner">
+            <!-- Front Side -->
+             <div class="doctor-card-front">
+              <img src="./images/team1.png" alt="Doctor" class="doctor-full-img">
+            </div>
+          
+            <!-- Back Side -->
+            <div class="doctor-card-back d-flex flex-column align-items-center justify-content-center text-center p-3">
+              <div class="accent-shape"></div>
+             <a href="./html/doctor1.html">
+               <div class="avatar-box mb-3">
+                <img src="./images/team1.png" alt="Doctor Avatar">
+              </div>
+             </a>
+              <h5 class="fw-bold text-white mb-1">Dr. Norma Pedric</h5>
+              <p class="text-light small mb-3">Neurologist</p>
+              <div class="social-links d-flex gap-2">
+                <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Card 2 -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="doctor-card">
+          <div class="doctor-card-inner">
+            <!-- Front Side -->
+            <div class="doctor-card-front">
+              <img src="./images/team2.png" alt="Doctor" class="doctor-full-img">
+            </div>
+            <!-- Back Side -->
+            <div class="doctor-card-back d-flex flex-column align-items-center justify-content-center text-center p-3">
+              <div class="accent-shape"></div>
+              <a href="./html/doctor5.html">
+                <div class="avatar-box mb-3">
+                <img src="./images/team2.png" alt="Doctor Avatar">
+              </div>
+              </a>
+              <h5 class="fw-bold text-white mb-1">Dr. Sarah Wilson</h5>
+              <p class="text-light small mb-3">Cardiologist</p>
+              <div class="social-links d-flex gap-2">
+                <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Card 3 -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="doctor-card">
+          <div class="doctor-card-inner">
+            <!-- Front Side -->
+            <div class="doctor-card-front">
+              <img src="./images/team3.png" alt="Doctor" class="doctor-full-img">
+            </div>
+            <!-- Back Side -->
+            <div class="doctor-card-back d-flex flex-column align-items-center justify-content-center text-center p-3">
+              <div class="accent-shape"></div>
+             <a href="./html/doctor3.html">
+               <div class="avatar-box mb-3">
+                <img src="./images/team3.png" alt="Doctor Avatar">
+              </div>
+             </a>
+              <h5 class="fw-bold text-white mb-1">Dr. John Larson</h5>
+              <p class="text-light small mb-3">Pediatrician</p>
+              <div class="social-links d-flex gap-2">
+                <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Card 4 -->
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="doctor-card">
+          <div class="doctor-card-inner">
+            <!-- Front Side -->
+            <div class="doctor-card-front">
+              <img src="./images/team4.png" alt="Doctor" class="doctor-full-img">
+            </div>
+            <!-- Back Side -->
+            <div class="doctor-card-back d-flex flex-column align-items-center justify-content-center text-center p-3">
+              <div class="accent-shape"></div>
+             <a href="./html/doctor4.html">
+               <div class="avatar-box mb-3">
+                <img src="./images/team4.png" alt="Doctor Avatar">
+              </div>
+             </a>
+              <h5 class="fw-bold text-white mb-1">Dr. Amanda Seyfried</h5>
+              <p class="text-light small mb-3">Dermatologist</p>
+              <div class="social-links d-flex gap-2">
+                <a href="#" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+                             <!-- Doctors sec end -->
+
+                            <!-- Testimonals sec start -->
+
+<section class="testimonials-section mt-5">
+  <div class="container">
+    
+    <!-- Main Flex Parent Wrapper -->
+    <div class="testimonials-wrapper">
+      
+      <!-- Left Side: Heading & Text -->
+      <div class="testimonials-text-side">
+   <span class="m-badge-pill mt-5"><i class="fa-regular fa-comment"></i>TESTIMONIALS</span>
+  <h2>What Our Patients Say About Us!</h2>
+  <p>
+    Our healthcare services offer expert consultation, compassionate inpatient management, and specialized treatment for all our patients.
+  </p>
+      </div>
+
+      <!-- Right Side: Aapka Swiper Slider Container -->
+      <div class="testimonials-slider-side">
+        
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="profile-header">
+                  <img src="./images/testimonials-1.jpg" alt="Jena Karlis" class="profile-img">
+                  <div class="profile-meta">
+                    <h3>Jena Karlis</h3>
+                    <span>CEO & Founder</span>
+                    <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="quote-text ">
+             <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+         <i class="fa-solid fa-quote-right quote-icon-right"></i>
+
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="profile-header">
+                  <img src="./images/testimonials-2.jpg" alt="Matt Brandon" class="profile-img">
+                  <div class="profile-meta">
+                    <h3>Matt Brandon</h3>
+                    <span>Designer</span>
+                    <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="quote-text">
+                          <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                   <i class="fa-solid fa-quote-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="profile-header">
+                  <img src="./images/testimonials-3.jpg" alt="John Larson" class="profile-img">
+                  <div class="profile-meta">
+                    <h3>John Larson</h3>
+                    <span>Store Owner</span>
+                    <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="quote-text">
+        <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                <i class="fa-solid fa-quote-right quote-icon-right"></i>
+
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="profile-header">
+                  <img src="./images/testimonials-4.jpg" alt="Saul Goodman" class="profile-img">
+                  <div class="profile-meta">
+                    <h3>Saul Goodman</h3>
+                    <span>Freelancer</span>
+                    <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="quote-text">
+                                    <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusamus quam, ultrices eget id, ultrices eget nibh et maecenas aliquam, risus at semper.
+                                    <i class="fa-solid fa-quote-right quote-icon-right"></i>
+
+                </p>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="profile-header">
+                  <img src="./images/testimonials-5.jpg" alt="Sara Wilsson" class="profile-img">
+                  <div class="profile-meta">
+                    <h3>Sara Wilsson</h3>
+                    <span>Enterpreneur</span>
+                    <div class="stars">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="quote-text">
+                  <i class="fa-solid fa-quote-left quote-icon-left"></i>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <i class="fa-solid fa-quote-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </div> 
+
+  </div>
+</section>
+<!-- Testimonials Section End -->
+
+                         <!--Testimonals sec end  -->
+
+                          <!-- Appointment sec start -->
+
+
+<section class="appointment-section mt-3">
+    <div class="containerp">
+      <div class="section-title text-center">
+               <span class="m-badge-pill mt-5"><i class="fa-regular fa-calendar-xmark"></i>APPOINTMENT</span>
+
+            <h2 class="app">
+             <span class="char">A</span><span class="char">p</span><span class="char">p</span><span class="char">l</span><span class="char">y</span> For Free Medical Care
+              </h2>
+        </div>
+        <div class="appointment-wrapper">
+            
+            <!-- Left Side: Doctor Image Container -->
+            <div class="doctor-image-container mb-5">
+                <img src="./images/img.png" alt="Smiling Doctor Pointing" class="doctor-img ">
+            </div>
+
+            <!-- Right Side: Quick Booking Form Card -->
+            <div class="appointment-form-container">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>Book Your Appointment</h2>
+                        <p>Find available slots with our specialists</p>
+                    </div>
+                    
+                    <!-- Form redirects to the detailed booking page -->
+                    <form action="booking.html" method="get">
+                        <div class="form-group">
+                            <label for="department">Select Department</label>
+                            <select id="department" name="department" required>
+                                <option value="" disabled selected>Choose a department</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="neurology">Neurology</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="dermatology">Dermatology</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Select Doctor (Optional)</label>
+                            <select id="doctor" name="doctor">
+                                <option value="" disabled selected>Select a department first</option>
+                                <option value="dr-elena">Dr. Elena Rostova (Cardiology)</option>
+                                <option value="dr-marcus">Dr. Marcus Vance (Orthopedics)</option>
+                                <option value="dr-aria">Dr. Aria Chen (Dermatology)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                           <button type="submit" class="btn btn-brand-gradient w-100 py-2.5 rounded-3 fw-bold mt-4 shadow-sm btn-animated">
+  <span></span>
+  <p data-title="Confirm Appointment" data-text="Confirm Appointment">
+  </p>
+</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+                        <!-- Appointment sec end -->
+
                                  <!-- Footer start -->
 
 
-<footer class="bg-navy text-white pt-5 pb-3" style="background-color: #0c1a30;">
+<footer class="bg-navy text-white pt-5  pb-3" style="background-color: #0c1a30;">
   <div class="container">
-    <div class="row gy-4">
+    <div class="row gy-4 pt-2">
       
       <!-- Column 1: Brand Info & Socials -->
       <div class="col-lg-3 col-md-6">
-     
-<!-- Dono ko ek flexible row me lane ke liye wrap kiya -->
-<div class="d-flex align-items-center gap-2 mb-3">
-  <img src="./images/image.png" alt="Medivibe icon" class="footer-logo-icon" style="width:45px; height:auto;">
-  <h3 class="fw-bold text-info mb-0">Medivibe</h3>
-</div>
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="./images/image.png" alt="Medivibe icon" class="footer-logo-icon" style="width:45px; height:auto;">
+          <h3 class="fw-bold text-info mb-0">Medivibe</h3>
+        </div>
         <p class="text-light small opacity-75">
           Providing world-class healthcare services with expert doctors and state-of-the-art medical technology. Your health is our priority.
         </p>
 
         <!-- Social Icons -->
-
-<div class="d-flex gap-2 mt-4">
-  <a href="#" class="btn-social fb-btn rounded-circle d-flex align-items-center justify-content-center">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="#" class="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center wa-glow" style="width: 40px; height: 40px;">
-  <i class="fab fa-whatsapp"></i>
-</a>
-  <a href="#" class="btn-social ig-btn rounded-circle d-flex align-items-center justify-content-center">
-    <i class="fab fa-instagram"></i>
-  </a>
- <a href="#" class="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center yt-glow" style="width: 40px; height: 40px;">
-  <i class="fab fa-youtube"></i>
-</a>
-</div>
-
+        <div class="d-flex gap-2 mt-4">
+          <a href="#" class="btn-social fb-btn rounded-circle d-flex align-items-center justify-content-center">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center wa-glow" style="width: 40px; height: 40px;">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="btn-social ig-btn rounded-circle d-flex align-items-center justify-content-center">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center yt-glow" style="width: 40px; height: 40px;">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
       </div>
 
-      <!-- Column 2: Quick Links (Changed text-muted to text-light) -->
+      <!-- Column 2: Quick Links (Minus Icons) -->
       <div class="col-lg-3 col-md-6 ps-md-5">
         <h5 class="fw-bold mb-3 text-white border-bottom border-info pb-2" style="width: fit-content;">Quick Links</h5>
         <ul class="list-unstyled d-flex flex-column gap-2">
           <li>
             <a href="#" class="text-light text-decoration-none hover-link">
-              <i class="fas fa-chevron-right text-info me-2 small"></i>About Us
+              <i class="fas fa-minus text-info me-2 small"></i>About Us
             </a>
           </li>
           <li>
             <a href="#" class="text-light text-decoration-none hover-link">
-              <i class="fas fa-chevron-right text-info me-2 small"></i>Our Services
+              <i class="fas fa-minus text-info me-2 small"></i>Our Services
             </a>
           </li>
           <li>
             <a href="#" class="text-light text-decoration-none hover-link">
-              <i class="fas fa-chevron-right text-info me-2 small"></i>Book Appointment
+              <i class="fas fa-minus text-info me-2 small"></i>Book Appointment
             </a>
           </li>
           <li>
             <a href="#" class="text-light text-decoration-none hover-link">
-              <i class="fas fa-chevron-right text-info me-2 small"></i>Privacy Policy
+              <i class="fas fa-minus text-info me-2 small"></i>Privacy Policy
             </a>
           </li>
         </ul>
       </div>
 
-      <!-- Column 3: Contact Info (Changed text-muted to text-light) -->
+      <!-- Column 3: Contact Info -->
       <div class="col-lg-3 col-md-6">
         <h5 class="fw-bold mb-3 text-white border-bottom border-info pb-2" style="width: fit-content;">Contact Us</h5>
         <ul class="list-unstyled d-flex flex-column gap-3 mt-3">
@@ -347,11 +980,11 @@
         </ul>
       </div>
 
-      <!-- Column 4: Opening Hours -->
+      <!-- Column 4: Opening Hours & Subscribe Input -->
       <div class="col-lg-3 col-md-6">
         <h5 class="fw-bold mb-3 text-white border-bottom border-info pb-2" style="width: fit-content;">Opening Hours</h5>
-        <div class="bg-dark bg-opacity-25 p-3 rounded border border-secondary border-opacity-25">
-          <!-- Changed text-muted to text-light -->
+        
+        <div class="bg-dark bg-opacity-25 p-3 rounded border border-secondary border-opacity-25 mb-3">
           <div class="d-flex justify-content-between mb-2 pb-1 border-bottom border-secondary border-opacity-10">
             <span class="text-light small">Mon - Thu</span>
             <span class="text-info small fw-bold">08:00 AM - 05:00 PM</span>
@@ -365,6 +998,15 @@
             <span class="text-danger small fw-bold">Emergency Only</span>
           </div>
         </div>
+
+        <!-- Subscribe Form Container -->
+      <div class="newsletter-wrapper">
+  <input type="email" placeholder="Your Email Here..." />
+  <button type="submit">
+    Subscribe <i class="fas fa-angle-double-right"></i>
+  </button>
+</div>
+
       </div>
 
     </div>
@@ -372,7 +1014,7 @@
     <hr class="mt-5 mb-4 border-secondary border-opacity-50">
 
     <!-- Bottom Copyright Bar -->
-    <div class="row align-items-center">
+    <div class="row align-items-center ">
       <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
         <p class="mb-0 text-light opacity-75 small">&copy; 2026 Medivibe. All Rights Reserved.</p>
       </div>
@@ -386,8 +1028,44 @@
 
 
 
-
                              <!-- Footer end -->
+<div class="glow-cursor-dot"></div>
+<div class="glow-cursor-trail"></div>
+
+<!-- Back to Top Button -->
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+               <!-- gsap cdn -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+
+<script src="https://unpkg.com/split-type"></script>
+
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+     var swiper = new Swiper('.mySwiper', {
+    spaceBetween: 30,
+    loop: true, 
+    speed: 1000,
+    autoplay: {
+      delay: 4000, 
+      disableOnInteraction: false, 
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+    </script>
+<!-- 1. jQuery Library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- 2. Lity JS Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.4.1/lity.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
