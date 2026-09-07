@@ -24,3 +24,333 @@
     --btn-shadow: 0 4px 15px rgba(0, 240, 255, 0.15);
     --btn-shadow-hover: 0 6px 20px rgba(0, 240, 255, 0.3);
 }
+
+
+           /* admin kay variables  */
+
+:root {
+    /* Brand & Accent Colors */
+    --navy-dark: #0c1a30;        
+    --navy-darker: #06101c;       
+    --navy-sidebar: #0b1329;
+    --hover-light-blue: #3a86ff;  
+    --text-inactive: #a0aec0;     
+    --deep-blue: #121095;  
+    --white: #ffffff;
+    --primary-blue: #0284c7;
+    --primary-blue-dark: #0277b2;
+    --primary-blue-light: #0369a1;
+    --accent-cyan: #00b4d8;
+    --accent-light-cyan: #4fe9ff;
+    --accent-sky: #38bdf8;
+    --accent-hover-cyan: #64dfdf;
+    --accent-gradient-blue: #103c65;
+    --red-danger: #ef4444;
+    --active-item-blue: #2563eb;
+
+    /* Text & Neutral Shades */
+    --text-primary: #0f172a;
+    --text-muted: #94a3b8;
+    --text-secondary: #64748b;
+    --text-dark: #334155;
+    --menu-label-color: #667891;
+
+    /* Backgrounds & Borders */
+    --bg-main: #f8fafc;
+    --bg-hover-light: #f1f5f9;
+    --border-light: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --border-dark-state: #1e293b;
+    --border-translucent-5: rgba(255, 255, 255, 0.05);
+    --border-translucent-8: rgba(255, 255, 255, 0.08);
+
+    /* Shadows & Effects */
+    --shadow-cyan-glow: rgba(0, 180, 216, 0.6);
+    --shadow-cyan-hover: rgba(0, 180, 216, 0.9);
+    --shadow-cyan-soft: rgba(0, 180, 216, 0.2);
+    --shadow-cyan-drop: rgba(0, 180, 216, 0.4);
+    --shadow-blue-btn: rgba(2, 119, 189, 0.25);
+    --shadow-blue-btn-hover: rgba(2, 132, 199, 0.45);
+    --shadow-active-card: rgba(0, 25, 60, 0.24);
+    --shadow-dark-card: rgba(15, 23, 42, 0.1);
+    --shadow-switch-circle: rgba(2, 132, 199, 0.3);
+    --shadow-switch-dark: rgba(0, 0, 0, 0.4);
+
+    /* Typography */
+    --font-roboto: 'Roboto', sans-serif;
+}
+
+
+
+/* theme toggle variables */
+
+
+
+/* --- Ultimate Dark Theme Fixes --- */
+body.dark-theme {
+  color: #ffffff !important;
+}
+
+/* Sidebar in Dark Mode */
+body.dark-theme .sidebar {
+  background-color: var(--navy-darker, #06101c) !important;
+  border-right-color: var(--border-dark-state, #1e293b) !important;
+}
+
+/* Main Cards / Containers */
+body.dark-theme .card {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-dark-state, #1e293b) !important;
+}
+
+/* Top Header */
+body.dark-theme .main-header {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  border-bottom: 1px solid var(--border-dark-state, #1e293b) !important;
+}
+
+/* Form Inputs & Controls */
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  color: #ffffff !important;
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme .form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .form-control:focus {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-cyan, #00b4d8) !important;
+}
+
+/* Force All Headings, Labels & Text to White in Dark Mode */
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme h3, 
+body.dark-theme h4, 
+body.dark-theme h5, 
+body.dark-theme h6,
+body.dark-theme label,
+body.dark-theme span,
+body.dark-theme p,
+body.dark-theme div,
+body.dark-theme .text-dark,
+body.dark-theme .text-muted,
+body.dark-theme .text-secondary {
+  color: #ffffff !important;
+}
+
+/* Specific fix for sub-text or muted text if you want them slightly dimmer, otherwise all white */
+body.dark-theme .text-muted-custom {
+  color: #94a3b8 !important;
+}
+
+
+/* profile toggle hover */
+
+
+body.dark-theme    .profile-toggle:hover{
+  background-color: var(--navy-dark, #0c1a30) !important;
+
+}
+
+
+body.dark-theme    .dropdown-menu{
+  background-color: var(--navy-dark, #0c1a30) !important;
+
+}
+
+body.dark-theme    .dropd{
+  background-color: var(--navy-dark, #0c1a30) !important;
+
+}
+
+
+
+ body.dark-theme  .dropdown-menu .bg-light {
+    background-color: var(--navy-dark, #0c1a30) !important;
+
+}
+
+
+body.dark-theme  .dropdown-menu .dropdown-item {
+  color: var( --white) !important;
+
+}
+
+
+body.dark-theme .dropdown-menu .dropdown-item:hover,
+body.dark-theme .dropdown-menu li > a.dropdown-item:hover,
+body.dark-theme .notification-item:hover {
+  background-color: var(--navy-sidebar, #0b1329) !important; /* Agar background thora different ya wahi rakhna hai */
+  color: var(--active-item-blue, #2563eb) !important;
+  transform: translateX(4px);
+}
+
+
+
+
+body.dark-theme  .custom-profile-tabs {
+    background-color: var(--navy-sidebar, #0b1329) !important; 
+}
+
+
+
+/* --- Account Settings Nav Tabs Fix in Dark Theme --- */
+body.dark-theme .custom-profile-tabs .nav-link {
+  color: var(--text-muted, #94a3b8) !important;
+  background-color: transparent !important;
+}
+
+body.dark-theme .custom-profile-tabs .nav-link:hover {
+  color: #ffffff !important;
+  background-color: var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme .custom-profile-tabs .nav-link.active {
+  background-color: var(--primary-blue, #0284c7) !important;
+  color: #ffffff !important;
+}
+
+
+
+
+/* --- Remove All Unwanted White Lines & Borders in Dark Theme --- */
+body.dark-theme hr,
+body.dark-theme .border-bottom,
+body.dark-theme .border-top,
+body.dark-theme .border {
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+
+body.dark-theme .d-flex.border-bottom {
+  border-bottom: 1px solid var(--border-dark-state, #1e293b) !important;
+}
+
+
+body.dark-theme .custom-profile-tabs{
+    background: var(--text-dark) !important;
+
+}
+
+
+
+/* Account Settings header ya separator line fix */
+body.dark-theme .main-header,
+body.dark-theme .tab-content,
+body.dark-theme .card-header {
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+
+body.dark-theme hr {
+  opacity: 0.15;
+  background-color: var(--border-dark-state, #1e293b) !important;
+}
+
+
+
+body.dark-theme .em{
+      background-color: var(--navy-dark, #0c1a30) !important;
+
+}
+
+
+
+
+body.dark-theme .main-content {
+  background-color: var(--navy-darker, #06101c) !important;
+}
+
+/* notifications dropdown */
+
+
+body.dark-theme .notif-dropdown-menu {
+  background-color: var(--navy-dark, #0c1a30) !important;
+}
+
+body.dark-theme .notif-header {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  border-bottom: 1px solid var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme .notif-item:hover {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+}
+
+body.dark-theme .notif-item.unread {
+  background-color: rgba(0, 180, 216, 0.08) !important;
+}
+
+body.dark-theme .notif-item.unread:hover {
+  background-color: rgba(0, 180, 216, 0.15) !important;
+}
+
+body.dark-theme .notif-time,
+body.dark-theme .notif-empty {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+body.dark-theme .notif-footer a {
+  color: var(--accent-cyan, #00b4d8) !important;
+}
+
+body.dark-theme .notif-close:hover {
+  background-color: var(--border-dark-state, #1e293b) !important;
+  color: #ffffff !important;
+}
+
+
+body.dark-theme .notif-content p,
+body.dark-theme .notif-content p b,
+body.dark-theme .notif-header .fw-bold {
+  color: #ffffff !important;
+}
+
+
+
+/* Notifications full page - unread card background */
+body.dark-theme #notifications-container .bg-light {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+}
+
+body.dark-theme #notifications-container > div {
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme #notifications-container small.text-muted {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Delete all button (notifications page) */
+body.dark-theme #clear-all {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  color: var(--red-danger, #ef4444) !important;
+  border-color: var(--red-danger, #ef4444) !important;
+}
+
+body.dark-theme #clear-all::before,
+body.dark-theme #clear-all::after {
+  background: var(--red-danger, #ef4444) !important;
+}
+
+body.dark-theme #clear-all:hover {
+  color: #ffffff !important;
+}
+
+
+body.dark-theme .button {
+  background-color: #0e0d0d !important;
+  color: var(--primary-blue, #0284c7) !important;
+  border-color: var(--primary-blue, #0284c7) !important;
+}
+
+body.dark-theme .button:hover {
+  color: #ffffff !important;
+}
