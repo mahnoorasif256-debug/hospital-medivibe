@@ -5,7 +5,9 @@
   font-family: var(--font-roboto);
 }
 
-
+html, body { width: 100%; overflow-x: hidden; }
+.main-content { min-width: 0; overflow-x: hidden; }
+.sidebar { overflow-x: hidden; }
 
 
 .dashboard-container {
@@ -1764,3 +1766,533 @@ left: 11px !important;
 .sidebar.collapsed .sidebar-collapse-btn {
   transform: translateY(-50%) rotate(180deg);
 }
+
+/* dashbaord main content */
+
+
+.ban{
+    background: linear-gradient(to right, var(--deep-blue) 0%, #00f0ff 100%) !important;
+}
+
+
+.ban {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+height: 160px !important;
+  /* Light blue left, dark blue right */
+  background: linear-gradient(
+    to right,
+    #2bb9e8 0%,
+    #168bd3 48%,
+    var(--deep-blue) 100%
+  ) !important;
+}
+
+/* Text aur button circles ke upar rahenge */
+.ban > .row {
+  position: relative;
+  z-index: 3;
+}
+
+/* Main large dark circle */
+.ban::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+
+  width: 450px;
+  height: 450px;
+  right: 75px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+  background: rgba(5, 48, 105, 0.27);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    0 0 0 38px rgba(255, 255, 255, 0.035),
+    0 0 0 76px rgba(255, 255, 255, 0.035);
+}
+
+/* Outer ring */
+.ban::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+
+  width: 540px;
+  height: 540px;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+  .stat-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12) !important;
+  }
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+  }
+  .stat-icon-primary  { background: #4338ca; }
+  .stat-icon-danger   { background: #ef4444; }
+  .stat-icon-info     { background: #2563eb; }
+  .stat-icon-success  { background: #16a34a; }
+
+
+  /* doctors profile */
+
+
+  /* Parent wrapper jo poori screen ko cover karega */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-main, #f4f7f6);
+}
+
+/* Right side ka poora area (Header + Content) */
+.main-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Header jo apni jagah par bilkul fix rahega */
+.main-header {
+  height: 70px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-shrink: 0; /* Header ko compress ya distort hone se bachayega */
+}
+
+/* Content area jo sirf khud scroll hoga, header apni jaga nahi chorega */
+.main-content {
+  flex-grow: 1;
+  background-color: transparent;
+  padding: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* footer */
+
+.admin-footer {
+  text-align: center;
+  padding: 20px 0 10px 0;
+  color: #6c757d !important;
+  font-size: 13px;
+  border-top: 1px solid var(--border-light, #e0e0e0) !important;
+  margin-top: 40px;
+}
+
+
+  .shift-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .shift-badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .shift-morning { background: #e0f2fe; color: #0284c7; }
+  .shift-morning::before { background: #0284c7; }
+
+  .shift-evening { background: #fef3c7; color: #b45309; }
+  .shift-evening::before { background: #b45309; }
+
+  .shift-night { background: #e0e7ff; color: #4338ca; }
+  .shift-night::before { background: #4338ca; }
+
+  .shift-off { background: #f1f5f9; color: #94a3b8; }
+  .shift-off::before { background: #94a3b8; }
+
+  .doctor-avatar-sm {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    border: 2px solid #f8f9fa;
+  }
+
+  .schedule-indicator-card { font-size: 13px; }
+
+  /* Dark theme support for the new shift badges */
+  body.dark-theme .shift-morning { background: rgba(2, 132, 199, 0.18); color: #38bdf8; }
+  body.dark-theme .shift-evening { background: rgba(180, 83, 9, 0.18); color: #fbbf24; }
+  body.dark-theme .shift-night   { background: rgba(67, 56, 202, 0.25); color: #a5b4fc; }
+  body.dark-theme .shift-off     { background: rgba(255, 255, 255, 0.06); color: #94a3b8; }
+
+
+
+  /* ==========================================================
+   Doctor Profile Page — additional utility classes
+   Add this block to the end of admin.css
+   ========================================================== */
+
+/* --- Gradient action button (Edit Profile / Message / Save Doctor) --- */
+.mv-btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: var(--white, #ffffff);
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-blue, #135dd8), var(--deep-blue, #121095));
+  box-shadow: 0 4px 12px rgba(19, 93, 216, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.mv-btn-gradient:hover {
+  color: var(--white, #ffffff);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(19, 93, 216, 0.45);
+  opacity: 0.95;
+}
+
+.mv-btn-gradient:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(19, 93, 216, 0.35);
+}
+
+.mv-btn-gradient:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(19, 93, 216, 0.25);
+}
+
+.mv-btn-gradient:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Large avatar for the profile view (in addition to existing -sm) --- */
+.doctor-avatar-lg {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border: 3px solid var(--white, #ffffff);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Availability dot on the avatar --- */
+.status-pill {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--white, #ffffff);
+  border: 2px solid var(--white, #ffffff);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-size: 9px;
+}
+
+.status-pill.status-online {
+  color: #22c55e; /* green dot = available */
+}
+
+.status-pill.status-offline {
+  color: #9ca3af; /* grey dot = unavailable */
+}
+
+/* --- Status / department badges under the doctor's name --- */
+.status-pill-active {
+  background-color: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-pill-inactive {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.status-pill-dept {
+  background-color: rgba(19, 93, 216, 0.1);
+  color: var(--primary-blue, #135dd8);
+  font-weight: 600;
+}
+
+.mv-btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 10px 22px;        /* 👈 naya: proper spacing */
+  border-radius: 50px;       /* 👈 naya: pill shape */
+  font-size: 14px;           /* 👈 naya: consistent text size */
+  white-space: nowrap;       /* 👈 naya: text ek line mein rahe */
+  color: var(--white, #ffffff);
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary-blue, #135dd8), var(--deep-blue, #121095));
+  box-shadow: 0 4px 12px rgba(19, 93, 216, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+
+
+
+/* // invoices  */
+  .fin-summary-card { position: relative; overflow: hidden; }
+  .fin-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+  .fin-summary-label { font-size: 12px; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+  .fin-summary-value { font-size: 22px; font-weight: 800; color: #0f172a; }
+  .fin-summary-sub { font-size: 11.5px; color: #94a3b8; }
+  body.dark-theme .fin-summary-value { color: #ffffff; }
+
+  .fin-patient-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+
+  .service-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  .service-consultation { background: #e0f2fe; color: #0284c7; }
+  .service-lab          { background: #ede9fe; color: #7c3aed; }
+  .service-pharmacy     { background: #dcfce7; color: #16a34a; }
+  body.dark-theme .service-consultation { background: rgba(2,132,199,.18); color: #38bdf8; }
+  body.dark-theme .service-lab          { background: rgba(124,58,237,.22); color: #c4b5fd; }
+  body.dark-theme .service-pharmacy     { background: rgba(22,163,74,.18); color: #4ade80; }
+
+  /* Status pill — self-contained so this page never depends on
+     another page's <style> block being present. */
+  .status-pill {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .status-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .status-paid    { background: #dcfce7; color: #16a34a; }
+  .status-paid::before    { background: #16a34a; }
+  .status-unpaid  { background: #fee2e2; color: #ef4444; }
+  .status-unpaid::before  { background: #ef4444; }
+  .status-partial { background: #fef3c7; color: #b45309; }
+  .status-partial::before { background: #b45309; }
+  body.dark-theme .status-paid    { background: rgba(22,163,74,.18); color: #4ade80; }
+  body.dark-theme .status-unpaid  { background: rgba(239,68,68,.18); color: #f87171; }
+  body.dark-theme .status-partial { background: rgba(180,83,9,.18); color: #fbbf24; }
+
+  .invoice-action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    background: #fff;
+    transition: all .2s ease;
+  }
+  .invoice-action-btn:hover { background: #f1f5f9; color: #0284c7; }
+  body.dark-theme .invoice-action-btn { border-color: var(--border-dark-state, #1e293b); background: transparent; color: #94a3b8; }
+  body.dark-theme .invoice-action-btn:hover { background: rgba(255,255,255,0.06); color: #38bdf8; }
+
+  .invoices-search-bar { max-width: 260px; }
+
+
+
+
+  /* departments  */
+  
+  .dept-card {
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .dept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 .75rem 1.5rem rgba(15, 23, 42, .10) !important;
+  }
+  .dept-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .dept-hod-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin: 14px 0;
+  }
+  .dept-hod-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .dept-hod-label { font-size: 10.5px; color: #94a3b8; font-weight: 600; text-transform: uppercase; }
+  .dept-hod-name { font-size: 13px; font-weight: 700; color: #0f172a; }
+
+  .dept-stat-badge {
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #e0f2fe;
+    color: #0284c7;
+  }
+  .dept-room-chip {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #475569;
+    display: inline-block;
+  }
+
+  body.dark-theme .dept-hod-row { background: rgba(255,255,255,0.04); }
+  body.dark-theme .dept-hod-name { color: #ffffff; }
+  body.dark-theme .dept-stat-badge { background: rgba(2, 132, 199, 0.18); color: #38bdf8; }
+  body.dark-theme .dept-room-chip { background: rgba(255,255,255,0.06); color: #cbd5e1; }
+
+
+
+/* Appointment table badges */
+.mv-table td:last-child {
+  white-space: nowrap;
+}
+
+.mv-table .status-pill {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  min-height: 24px;
+  padding: 5px 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  border: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.status-pill {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+
+/* Doctor profile responsive buttons */
+@media (max-width: 576px) {
+  #doctorProfilePage
+    > .d-flex.justify-content-between.align-items-center.mb-4 {
+    align-items: stretch !important;
+  }
+
+  #doctorProfilePage
+    > .d-flex.justify-content-between.align-items-center.mb-4
+    > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  #doctorProfilePage
+    > .d-flex.justify-content-between.align-items-center.mb-4
+    > div:last-child
+    > button,
+  #doctorProfileCard > .d-flex.gap-2:last-child > button {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  #doctorProfileCard > .d-flex.gap-2:last-child {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #doctorProfilePage {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  #doctorProfilePage
+    > .d-flex.justify-content-between.align-items-center.mb-4
+    > div:last-child
+    > button,
+  #doctorProfileCard > .d-flex.gap-2:last-child > button {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 12px !important;
+  }
+}
+
+  

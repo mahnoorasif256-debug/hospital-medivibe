@@ -21,6 +21,219 @@
     <link rel="stylesheet" href="../css/global.css">
 
     <link rel="stylesheet" href="./admin.css">
+
+    <!-- ===== Added: styles for new Analytics/Doctors/Appointments components ===== -->
+    <style>
+      .mv-card {
+        background: #ffffff;
+        border: 0;
+        border-radius: 1rem;
+        box-shadow: 0 .125rem .5rem rgba(15, 23, 42, .06);
+        transition: transform .25s ease, box-shadow .25s ease;
+      }
+      .mv-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 .75rem 1.5rem rgba(15, 23, 42, .10);
+      }
+      .mv-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.25rem 0 1.25rem;
+      }
+      .mv-card-header h5 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0;
+      }
+      .mv-card-header p {
+        font-size: 12px;
+        color: #94a3b8;
+        margin: 2px 0 0 0;
+      }
+      .mv-card-body {
+        padding: 1rem 1.25rem 1.25rem 1.25rem;
+      }
+      .mv-btn-gradient {
+        background: linear-gradient(90deg, #0d6efd 0%, #0a58ca 100%);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        border-radius: 50px;
+        padding: 8px 18px;
+        transition: box-shadow .25s ease, transform .15s ease;
+      }
+      .mv-btn-gradient:hover {
+        color: #fff;
+        box-shadow: 0 6px 16px rgba(13, 110, 253, .35);
+        transform: translateY(-1px);
+      }
+      .mv-legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+      }
+      .mv-legend-item {
+        font-size: 12.5px;
+        color: #64748b;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .mv-donut-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 190px;
+        margin: 0 auto;
+      }
+      .mv-donut-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        pointer-events: none;
+      }
+      .mv-donut-center .val {
+        font-size: 26px;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1;
+        display: block;
+      }
+      .mv-donut-center .lbl {
+        font-size: 11px;
+        color: #94a3b8;
+        display: block;
+        margin-top: 4px;
+      }
+      .doctor-mini-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 14px;
+        transition: background-color .2s ease, transform .2s ease;
+      }
+      .doctor-mini-card:hover {
+        background-color: #f8fafc;
+        transform: translateX(3px);
+      }
+      .doctor-avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        border: 2px solid #eef2ff;
+      }
+      .doctor-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0;
+      }
+      .doctor-spec-badge {
+        font-size: 10.5px;
+        font-weight: 600;
+        padding: 2px 9px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 3px;
+      }
+      .doctor-stars {
+        font-size: 11px;
+        color: #f59e0b;
+        margin-top: 4px;
+      }
+      .doctor-stars .far {
+        color: #e2e8f0;
+      }
+      .mv-table thead th {
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: #94a3b8;
+        font-weight: 700;
+        border-bottom: 1px solid #eef1f6;
+        padding: 12px 14px;
+        white-space: nowrap;
+      }
+      .mv-table tbody td {
+        padding: 14px;
+        vertical-align: middle;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 13.5px;
+        color: #334155;
+      }
+      .mv-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .mv-table tbody tr {
+        transition: background-color .15s ease;
+      }
+      .mv-table tbody tr:hover {
+        background-color: #f8fafc;
+      }
+      .mv-person {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mv-person img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .mv-person .name {
+        font-weight: 600;
+        color: #0f172a;
+        font-size: 13.5px;
+        display: block;
+        line-height: 1.2;
+      }
+      .mv-person .sub {
+        font-size: 11.5px;
+        color: #94a3b8;
+      }
+      .dept-tag {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: #eef2ff;
+        color: #4338ca;
+      }
+      .status-pill {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 50px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .status-pill::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .status-checked-in { background: #e0f2fe; color: #0284c7; }
+      .status-checked-in::before { background: #0284c7; }
+      .status-in-consultation { background: #fef3c7; color: #b45309; }
+      .status-in-consultation::before { background: #b45309; }
+      .status-completed { background: #dcfce7; color: #16a34a; }
+      .status-completed::before { background: #16a34a; }
+      .status-cancelled { background: #fee2e2; color: #ef4444; }
+      .status-cancelled::before { background: #ef4444; }
+    </style>
 </head>
 <body>
 
@@ -56,7 +269,7 @@
       <ul class="nav-list">
         <!-- 1. Overview -->
         <li class="nav-item">
-          <a href="admin-dashboard.html" class="nav-link active">
+          <a href="./admin.html" class="nav-link active">
             <i class="fa-solid fa-border-all"></i>
             <span>Overview</span>
           </a>
@@ -69,9 +282,9 @@
             <span>Doctors</span>
           </a>
           <ul class="sub-menu">
-            <li><a href="doctors.html">Doctors Directory</a></li>
-            <li><a href="doctor-schedule.html">Doctor Schedule</a></li>
-            <li><a href="doctor-profile.html">Doctor Profile</a></li>
+            <li><a href="./doctors/doctors.html">Doctors Directory</a></li>
+            <li><a href="./doctors/doctors-schedule.html">Doctor Schedule</a></li>
+            <li><a href="./doctors/doctor-profile.html">Doctor Profile</a></li>
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDoctorModal">+ Add New Doctor</a></li>
           </ul>
         </li>
@@ -83,8 +296,8 @@
             <span>Patients</span>
           </a>
           <ul class="sub-menu">
-            <li><a href="patients.html">Patients Directory</a></li>
-            <li><a href="patient-profile.html">Patient Profile & Records</a></li>
+            <li><a href="../admin-dashbaord/pateint/pateint-direc.html">Patients Directory</a></li>
+            <li><a href="../admin-dashbaord/pateint/pateint-profile.html">Patient Profile & Records</a></li>
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addPatientModal">+ Register New Patient</a></li>
           </ul>
         </li>
@@ -96,7 +309,7 @@
             <span>Appointments</span>
           </a>
           <ul class="sub-menu">
-            <li><a href="appointments.html">Master Schedule</a></li>
+            <li><a href="departments/department.html">Master Schedule</a></li>
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal">+ Book Appointment</a></li>
           </ul>
         </li>
@@ -108,14 +321,14 @@
             <span>Departments</span>
           </a>
           <ul class="sub-menu">
-            <li><a href="departments.html">Hospital Departments</a></li>
+            <li><a href="./departments/department.html">Hospital Departments</a></li>
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDepartmentModal">+ Add New Department</a></li>
           </ul>
         </li>
 
         <!-- 6. Invoices -->
         <li class="nav-item">
-          <a href="invoices.html" class="nav-link">
+          <a href="./invoices.html" class="nav-link">
             <i class="fa-solid fa-file-invoice-dollar"></i>
             <span>Invoices & Billing</span>
           </a>
@@ -123,7 +336,7 @@
 
         <!-- 7. Settings -->
         <li class="nav-item">
-          <a href="settings.html" class="nav-link">
+          <a href="./settings.html" class="nav-link">
             <i class="fa-solid fa-gear"></i>
             <span>Settings</span>
           </a>
@@ -275,25 +488,727 @@
     </header>
 
     <!-- DASHBOARD BODY CONTENT -->
-  
+  <div class="container-fluid px-4 py-4">
+      
+      <!-- Welcome Blue Banner -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="p-4 rounded-4 text-white position-relative overflow-hidden shadow-sm ban" >
+            <div class="row align-items-center">
+              <div class="col-lg-8">
+                <span class="badge bg-white text-primary mb-2 px-3 py-1 fw-semibold rounded-pill" style="font-size: 11px; letter-spacing: 0.5px;">MEDIVIBE ADMIN WORKSPACE</span>
+                <h1 class="fw-bold mb-2 text-white" style="font-size: 28px;" id="greetingText">Good morning, Mahnoor</h1>
+                <p class="mb-0 text-white" style="font-size: 14px;">Monitor your hospital operations, doctors, and patient records efficiently.</p>
+              </div>
+              <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <button class="btn btn-light text-primary fw-semibold px-4 py-2 rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#addDoctorModal" style="font-size: 13px;">
+                  <i class="fa-solid fa-plus me-2"></i> Add New Doctor
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- 4 Preclinic Analytics Cards with Mini Charts -->
+<!-- 4 Preclinic Analytics Cards -->
+<div class="row g-4 mb-4">
+
+  <!-- Card 1: Doctors -->
+  <div class="col-xl-3 col-sm-6">
+    <div class="card stat-card border-0 shadow-sm rounded-4 p-4 h-100 position-relative bg-white overflow-hidden">
+      <img src="../images/bg-01.svg" alt="bg img" class="position-absolute top-0 start-0 h-100 opacity-50" style="z-index: 1; pointer-events: none;">
+      <div class="d-flex justify-content-between align-items-start mb-3 position-relative" style="z-index: 2;">
+        <div class="stat-icon stat-icon-primary">
+          <i class="fa-solid fa-user-doctor"></i>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-success bg-opacity-15 text-white fw-semibold rounded-pill px-2 py-1" style="font-size: 11px;">+95%</span>
+          <span class="d-text d-block text-muted mt-1" style="font-size: 10px;">in last 7 Days</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-end position-relative" style="z-index: 2;">
+        <div>
+          <span class="text-muted d-block mb-1" style="font-size: 13px; font-weight: 500;">Doctors</span>
+          <h3 class="fw-bold mb-0 text-dark" style="font-size: 26px;">247</h3>
+        </div>
+        <div style="width: 90px; height: 45px;">
+          <canvas id="doctorsMiniChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: Patients -->
+  <div class="col-xl-3 col-sm-6">
+    <div class="card stat-card border-0 shadow-sm rounded-4 p-4 h-100 position-relative bg-white overflow-hidden">
+      <img src="../images/bg-01.svg" alt="bg img" class="position-absolute top-0 start-0 h-100 opacity-50" style="z-index: 1; pointer-events: none;">
+      <div class="d-flex justify-content-between align-items-start mb-3 position-relative" style="z-index: 2;">
+        <div class="stat-icon stat-icon-danger">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-success bg-opacity-15 text-white fw-semibold rounded-pill px-2 py-1" style="font-size: 11px;">+25%</span>
+          <span class="d-text d-block text-muted mt-1" style="font-size: 10px;">in last 7 Days</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-end position-relative" style="z-index: 2;">
+        <div>
+          <span class="text-muted d-block mb-1" style="font-size: 13px; font-weight: 500;">Patients</span>
+          <h3 class="fw-bold mb-0 text-dark" style="font-size: 26px;">4,178</h3>
+        </div>
+        <div style="width: 70px; height: 35px;">
+          <canvas id="patientsMiniChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: Appointment -->
+  <div class="col-xl-3 col-sm-6">
+    <div class="card stat-card border-0 shadow-sm rounded-4 p-4 h-100 position-relative bg-white overflow-hidden">
+      <img src="../images/bg-01.svg" alt="bg img" class="position-absolute top-0 start-0 h-100 opacity-50" style="z-index: 1; pointer-events: none;">
+      <div class="d-flex justify-content-between align-items-start mb-3 position-relative" style="z-index: 2;">
+        <div class="stat-icon stat-icon-info">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-danger bg-opacity-15 text-white fw-semibold rounded-pill px-2 py-1" style="font-size: 11px;">-15%</span>
+          <span class="d-text d-block text-muted mt-1" style="font-size: 10px;">in last 7 Days</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-end position-relative" style="z-index: 2;">
+        <div>
+          <span class="text-muted d-block mb-1" style="font-size: 13px; font-weight: 500;">Appointment</span>
+          <h3 class="fw-bold mb-0 text-dark" style="font-size: 26px;">12,178</h3>
+        </div>
+        <div style="width: 70px; height: 35px;">
+          <canvas id="appointmentsMiniChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4: Revenue -->
+  <div class="col-xl-3 col-sm-6">
+    <div class="card stat-card border-0 shadow-sm rounded-4 p-4 h-100 position-relative bg-white overflow-hidden">
+      <img src="../images/bg-01.svg" alt="bg img" class="position-absolute top-0 start-0 h-100 opacity-50" style="z-index: 1; pointer-events: none;">
+      <div class="d-flex justify-content-between align-items-start mb-3 position-relative" style="z-index: 2;">
+        <div class="stat-icon stat-icon-success">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div class="text-end">
+          <span class="badge bg-success bg-opacity-15 text-white fw-semibold rounded-pill px-2 py-1" style="font-size: 11px;">+25%</span>
+          <span class="d-text d-block text-muted mt-1" style="font-size: 10px;">in last 7 Days</span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-end position-relative" style="z-index: 2;">
+        <div>
+          <span class="text-muted d-block mb-1" style="font-size: 13px; font-weight: 500;">Revenue</span>
+          <h3 class="fw-bold mb-0 text-dark" style="font-size: 24px;">$55,1240</h3>
+        </div>
+        <div style="width: 70px; height: 35px;">
+          <canvas id="revenueMiniChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== Added: Analytics & Visual Charts Section ===== -->
+<div id="section-1-analytics" class="row g-4 mb-4">
+
+  <!-- Hospital Visits Statistics -->
+  <div class="col-xl-5 col-lg-6">
+    <div class="mv-card h-100">
+      <div class="mv-card-header">
+        <div>
+          <h5>Hospital Visits Statistics</h5>
+          <p>In-Patient vs Out-Patient traffic — last 7 days</p>
+        </div>
+        <div class="d-flex gap-3">
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#0d6efd;"></span>In-Patient</span>
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#00b4d8;"></span>Out-Patient</span>
+        </div>
+      </div>
+      <div class="mv-card-body">
+        <div style="height: 260px;">
+          <canvas id="hospitalVisitsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operation Success Rate -->
+  <div class="col-xl-3 col-lg-6">
+    <div class="mv-card h-100">
+      <div class="mv-card-header" style="justify-content:flex-start;">
+        <div>
+          <h5>Operation Success Rate</h5>
+          <p>Last 30 days, all departments</p>
+        </div>
+      </div>
+      <div class="mv-card-body d-flex flex-column align-items-center justify-content-center h-100">
+        <div class="mv-donut-wrap" style="height: 180px;">
+          <canvas id="operationSuccessChart"></canvas>
+          <div class="mv-donut-center">
+            <span class="val">94%</span>
+            <span class="lbl">Success</span>
+          </div>
+        </div>
+        <div class="d-flex gap-3 mt-3">
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#16a34a;"></span>Success</span>
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#e2e8f0;"></span>Other</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue & Expenses Overview -->
+  <div class="col-xl-4 col-lg-12">
+    <div class="mv-card h-100">
+      <div class="mv-card-header">
+        <div>
+          <h5>Revenue &amp; Expenses</h5>
+          <p>Monthly overview ($)</p>
+        </div>
+        <div class="d-flex gap-3">
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#16a34a;"></span>Revenue</span>
+          <span class="mv-legend-item"><span class="mv-legend-dot" style="background:#ef4444;"></span>Expenses</span>
+        </div>
+      </div>
+      <div class="mv-card-body">
+        <div style="height: 260px;">
+          <canvas id="revenueExpensesChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== Added: Doctors Directory Summary Widget ===== -->
+<div id="section-2-doctors" class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="mv-card">
+      <div class="mv-card-header">
+        <div>
+          <h5>Doctors Directory</h5>
+          <p>Top rated doctors this month</p>
+        </div>
+        <a href="doctors.html" class="mv-btn-gradient text-decoration-none">
+          View All Doctors
+        </a>
+      </div>
+      <div class="mv-card-body">
+        <div class="row g-2">
+
+          <div class="col-xl-3 col-md-6">
+            <div class="doctor-mini-card">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" class="doctor-avatar" alt="Dr. Sara Khan">
+              <div>
+                <p class="doctor-name">Dr. Sara Khan</p>
+                <span class="doctor-spec-badge" style="background:#e0f2fe; color:#0284c7;">Cardiologist</span>
+                <div class="doctor-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span class="text-muted" style="font-size:11px;">(4.9)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="doctor-mini-card">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="doctor-avatar" alt="Dr. Ahmed Raza">
+              <div>
+                <p class="doctor-name">Dr. Ahmed Raza</p>
+                <span class="doctor-spec-badge" style="background:#fee2e2; color:#ef4444;">Neurologist</span>
+                <div class="doctor-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                  <span class="text-muted" style="font-size:11px;">(4.6)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="doctor-mini-card">
+              <img src="https://randomuser.me/api/portraits/women/45.jpg" class="doctor-avatar" alt="Dr. Ayesha Malik">
+              <div>
+                <p class="doctor-name">Dr. Ayesha Malik</p>
+                <span class="doctor-spec-badge" style="background:#dcfce7; color:#16a34a;">Pediatrician</span>
+                <div class="doctor-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span class="text-muted" style="font-size:11px;">(5.0)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="doctor-mini-card">
+              <img src="https://randomuser.me/api/portraits/men/54.jpg" class="doctor-avatar" alt="Dr. Bilal Hussain">
+              <div>
+                <p class="doctor-name">Dr. Bilal Hussain</p>
+                <span class="doctor-spec-badge" style="background:#fef3c7; color:#b45309;">Orthopedic</span>
+                <div class="doctor-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                  <span class="text-muted" style="font-size:11px;">(3.8)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Added: Recent Appointments Master Table ===== -->
+<div id="section-3-appointments" class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="mv-card">
+      <div class="mv-card-header">
+        <div>
+          <h5>Recent Appointments</h5>
+          <p>Live status across all departments</p>
+        </div>
+        <a href="appointments.html" class="mv-btn-gradient text-decoration-none">
+          View Master Schedule
+        </a>
+      </div>
+      <div class="mv-card-body">
+        <div class="table-responsive">
+          <table class="table mv-table mb-0">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Assigned Doctor</th>
+                <th>Department</th>
+                <th>Date &amp; Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                    <div>
+                      <span class="name">Fatima Sheikh</span>
+                      <span class="sub">Patient ID #P-2291</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+                    <div>
+                      <span class="name">Dr. Sara Khan</span>
+                      <span class="sub">Cardiologist</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-tag">Cardiology</span></td>
+                <td>05 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">06:30 PM</span></td>
+                <td><span class="status-pill status-checked-in">Checked In</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="">
+                    <div>
+                      <span class="name">Usman Tariq</span>
+                      <span class="sub">Patient ID #P-2292</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                    <div>
+                      <span class="name">Dr. Ahmed Raza</span>
+                      <span class="sub">Neurologist</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-tag" style="background:#fee2e2;color:#ef4444;">Neurology</span></td>
+                <td>05 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">04:10 PM</span></td>
+                <td><span class="status-pill status-in-consultation">In Consultation</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="">
+                    <div>
+                      <span class="name">Zainab Malik</span>
+                      <span class="sub">Patient ID #P-2293</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
+                    <div>
+                      <span class="name">Dr. Ayesha Malik</span>
+                      <span class="sub">Pediatrician</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-tag" style="background:#dcfce7;color:#16a34a;">Pediatrics</span></td>
+                <td>04 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">11:00 AM</span></td>
+                <td><span class="status-pill status-completed">Completed</span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="">
+                    <div>
+                      <span class="name">Hamza Iqbal</span>
+                      <span class="sub">Patient ID #P-2294</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="mv-person">
+                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="">
+                    <div>
+                      <span class="name">Dr. Bilal Hussain</span>
+                      <span class="sub">Orthopedic</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="dept-tag" style="background:#fef3c7;color:#b45309;">Orthopedics</span></td>
+                <td>04 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">02:45 PM</span></td>
+                <td><span class="status-pill status-cancelled">Cancelled</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+<footer class="admin-footer text-center py-3 border-top mt-auto">
+      <p class="text-muted mb-0" style="font-size: 13px;">2026 © Medivibe, All Rights Reserved</p>
+    </footer>
   </main>
   <!-- MAIN CONTENT AREA END -->
 
+</div>
 
 
-  
+
+  </main>
+  <!-- MAIN CONTENT AREA END -->
 </div>
 
 
 
 
+<!--   modals overalll -->
+
+<div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow">
+
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="addDoctorModalLabel">
+          <i class="fa-solid fa-user-doctor text-primary me-2"></i> Add New Doctor
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body pt-2">
+        <form id="addDoctorForm" novalidate>
+
+          <!-- Profile Photo Upload -->
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <img src="https://ui-avatars.com/api/?name=New+Doctor&background=e0e7ff&color=4338ca&size=64"
+                 alt="New doctor avatar preview"
+                 id="addDoctorAvatarPreview"
+                 class="rounded-circle doctor-avatar doctor-avatar-sm">
+            <div class="flex-fill">
+              <label for="doctorPhoto" class="form-label fw-semibold mb-1" style="font-size: 13px;">Profile Photo</label>
+              <input class="form-control form-control-sm" type="file" id="doctorPhoto" name="doctorPhoto" accept="image/*">
+            </div>
+          </div>
+
+          <!-- Full Name -->
+          <div class="mb-3">
+            <label for="doctorFullName" class="form-label fw-semibold" style="font-size: 13px;">Full Name</label>
+            <input type="text" class="form-control" id="doctorFullName" name="fullName" placeholder="e.g. Dr. Ayesha Khan" required>
+          </div>
+
+          <div class="row g-3">
+            <!-- Email -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="doctorEmail" class="form-label fw-semibold" style="font-size: 13px;">Email</label>
+                <input type="email" class="form-control" id="doctorEmail" name="email" placeholder="doctor@medivibe.com" required>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="doctorPhone" class="form-label fw-semibold" style="font-size: 13px;">Phone</label>
+                <input type="tel" class="form-control" id="doctorPhone" name="phone" placeholder="+92 3XX XXXXXXX" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specialization -->
+          <div class="mb-3">
+            <label for="doctorSpecialization" class="form-label fw-semibold" style="font-size: 13px;">Specialization</label>
+            <select class="form-select" id="doctorSpecialization" name="specialization" required>
+              <option value="" selected disabled>Select specialization</option>
+              <option value="cardiology">Cardiology</option>
+              <option value="neurology">Neurology</option>
+              <option value="pediatrics">Pediatrics</option>
+              <option value="orthopedics">Orthopedics</option>
+              <option value="dermatology">Dermatology</option>
+              <option value="dentistry">Dentistry</option>
+              <option value="general">General Medicine</option>
+            </select>
+          </div>
+
+          <div class="row g-3">
+            <!-- Room Number -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="doctorRoom" class="form-label fw-semibold" style="font-size: 13px;">Room Number</label>
+                <input type="text" class="form-control" id="doctorRoom" name="room" placeholder="e.g. 204-A" required>
+              </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="doctorExperience" class="form-label fw-semibold" style="font-size: 13px;">Experience (Years)</label>
+                <input type="number" class="form-control" id="doctorExperience" name="experience" min="0" max="60" placeholder="e.g. 8" required>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" style="font-size: 13px;">
+          Cancel
+        </button>
+        <button type="submit" form="addDoctorForm" class="mv-btn-gradient px-4 py-2 rounded-pill" style="font-size: 13px;">
+          <i class="fa-solid fa-check me-1"></i> Save Doctor
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- modal 2 -->
+
+<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow">
+      <div class="modal-header border-bottom px-4 py-3">
+        <h5 class="modal-title fw-bold text-dark" id="addPatientModalLabel">
+          <i class="fa-solid fa-hospital-user me-2 text-primary"></i> Walk-In Patient Instant Registration
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="addPatientForm" method="POST" onsubmit="event.preventDefault();" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Full Name</label>
+              <input type="text" class="form-control rounded-pill px-3" placeholder="e.g. Ali Khan" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Medical Record Number (MRN)</label>
+              <input type="text" id="autoMrnField" class="form-control rounded-pill px-3" readonly>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold fs-7 text-secondary">Age</label>
+              <input type="number" class="form-control rounded-pill px-3" min="0" max="120" placeholder="e.g. 30" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold fs-7 text-secondary">Blood Group</label>
+              <select class="form-select rounded-pill px-3" required>
+                <option selected disabled>Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold fs-7 text-secondary">Emergency Contact</label>
+              <input type="text" class="form-control rounded-pill px-3" placeholder="+92 300 0000000" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold fs-7 text-secondary">Medical Allergies (if any)</label>
+              <input type="text" class="form-control rounded-pill px-3" placeholder="e.g. Penicillin, Dust (leave blank if none)">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-top px-4 py-3">
+        <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="mv-btn-gradient" id="registerPatientBtn">Register Patient</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal 3 -->
+
+<div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow">
+      <div class="modal-header border-bottom px-4 py-3">
+        <h5 class="modal-title fw-bold text-dark" id="addDepartmentModalLabel">
+          <i class="fa-solid fa-hospital-user me-2 text-primary"></i> Add New Department
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="addDepartmentForm" onsubmit="event.preventDefault(); handleAddDepartmentSubmit(this);" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label class="form-label fw-semibold fs-7 text-secondary">Department Name</label>
+              <input type="text" id="newDeptName" class="form-control rounded-pill px-3" placeholder="e.g. Dermatology" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold fs-7 text-secondary">Head of Department (HOD)</label>
+              <input type="text" id="newDeptHod" class="form-control rounded-pill px-3" placeholder="e.g. Dr. Nida Farooq" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold fs-7 text-secondary">Room Numbers / Location</label>
+              <input type="text" id="newDeptRooms" class="form-control rounded-pill px-3" placeholder="e.g. 201, 202, 203" required>
+              <small class="text-muted" style="font-size: 11.5px;">Comma-separated room numbers.</small>
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-semibold fs-7 text-secondary">Department Description</label>
+              <textarea id="newDeptDescription" class="form-control rounded-4 px-3" rows="3" placeholder="Brief description of the department's function..."></textarea>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+            <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="mv-btn-gradient">Create Department</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal 4  -->
+
+
+<div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-4 shadow">
+      <div class="modal-header border-bottom px-4 py-3">
+        <h5 class="modal-title fw-bold text-dark" id="bookAppointmentModalLabel">
+          <i class="fa-solid fa-calendar-plus me-2 text-primary"></i> Book New Appointment
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <form id="bookAppointmentForm" onsubmit="event.preventDefault();" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Patient Name</label>
+              <input type="text" class="form-control rounded-pill px-3" placeholder="e.g. Ali Khan or search MRN..." list="patientSuggestions" required>
+              <datalist id="patientSuggestions">
+                <option value="Fatima Noor (#MRN-84920)">
+                <option value="Ahmed Raza (#MRN-99421)">
+                <option value="Sana Malik (#MRN-71203)">
+              </datalist>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
+              <select id="bookDepartment" class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Department</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="orthopedics">Orthopedics</option>
+                <option value="dermatology">Dermatology</option>
+                <option value="pediatrics">Pediatrics</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
+              <select id="bookDoctor" class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Department First</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
+              <input type="date" class="form-control rounded-pill px-3" required>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label fw-semibold fs-7 text-secondary">Time Slot</label>
+              <select class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Slot</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:30">10:30 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="14:30">02:30 PM</option>
+                <option value="16:00">04:00 PM</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold fs-7 text-secondary">Consultation Fee</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">Rs.</span>
+                <input type="number" id="bookFee" class="form-control border-start-0" placeholder="e.g. 2500" min="0" required>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-top px-4 py-3">
+        <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="mv-btn-gradient" id="confirmBookingBtn">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- //// -->   
 
 
 
  
 <!-- <div class="glow-cursor-dot"></div>
 <div class="glow-cursor-trail"></div> -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -99,13 +99,18 @@ body.has-sticky-header {
 
 .social-icon-link i::before,
 .social-icon-link i {
-    color: black !important; 
+    color: rgb(24, 23, 56) !important; 
     font-size: 14px !important;
     line-height: 1 !important; 
     display: inline-block !important;
 }
 
-
+/* .dropdown-menu a li{
+  background-color: white !important;
+} */
+/* .dropdown-menu li a{
+  background-color: white !important;
+} */
 
 .social-icon-link:hover {
     background-color: var(--deep-blue) !important; 
@@ -135,6 +140,81 @@ body.has-sticky-header {
     transform: translateY(-2px);  
     box-shadow: 0 4px 15px rgba(19, 93, 216, 0.2); 
 }
+
+
+
+
+/* Sign in — same as before */
+
+.btn-signin {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  padding: 6px 6px 6px 24px !important;
+  background: linear-gradient(90deg, #135dd8 0%, #00d4ff 100%);
+  background-size: 250% 100% !important;  
+  
+  background-position: 100% center !important; 
+  
+  color: var(--white) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  margin-left: 14px;
+  transition: background-position 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease !important;
+   box-shadow: 0 4px 14px rgba(19, 93, 216, 0.25);
+}
+
+
+.btn-arrow-circle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 50% !important;
+  transition: background-color 0.4s ease !important;
+}
+
+.btn-arrow-circle i {
+  color: var(--white) !important;
+  font-size: 11px !important;
+  transition: transform 0.4s ease !important;
+}
+
+.btn-signin:hover {
+  background-position: 0% center !important; 
+    box-shadow: 0 4px 14px rgba(19, 93, 216, 0.25);
+
+}
+
+
+.btn-signin:hover .btn-arrow-circle i {
+  transform: translateX(3px) !important;
+}
+
+
+/* Arrow slide out animation - continuous nudge */
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+.btn-arrow-circle i {
+  animation: arrowNudge 1.2s ease-in-out infinite;
+}
+
+.btn-arrow-circle i {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.custom-gradient-btn:hover .btn-arrow-circle i {
+  transform: translateX(6px) scale(1.1) !important;
+}
+
 
 
 .nev{
@@ -217,6 +297,11 @@ body.has-sticky-header {
         background-color: #0c1a30 !important;
         margin: 5px 15px !important;
     }
+
+    .dropdown-item {
+    color: var(--white) !important; 
+
+}
 }
 
 @media (min-width: 992px) {
@@ -233,7 +318,7 @@ body.has-sticky-header {
 
     .nav-item.dropdown:hover .dropdown-icon::before {
         content: "\f068" !important;
-        color: var(--primary-blue) !important;
+        color: var(--white) !important;
     }
 
     .dropdown-menu {
@@ -323,7 +408,7 @@ body.has-sticky-header {
   border-radius: 50px !important;
   font-size: 15px !important;
   cursor: pointer !important;
-  
+  margin-left:-3px ;
   transition: background-position 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease !important;
   box-shadow: 0 4px 15px rgba(0, 240, 255, 0.15) !important;
 }
@@ -629,7 +714,6 @@ bottom: 53px;
 }
 
 @media (max-width: 355px) {
-  /* .patients-card { top: 8% !important; left: -5px !important; padding: 6px 12px; } */
   .floating-card.rating-card {
  padding: 5px 10px;
   min-width: 70px;
@@ -736,6 +820,27 @@ bottom: 53px;
 
                       /* Services & counters start */
 
+
+.services-section {
+    background-image: url('../images/cards-bg.png') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: scroll !important;   
+    width: 100%;                                 
+    padding-top: 90px !important;
+    padding-bottom: 70px !important;
+    position: relative;
+    z-index: 1;
+}
+
+ @media (max-width: 1030px) {
+    .services-section {
+      background-image:  none !important;
+      background-color: #F2F5FC;
+    margin-top: 50px !important;
+    }
+} 
 
 
 /* Custom Service Section Title styling */
@@ -2165,9 +2270,9 @@ position: sticky !important;
                    /*  Cursor Styling  start  */
 
 
-body, a, button, input, select, .btn, h1, h2, h3, h4, h5, h6 {
+/* body, a, button, input, select, .btn, h1, h2, h3, h4, h5, h6 {
   cursor: none !important; 
-}
+} */
 
 .glow-cursor-dot {
   width: 7px;
@@ -2567,4 +2672,84 @@ body.cursor-hover .glow-cursor-trail {
   color: #ffffff !important;
   scale: 1.02;
   box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35) !important;
+}
+
+
+
+
+
+
+
+/* ================================================================
+   Header CTA buttons (Sign Up / Sign In) — now wrapped 
+   ================================================================ */
+.header-cta-buttons {
+  flex-shrink: 0;
+}
+
+.header-cta-buttons .custom-gradient-btn,
+.header-cta-buttons .btn-signin {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.header-cta-buttons .btn-signin {
+  margin-left: 14px !important;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .my-nav .navbar-nav.mx-auto {
+    gap: 4px !important;
+  }
+
+  .my-nav .navbar-nav .nav-item {
+    margin-left: 0 !important;
+  }
+
+  .my-nav .navbar-nav .nav-link {
+    margin: 0 4px !important;
+    font-size: 13px !important;
+    white-space: nowrap;
+  }
+
+  .header-cta-buttons .custom-gradient-btn,
+  .header-cta-buttons .btn-signin {
+    padding: 5px 5px 5px 14px !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+  }
+
+  .header-cta-buttons .btn-signin {
+    margin-left: 8px !important;
+  }
+
+  .header-cta-buttons .btn-arrow-circle {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .header-cta-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+}
+
+
+
+@media (min-width: 1400px) {
+  .top .container-lg,
+  .my-nav .container-lg {
+    max-width: 1500px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .top .container-lg,
+  .my-nav .container-lg {
+    max-width: 1700px;
+  }
 }

@@ -78,6 +78,22 @@
 
     /* Typography */
     --font-roboto: 'Roboto', sans-serif;
+
+    /* Status / Feedback Colors (light theme base) */
+    --success-green: #16a34a;
+    --success-green-bg: #dcfce7;
+    --danger-red-bg: #fee2e2;
+    --danger-red-border: #fecaca;
+    --danger-red-dark: #dc2626;
+    --info-blue-bg: #f0f9ff;
+    --info-cyan-border: #7dd3fc;
+    --border-extra-light: #f8f9fa;
+
+    /* Status / Feedback Colors (dark theme variants) */
+    --dark-surface-subtle: rgba(255, 255, 255, 0.04);
+    --info-blue-bg-dark: rgba(2, 132, 199, 0.10);
+    --info-cyan-border-dark: rgba(56, 189, 248, 0.35);
+    --danger-red-border-dark: rgba(239, 68, 68, 0.35);
 }
 
 
@@ -353,4 +369,237 @@ body.dark-theme .button {
 
 body.dark-theme .button:hover {
   color: #ffffff !important;
+}
+
+
+
+/* Card shell background + border */
+body.dark-theme .mv-card {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  border: 1px solid var(--border-dark-state, #1e293b) !important;
+  box-shadow: none !important;
+}
+
+/* Card header subtitle text */
+body.dark-theme .mv-card-header p {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Chart legend labels */
+body.dark-theme .mv-legend-item {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Donut chart center label */
+body.dark-theme .mv-donut-center .val {
+  color: #ffffff !important;
+}
+body.dark-theme .mv-donut-center .lbl {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Doctors mini widget */
+body.dark-theme .doctor-mini-card:hover {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+}
+body.dark-theme .doctor-avatar {
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .doctor-stars .far {
+  color: var(--border-dark-state, #1e293b) !important;
+}
+
+/* Appointments table */
+body.dark-theme .mv-table thead th {
+  color: var(--text-muted, #94a3b8) !important;
+  border-bottom-color: var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .mv-table tbody td {
+  border-bottom-color: var(--border-dark-state, #1e293b) !important;
+  color: #ffffff !important;
+}
+body.dark-theme .mv-table tbody tr:hover {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+}
+body.dark-theme .mv-person .sub {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* Department tags — soften on dark background */
+body.dark-theme .dept-tag {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #c7d2fe !important;
+}
+
+/* Doctor specialization badges — soften on dark background */
+body.dark-theme .doctor-spec-badge {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #c7d2fe !important;
+}
+
+/* Status pills — richer contrast on dark background */
+body.dark-theme .status-checked-in      { background: rgba(2, 132, 199, 0.18) !important; color: #38bdf8 !important; }
+body.dark-theme .status-in-consultation { background: rgba(180, 83, 9, 0.18)  !important; color: #fbbf24 !important; }
+body.dark-theme .status-completed       { background: rgba(22, 163, 74, 0.18) !important; color: #4ade80 !important; }
+body.dark-theme .status-cancelled       { background: rgba(239, 68, 68, 0.18) !important; color: #f87171 !important; }
+
+/* Status pill DOTS (the little ::before circle). admin.html never had a dark-mode
+   version of these at all, and doctors.html's own version could get shadowed, so pin
+   them here with !important as one single source of truth for every page. */
+body.dark-theme .status-checked-in::before      { background: #38bdf8 !important; }
+body.dark-theme .status-in-consultation::before { background: #fbbf24 !important; }
+body.dark-theme .status-completed::before       { background: #4ade80 !important; }
+body.dark-theme .status-cancelled::before       { background: #f87171 !important; }
+
+/* And make sure the LIGHT-mode dot always resolves too, in case a page's own
+   ::before rule is ever missing or a --variable isn't in scope. */
+.status-checked-in::before      { background: #0284c7 !important; }
+.status-in-consultation::before { background: #b45309 !important; }
+.status-completed::before       { background: #16a34a !important; }
+.status-cancelled::before       { background: #ef4444 !important; }
+
+/* Gradient button stays legible on dark background */
+body.dark-theme .mv-btn-gradient {
+  color: #ffffff !important;
+}
+
+
+/* Force the table itself (and Bootstrap's --bs-table-bg variable) to go transparent in dark mode */
+body.dark-theme .mv-table,
+body.dark-theme .mv-table > thead,
+body.dark-theme .mv-table > tbody,
+body.dark-theme .mv-table thead tr,
+body.dark-theme .mv-table tbody tr,
+body.dark-theme .mv-table thead th,
+body.dark-theme .mv-table tbody td {
+  background-color: transparent !important;
+  --bs-table-bg: transparent !important;
+  --bs-table-color: #ffffff !important;
+}
+
+/* Patient / Doctor name text inside table rows */
+body.dark-theme .mv-person .name {
+  color: #ffffff !important;
+}
+
+
+/* --- Generic Bootstrap .bg-light / .table-light fix (card headers, table headers, notif footer, input icons) --- */
+/* These are plain Bootstrap utility classes used across all pages for card header bars and table headers.
+   Without this, they stay white/light even when body.dark-theme is active, making text unreadable. */
+body.dark-theme .bg-light {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+}
+
+body.dark-theme .table-light,
+body.dark-theme .table-light > th,
+body.dark-theme .table-light > td,
+body.dark-theme thead.table-light tr,
+body.dark-theme thead.table-light th {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  --bs-table-bg: var(--navy-sidebar, #0b1329) !important;
+  color: var(--text-muted, #94a3b8) !important;
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme .input-group-text.bg-light {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  color: var(--text-muted, #94a3b8) !important;
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+/* Tables that aren't .mv-table (plain Bootstrap tables like #appointmentsTable) also need a transparent tbody
+   so the dark card background shows through instead of Bootstrap's default white table background. */
+body.dark-theme .table:not(.table-light),
+body.dark-theme .table > tbody,
+body.dark-theme .table > tbody > tr,
+body.dark-theme .table > tbody > tr > td {
+  background-color: transparent !important;
+  --bs-table-bg: transparent !important;
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+
+body.dark-theme .table-hover > tbody > tr:hover > * {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  --bs-table-bg-hover: var(--navy-sidebar, #0b1329) !important;
+}
+
+/* Bootstrap "subtle" badges (department tags, status badges) used across tables/cards.
+   Without this they inherit the site-wide forced-white span text color, which is unreadable
+   on their light pastel backgrounds. Give each variant a proper dark-mode treatment. */
+body.dark-theme .badge.bg-primary-subtle { background-color: rgba(2, 132, 199, 0.18) !important; color: #38bdf8 !important; }
+body.dark-theme .badge.bg-success-subtle { background-color: rgba(22, 163, 74, 0.18) !important; color: #4ade80 !important; }
+body.dark-theme .badge.bg-warning-subtle { background-color: rgba(180, 83, 9, 0.18) !important; color: #fbbf24 !important; }
+body.dark-theme .badge.bg-danger-subtle  { background-color: rgba(239, 68, 68, 0.18) !important; color: #f87171 !important; }
+body.dark-theme .badge.bg-info-subtle    { background-color: rgba(6, 182, 212, 0.18) !important; color: #22d3ee !important; }
+
+/* --- Bootstrap Modals: no dark-theme handling existed anywhere, so every modal stayed white --- */
+body.dark-theme .modal-content {
+  background-color: var(--navy-dark, #0c1a30) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .modal-header,
+body.dark-theme .modal-footer {
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .modal-title {
+  color: #ffffff !important;
+}
+body.dark-theme .modal .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+body.dark-theme .modal label {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* --- .btn-light used as a plain action button across every page (Upload Logo, kebab menus, etc.) --- */
+body.dark-theme .btn-light {
+  background-color: var(--navy-sidebar, #0b1329) !important;
+  color: #ffffff !important;
+  border-color: var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .btn-light:hover {
+  background-color: var(--border-dark-state, #1e293b) !important;
+}
+body.dark-theme .btn-light.text-primary {
+  color: var(--accent-cyan, #00b4d8) !important;
+}
+body.dark-theme .btn-light.text-muted {
+  color: var(--text-muted, #94a3b8) !important;
+}
+
+/* --- Decorative badge that sits on the blue gradient banner (always needs blue-on-white, in both themes) --- */
+body.dark-theme .badge.bg-white {
+  background-color: #ffffff !important;
+  color: var(--primary-blue, #0284c7) !important;
+}
+
+body.dark-theme .doctor-dir-card .badge[style*="background"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #c7d2fe !important;
+}
+
+body.dark-theme .status-online{
+  color:var( --success-green )!important;
+}
+
+/* Dark mode mein departments grid ke andar ke inline background/color wale badges ko override karne ke liye */
+body.dark-theme #departmentsGrid [style*="background"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #c7d2fe !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+/* Dark mode mein sabhi badges aur icon circles ke inline styles ko override karne ke liye */
+body.dark-theme .badge[style*="background"],
+body.dark-theme .fin-icon-circle[style*="background"],
+body.dark-theme div[style*="background"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #c7d2fe !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-theme [style*="color"] {
+  color: #c7d2fe !important;
 }
