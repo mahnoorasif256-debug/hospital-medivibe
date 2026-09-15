@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MediVibe Healthcare</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Remixicons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="ano.css">
+</head>
+<body>
+
+    <main class="contact-page-wrapper">
+        
+        <!-- Header Banner -->
+        <header class="page-banner">
+            <div class="banner-bg"></div>
+            <div class="banner-overlay"></div>
+            
+            <div class="banner-content">
+                <span class="badge">
+                    <i class="ri-customer-service-2-line"></i> 24/7 Patient Support
+                </span>
+                <h1>Get in Touch with <span class="highlight">MediVibe</span></h1>
+                <p>Have questions or need emergency assistance? Send us a message or find our nearest facility.</p>
+                
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <a href="#">Home</a>
+                    <span class="separator"><i class="ri-arrow-right-s-line"></i></span>
+                    <span class="current">Contact Us</span>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN 2-COLUMN LAYOUT -->
+        <section class="contact-split-section">
+            
+            <!-- LEFT COLUMN: Glassmorphic Form -->
+            <div class="contact-card glass-form-card">
+                <div class="card-header-glow"></div>
+                
+                <div class="form-header">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and our medical team will respond within 15 minutes.</p>
+                </div>
+
+                <form class="vip-contact-form" onsubmit="event.preventDefault();">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" id="fullname" required placeholder=" ">
+                            <label for="fullname">Full Name</label>
+                            <i class="ri-user-3-line input-icon"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Email Address</label>
+                            <i class="ri-mail-line input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="tel" id="phone" placeholder=" ">
+                            <label for="phone">Phone Number</label>
+                            <i class="ri-phone-line input-icon"></i>
+                        </div>
+                        <div class="input-group select-group">
+                            <select id="department" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="general">General Inquiry</option>
+                                <option value="appointment">Appointment Booking</option>
+                                <option value="emergency">Emergency Support</option>
+                                <option value="feedback">Feedback & Complaints</option>
+                            </select>
+                            <label for="department">Select Department</label>
+                            <i class="ri-hospital-line input-icon"></i>
+                            <i class="ri-arrow-down-s-line select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group textarea-group">
+                        <textarea id="message" rows="3" required placeholder=" "></textarea>
+                        <label for="message">How can we help you?</label>
+                        <i class="ri-chat-3-line input-icon"></i>
+                    </div>
+
+                    <button type="submit" class="submit-glow-btn button">
+    <span class="inner">
+        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+            <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+        </svg>
+        Send Message
+    </span>
+</button>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: Interactive Map & Live Info Card -->
+            <div class="contact-card glass-map-card">
+                <div class="map-card-top">
+                    <div class="status-chip">
+                        <span class="pulse-dot"></span>
+                        <span>Main Hub Open Today</span>
+                    </div>
+                    <h3>Locate Our Health Center</h3>
+                    <p><i class="ri-map-pin-2-fill location-pin"></i> 123 Healthcare Boulevard, Medical District</p>
+                </div>
+
+                <!-- Google Map Embed -->
+                <div class="map-frame-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450937!2d144.9537353153169!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="MediVibe Health Center Location">
+                    </iframe>
+                </div>
+
+                <div class="emergency-quick-bar">
+                    <div class="quick-call-info">
+                        <i class="ri-phone-fill call-icon"></i>
+                        <div>
+                            <span>Emergency Helpline</span>
+                            <strong>+1 (800) 456-7890</strong>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com" target="_blank" class="directions-pill">
+                        Get Directions <i class="ri-arrow-right-up-line"></i>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM SECTION: Social Grid -->
+        <section class="social-connect-section">
+            <div class="section-title">
+                <h2>Connect & Follow Us</h2>
+                <p>Stay updated with health tips, emergency alerts, and news on our channels.</p>
+            </div>
+
+            <div class="social-cards-grid">
+                
+                <a href="#" class="social-card whatsapp-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-whatsapp-line"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>WhatsApp Live</h4>
+                        <p>Instant Chat Support</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+                <a href="#" class="social-card instagram-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-instagram-line"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>Instagram</h4>
+                        <p>@medivibe.health</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+                <a href="#" class="social-card linkedin-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-linkedin-fill"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>LinkedIn</h4>
+                        <p>MediVibe Corporate</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+                <a href="#" class="social-card twitter-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-twitter-x-line"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>Twitter / X</h4>
+                        <p>@MediVibeCare</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+                <a href="#" class="social-card facebook-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-facebook-circle-fill"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>Facebook</h4>
+                        <p>MediVibe Official</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+                <a href="#" class="social-card youtube-card">
+                    <div class="social-icon-wrapper">
+                        <i class="ri-youtube-line"></i>
+                    </div>
+                    <div class="social-info">
+                        <h4>YouTube Channel</h4>
+                        <p>Health Webinars & Guides</p>
+                    </div>
+                    <i class="ri-arrow-right-line card-arrow"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Script -->
+    <script src="ano.js"></script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+:root {
+    /* Main Theme Colors */
+    --primary-blue: #135dd8;
+    --navy-dark: #0c1a30;
+    --deep-blue: #121095;
+    --text-dark: #444444;
+    --white: #ffffff;
+    --black: #000000;
+
+    --bg-canvas: #F8FAFC;
+    --text-primary: var(--text-dark);
+    --text-heading: var(--navy-dark);
+    --text-muted: #64748B;
+    --border-color: rgba(226, 232, 240, 0.8);
+    --accent-sage: var(--primary-blue);
+    --accent-sage-hover: var(--deep-blue);
+    --accent-sage-light: rgba(239, 246, 255, 0.75);
+    --accent-sage-border: #BFDBFE;
+
+    /* Ultra-fluid Typography targeting narrow viewports (<300px up to 1200px) */
+    --fs-xs: clamp(0.65rem, 0.55rem + 0.5vw, 0.75rem);   
+    --fs-sm: clamp(0.72rem, 0.65rem + 0.5vw, 0.875rem);   
+    --fs-base: clamp(0.8rem, 0.72rem + 0.6vw, 0.9375rem); 
+    --fs-md: clamp(0.875rem, 0.78rem + 0.7vw, 1.0625rem);  
+    --fs-lg: clamp(1rem, 0.85rem + 1vw, 1.25rem);   
+    --fs-xl: clamp(1.15rem, 0.95rem + 1.2vw, 1.5rem);       
+
+    /* Glassmorphism Configuration */
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-card-bg: rgba(255, 255, 255, 0.78);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px 0 rgba(19, 93, 216, 0.08);
+    --backdrop-blur: blur(12px);
+}
+
+/* Reset & Anti-Overflow Base Rules */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-canvas);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(19, 93, 216, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(18, 16, 149, 0.08) 0px, transparent 50%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.5rem, 2vw, 2rem) clamp(0.4rem, 1.5vw, 1rem);
+}
+
+/* Outer Container */
+.faq-container {
+    width: 100%;
+    max-width: 1100px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: clamp(12px, 3vw, 24px);
+    box-shadow: var(--glass-shadow);
+    padding: clamp(1rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2.5rem);
+}
+
+/* Header Section */
+.faq-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto clamp(1.5rem, 4vw, 3rem) auto;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--accent-sage-light);
+    border: 1px solid var(--accent-sage-border);
+    color: var(--primary-blue);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    border-radius: 50px;
+    margin-bottom: 0.75rem;
+    max-width: 100%;
+    text-align: center;
+}
+
+.faq-header h1 {
+    font-size: clamp(1.4rem, 1rem + 2vw, 2.75rem);
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+}
+
+.faq-header h1 .highlight {
+    color: var(--primary-blue);
+}
+
+.faq-header p {
+    font-size: var(--fs-md);
+    color: var(--text-muted);
+}
+
+/* Layout Grid */
+.faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: start;
+}
+
+/* Sidebar Styles */
+.sidebar-title {
+    font-size: var(--fs-md);
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+}
+
+.category-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 0.85rem);
+    padding: clamp(0.6rem, 2vw, 0.85rem) clamp(0.6rem, 2vw, 1rem);
+    background: var(--glass-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    width: 100%;
+    min-width: 0;
+}
+
+.category-card:hover {
+    background: var(--white);
+    border-color: var(--accent-sage-border);
+}
+
+.category-card.active {
+    background: var(--accent-sage-light);
+    border-color: var(--accent-sage-border);
+}
+
+.category-card .icon-box {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.category-card .category-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.category-card h3 {
+    font-size: var(--fs-base);
+    color: var(--text-heading);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.category-card span {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+    display: block;
+    margin-top: 0.15rem;
+}
+
+.category-card .arrow {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* Support Box */
+.support-card {
+    background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+    color: var(--white);
+    border-radius: 14px;
+    padding: clamp(1rem, 3vw, 1.5rem);
+    box-shadow: 0 10px 25px rgba(19, 93, 216, 0.25);
+}
+
+.support-card h3 {
+    font-size: var(--fs-lg);
+    margin-bottom: 0.4rem;
+}
+
+.support-card p {
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 1rem;
+    line-height: 1.35;
+}
+
+.uiverse-btn {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--primary-blue);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.uiverse-btn:hover {
+    background: var(--accent-sage-light);
+    color: var(--deep-blue);
+}
+
+/* Accordion Elements */
+.faq-content {
+    min-width: 0;
+}
+
+.accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.accordion-item {
+    background: var(--glass-card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.accordion-item.active {
+    border-color: var(--accent-sage-border);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: clamp(0.75rem, 2.5vw, 1.2rem) clamp(0.75rem, 2.5vw, 1.25rem);
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordion-header h4 {
+    font-size: var(--fs-base);
+    color: var(--text-heading);
+    font-weight: 600;
+    line-height: 1.35;
+    flex: 1;
+    min-width: 0;
+}
+
+.accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: var(--primary-blue);
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+
+.accordion-body {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    will-change: height, opacity;
+}
+
+.accordion-content-inner {
+    padding: 0 clamp(0.75rem, 2.5vw, 1.25rem) clamp(0.75rem, 2.5vw, 1.25rem) clamp(0.75rem, 2.5vw, 1.25rem);
+    font-size: var(--fs-sm);
+    color: var(--text-primary);
+    line-height: 1.55;
+}
+
+/* Breakpoint for Tablets and Small Screens (<850px) */
+@media (max-width: 850px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    }
+}
+
+/* Extra breakpoint for ultra-small viewports (<=320px including 295px) */
+@media (max-width: 320px) {
+    .category-card .arrow {
+        display: none; /* Hide non-critical decor arrow on tiny displays */
+    }
+
+    .category-list {
+        grid-template-columns: 1fr;
+    }
+
+    .category-card {
+        padding: 0.5rem;
+    }
+
+    .accordion-header {
+        padding: 0.65rem;
+    }
+
+    .accordion-content-inner {
+        padding: 0 0.65rem 0.65rem 0.65rem;
+    }
+}

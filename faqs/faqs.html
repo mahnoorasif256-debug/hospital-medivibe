@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Help & FAQs</title>
+    <!-- Remixicon CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="faqs.css">
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <main class="faq-container">
+        <!-- Header Section -->
+        <header class="faq-header">
+            <span class="badge">
+                <i class="ri-heart-pulse-fill"></i> Hospital Help Center
+            </span>
+            <h1>Have Questions? <br><span class="highlight">We Have Answers</span></h1>
+            <p>Everything you need to know about our departments, booking doctors, and using your patient account.</p>
+        </header>
+
+        <!-- Main Layout Grid -->
+        <div class="faq-grid">
+            
+            <!-- Left Sidebar: Category Navigation & Support Card -->
+            <aside class="faq-sidebar">
+                <div class="category-wrapper">
+                    <h2 class="sidebar-title">Browse by Subject</h2>
+                    
+                    <nav class="category-list" role="tablist">
+                        <button class="category-card active" data-category="general" role="tab" aria-selected="true">
+                            <div class="icon-box"><i class="ri-hospital-line"></i></div>
+                            <div class="category-info">
+                                <h3>Hospital & Care</h3>
+                                <span>Departments & Visits</span>
+                            </div>
+                            <i class="ri-arrow-right-s-line arrow"></i>
+                        </button>
+
+                        <button class="category-card" data-category="booking" role="tab" aria-selected="false">
+                            <div class="icon-box"><i class="ri-calendar-check-line"></i></div>
+                            <div class="category-info">
+                                <h3>Appointments</h3>
+                                <span>Booking & Doctors</span>
+                            </div>
+                            <i class="ri-arrow-right-s-line arrow"></i>
+                        </button>
+
+                        <button class="category-card" data-category="dashboard" role="tab" aria-selected="false">
+                            <div class="icon-box"><i class="ri-user-settings-line"></i></div>
+                            <div class="category-info">
+                                <h3>Patient Portal</h3>
+                                <span>Dashboard & Records</span>
+                            </div>
+                            <i class="ri-arrow-right-s-line arrow"></i>
+                        </button>
+
+                        <button class="category-card" data-category="billing" role="tab" aria-selected="false">
+                            <div class="icon-box"><i class="ri-shield-cross-line"></i></div>
+                            <div class="category-info">
+                                <h3>Insurance & Payments</h3>
+                                <span>Bills & Claims</span>
+                            </div>
+                            <i class="ri-arrow-right-s-line arrow"></i>
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Contact Support Box -->
+                <div class="support-card">
+                    <h3>Need Urgent Help?</h3>
+                    <p>Our hospital support desk is available 24/7 to guide you.</p>
+                    <button class="uiverse-btn">
+                        <span>Contact Hospital Desk</span>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Right Content: Accordion Section -->
+            <section class="faq-content">
+                <div class="accordion-group" id="accordion-container">
+                    <!-- Dynamic FAQs injected via JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="faqs.js"></script>
+</body>
+</html>
