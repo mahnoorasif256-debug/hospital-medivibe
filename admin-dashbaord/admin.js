@@ -1,3 +1,102 @@
+import { db } from "./firebase.config.js";
+import { collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// ///////////////////   Recent appointments start ////////////////////////
+
+function loadAppointmentsFromFirestore() {
+  const tableBody = document.getElementById('appointmentsTableBody');
+  if (!tableBody) return;
+
+  // 'appointments' collection se data sunain (real-time)
+  onSnapshot(collection(db, "appointments"), (snapshot) => {
+    tableBody.innerHTML = ""; // Purana data clear karein
+
+    if (snapshot.empty) {
+      tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted">No appointments found.</td></tr>`;
+      return;
+    }
+
+    snapshot.forEach((doc) => {
+      const appt = doc.data();
+      
+      // Status ke mutabiq badge ka color set karna
+      let badgeClass = "bg-secondary";
+      if (appt.status === "Checked In") badgeClass = "bg-warning text-dark";
+      else if (appt.status === "In Consultation") badgeClass = "bg-info text-dark";
+      else if (appt.status === "Completed") badgeClass = "bg-success";
+
+      // Table ki row banana
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>
+          <div class="fw-bold">${appt.patientName || 'N/A'}</div>
+          <small class="text-muted">Patient ID: #${doc.id.slice(0, 6)}</small>
+        </td>
+        <td>${appt.doctorName || 'N/A'}</td>
+        <td><span class="badge bg-light text-dark">${appt.department || 'N/A'}</span></td>
+        <td>${appt.dateTime || 'N/A'}</td>
+        <td><span class="badge ${badgeClass}">${appt.status || 'Pending'}</span></td>
+      `;
+      tableBody.appendChild(row);
+    });
+  });
+}
+
+// Page load hote hi function run ho jaye
+window.addEventListener('DOMContentLoaded', () => {
+  loadAppointmentsFromFirestore();
+});
+
+// ///////////////////   Recent appointments end ////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const allNavLinks = document.querySelectorAll('.nav-link');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
@@ -867,9 +966,10 @@ if (sidebarCollapseBtn && sidebarElCollapse) {
     `;
   }
 
-  function renderDepartments() {
-    grid.innerHTML = departmentsData.map(cardTemplate).join('');
-  }
+ function renderDepartments() {
+  if (!grid) return; // is page pe departments grid nahi hai (e.g. admin dashboard)
+  grid.innerHTML = departmentsData.map(cardTemplate).join('');
+}
 
 
   function handleAddDepartmentSubmit(form) {

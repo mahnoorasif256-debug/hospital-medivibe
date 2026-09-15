@@ -23,217 +23,7 @@
     <link rel="stylesheet" href="./admin.css">
 
     <!-- ===== Added: styles for new Analytics/Doctors/Appointments components ===== -->
-    <style>
-      .mv-card {
-        background: #ffffff;
-        border: 0;
-        border-radius: 1rem;
-        box-shadow: 0 .125rem .5rem rgba(15, 23, 42, .06);
-        transition: transform .25s ease, box-shadow .25s ease;
-      }
-      .mv-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 .75rem 1.5rem rgba(15, 23, 42, .10);
-      }
-      .mv-card-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.25rem 1.25rem 0 1.25rem;
-      }
-      .mv-card-header h5 {
-        font-size: 16px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0;
-      }
-      .mv-card-header p {
-        font-size: 12px;
-        color: #94a3b8;
-        margin: 2px 0 0 0;
-      }
-      .mv-card-body {
-        padding: 1rem 1.25rem 1.25rem 1.25rem;
-      }
-      .mv-btn-gradient {
-        background: linear-gradient(90deg, #0d6efd 0%, #0a58ca 100%);
-        border: none;
-        color: #fff;
-        font-weight: 600;
-        font-size: 13px;
-        border-radius: 50px;
-        padding: 8px 18px;
-        transition: box-shadow .25s ease, transform .15s ease;
-      }
-      .mv-btn-gradient:hover {
-        color: #fff;
-        box-shadow: 0 6px 16px rgba(13, 110, 253, .35);
-        transform: translateY(-1px);
-      }
-      .mv-legend-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 6px;
-      }
-      .mv-legend-item {
-        font-size: 12.5px;
-        color: #64748b;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-      .mv-donut-wrap {
-        position: relative;
-        width: 100%;
-        max-width: 190px;
-        margin: 0 auto;
-      }
-      .mv-donut-center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        pointer-events: none;
-      }
-      .mv-donut-center .val {
-        font-size: 26px;
-        font-weight: 800;
-        color: #0f172a;
-        line-height: 1;
-        display: block;
-      }
-      .mv-donut-center .lbl {
-        font-size: 11px;
-        color: #94a3b8;
-        display: block;
-        margin-top: 4px;
-      }
-      .doctor-mini-card {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-        border-radius: 14px;
-        transition: background-color .2s ease, transform .2s ease;
-      }
-      .doctor-mini-card:hover {
-        background-color: #f8fafc;
-        transform: translateX(3px);
-      }
-      .doctor-avatar {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-        border: 2px solid #eef2ff;
-      }
-      .doctor-name {
-        font-size: 14px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0;
-      }
-      .doctor-spec-badge {
-        font-size: 10.5px;
-        font-weight: 600;
-        padding: 2px 9px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-top: 3px;
-      }
-      .doctor-stars {
-        font-size: 11px;
-        color: #f59e0b;
-        margin-top: 4px;
-      }
-      .doctor-stars .far {
-        color: #e2e8f0;
-      }
-      .mv-table thead th {
-        font-size: 11.5px;
-        text-transform: uppercase;
-        letter-spacing: .04em;
-        color: #94a3b8;
-        font-weight: 700;
-        border-bottom: 1px solid #eef1f6;
-        padding: 12px 14px;
-        white-space: nowrap;
-      }
-      .mv-table tbody td {
-        padding: 14px;
-        vertical-align: middle;
-        border-bottom: 1px solid #f1f5f9;
-        font-size: 13.5px;
-        color: #334155;
-      }
-      .mv-table tbody tr:last-child td {
-        border-bottom: none;
-      }
-      .mv-table tbody tr {
-        transition: background-color .15s ease;
-      }
-      .mv-table tbody tr:hover {
-        background-color: #f8fafc;
-      }
-      .mv-person {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .mv-person img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .mv-person .name {
-        font-weight: 600;
-        color: #0f172a;
-        font-size: 13.5px;
-        display: block;
-        line-height: 1.2;
-      }
-      .mv-person .sub {
-        font-size: 11.5px;
-        color: #94a3b8;
-      }
-      .dept-tag {
-        font-size: 11px;
-        font-weight: 600;
-        padding: 4px 10px;
-        border-radius: 6px;
-        background: #eef2ff;
-        color: #4338ca;
-      }
-      .status-pill {
-        font-size: 11px;
-        font-weight: 700;
-        padding: 5px 12px;
-        border-radius: 50px;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .status-pill::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        display: inline-block;
-      }
-      .status-checked-in { background: #e0f2fe; color: #0284c7; }
-      .status-checked-in::before { background: #0284c7; }
-      .status-in-consultation { background: #fef3c7; color: #b45309; }
-      .status-in-consultation::before { background: #b45309; }
-      .status-completed { background: #dcfce7; color: #16a34a; }
-      .status-completed::before { background: #16a34a; }
-      .status-cancelled { background: #fee2e2; color: #ef4444; }
-      .status-cancelled::before { background: #ef4444; }
-    </style>
+ 
 </head>
 <body>
 
@@ -767,7 +557,7 @@
 </div>
 
 <!-- ===== Added: Recent Appointments Master Table ===== -->
-<div id="section-3-appointments" class="row g-4 mb-4">
+<div id="section-3-appointments" class="row g-4 mb-4" id="appointmentsTableBody">
   <div class="col-12">
     <div class="mv-card">
       <div class="mv-card-header">
@@ -775,7 +565,7 @@
           <h5>Recent Appointments</h5>
           <p>Live status across all departments</p>
         </div>
-        <a href="appointments.html" class="mv-btn-gradient text-decoration-none">
+        <a href="./appointment/master-schedule.html" class="mv-btn-gradient text-decoration-none">
           View Master Schedule
         </a>
       </div>
@@ -1214,6 +1004,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 
-    <script src="./admin.js"></script>
+    <script type="module" src="./admin.js"></script>
 </body>
 </html>
