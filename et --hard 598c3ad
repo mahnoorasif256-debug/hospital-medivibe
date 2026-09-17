@@ -1,0 +1,40 @@
+[33maada025[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackup-code[m[33m)[m HEAD@{0}: checkout: moving from main to backup-code
+[33maef7a34[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/mahnoor-work[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mmahnoor-work[m[33m)[m HEAD@{1}: reset: moving to mahnoor-work
+[33maada025[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackup-code[m[33m)[m HEAD@{2}: checkout: moving from backup-code to main
+[33maada025[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackup-code[m[33m)[m HEAD@{3}: checkout: moving from main to backup-code
+[33maada025[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mbackup-code[m[33m)[m HEAD@{4}: commit (merge): Resolved merge conflict
+[33m4e0ea95[m HEAD@{5}: commit: save chnages
+[33m2fefe68[m HEAD@{6}: checkout: moving from mahnoor-work to main
+[33maef7a34[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/mahnoor-work[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mmahnoor-work[m[33m)[m HEAD@{7}: commit: clean code
+[33mf601933[m HEAD@{8}: commit (merge): Successfully merged main into mahnoor-work and resolved conflicts
+[33m598c3ad[m HEAD@{9}: checkout: moving from main to mahnoor-work
+[33m2fefe68[m HEAD@{10}: checkout: moving from mahnoor-work to main
+[33m598c3ad[m HEAD@{11}: reset: moving to HEAD
+[33m598c3ad[m HEAD@{12}: checkout: moving from main to mahnoor-work
+[33m2fefe68[m HEAD@{13}: checkout: moving from mahnoor-work to main
+[33m598c3ad[m HEAD@{14}: commit: dashbaord work
+[33m053b3b1[m HEAD@{15}: checkout: moving from main to mahnoor-work
+[33m2fefe68[m HEAD@{16}: checkout: moving from mahnoor-work to main
+[33m053b3b1[m HEAD@{17}: commit: dashbaord work
+[33m24e3993[m HEAD@{18}: checkout: moving from mahnoor-work to mahnoor-work
+[33m24e3993[m HEAD@{19}: checkout: moving from main to mahnoor-work
+[33m2fefe68[m HEAD@{20}: rebase (finish): returning to refs/heads/main
+[33m2fefe68[m HEAD@{21}: rebase (continue): ui complete and basic dashbaord structure complete
+[33mf4d70b5[m HEAD@{22}: pull origin main --rebase (pick): added animations and fixed footer logo placement
+[33m2d437ce[m HEAD@{23}: pull origin main --rebase (start): checkout 2d437cec34a7bfae0ff2c7a51fc7662b5c3440b8
+[33m8d11c51[m HEAD@{24}: commit (merge): keep mahnoor-work animations and updates
+[33m961d053[m HEAD@{25}: checkout: moving from mahnoor-work to main
+[33m24e3993[m HEAD@{26}: commit: ui complete and basic dashbaord structure complete
+[33me838612[m HEAD@{27}: commit: added animations and fixed footer logo placement
+[33me9efd28[m HEAD@{28}: checkout: moving from main to mahnoor-work
+[33m961d053[m HEAD@{29}: commit: chore: delete duplicate style.css and update path
+[33me86edca[m HEAD@{30}: commit (merge): chore: resolve conflicts and merge main
+[33m36f9f84[m HEAD@{31}: commit: feat: save local index.js changes before pull
+[33me9efd28[m HEAD@{32}: checkout: moving from mahnoor-work to main
+[33me9efd28[m HEAD@{33}: checkout: moving from main to mahnoor-work
+[33me9efd28[m HEAD@{34}: merge mahnoor-work: Fast-forward
+[33m970e106[m HEAD@{35}: checkout: moving from mahnoor-work to main
+[33me9efd28[m HEAD@{36}: commit: feat: completed header & footer and css structure without js
+[33m970e106[m HEAD@{37}: checkout: moving from main to mahnoor-work
+[33m970e106[m HEAD@{38}: commit: chore: setup project layout with section comments
+[33m1e08461[m HEAD@{39}: clone: from https://github.com/mahnoorasif256-debug/pro-care-hospital-system.git
