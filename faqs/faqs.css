@@ -57,6 +57,15 @@ body {
     color: var(--text-primary);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Wraps just the FAQ card so it centers in the space between
+   header and footer, instead of the whole body */
+.faq-page-section {
+    flex: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: clamp(0.5rem, 2vw, 2rem) clamp(0.4rem, 1.5vw, 1rem);
