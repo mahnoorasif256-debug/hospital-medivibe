@@ -28,7 +28,7 @@
 <div class="dashboard-container">
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-  <!-- SIDEBAR START (Dark Theme Ke Sath Unchanged) -->
+  <!-- SIDEBAR START -->
   <aside class="sidebar">
     <!-- Logo Section -->
     <div class="sidebar-header">
@@ -136,7 +136,7 @@
   <!-- MAIN CONTENT AREA START -->
   <main class="main-content">
     
-    <!-- TOP HEADER (Naya Light Header) -->
+    <!-- TOP HEADER -->
     <header class="main-header">
        <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Menu">
     <i class="fa-solid fa-bars"></i>
@@ -148,18 +148,15 @@
   <i class="fa-solid fa-magnifying-glass search-icon"></i>
 </div>
 
-
       <!-- Controls & Profile (Right) -->
       <div class="header-actions">
-        <!-- appoirtment btn  -->
+        <!-- appointment btn -->
 <div class="button-icon">
   <div class="icon">
-    <!-- Plus Icon for New Appointment -->
     <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <line x1="12" y1="5" x2="12" y2="19"></line>
       <line x1="5" y1="12" x2="19" y2="12"></line>
     </svg>
-    <!-- Calendar/Check Icon for Book Now -->
     <svg class="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
       <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -174,38 +171,23 @@
   </div>
 </div>
 
-        <!-- Notification Bell -->
-
-                            
 <!-- Notification Dropdown Wrapper -->
 <div class="dropdown notification-dropdown">
-  
-  <!-- Trigger Button -->
-  <button type="button"  class="notification-btn border-0 bg-transparent p-0 position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+  <button type="button" class="notification-btn border-0 bg-transparent p-0 position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
     <i class="fa-regular fa-bell"></i>
     <span class="notification-dot"></span>
   </button>
 
-  <!-- Popup Dropdown Menu -->
   <div class="dropdown-menu dropdown-menu-end notif-dropdown-menu shadow-lg border-0 p-0" aria-labelledby="notifDropdown">
-    <!-- Header -->
     <div class="notif-header d-flex align-items-center justify-content-between px-3 py-2 border-bottom">
       <h6 class="m-0 fw-bold fs-6">Notifications</h6>
     </div>
-
-    <!-- JS Injected List (Is ID me sara dynamic list render hoga) -->
     <div class="notif-body" id="notifContainer"></div>
-
-    <!-- Footer Link -->
     <div class="notif-footer text-center py-2 px-3 border-top bg-light">
-      <a href="../notifications.html" class="text-primary fw-medium fs-7 ">View All Notifications</a>
+      <a href="../notifications.html" class="text-primary fw-medium fs-7">View All Notifications</a>
     </div>
   </div>
-
 </div>
-
-
-           <!--notification  end -->
 
         <!-- Dark/Light Mode Toggle -->
     <label class="ui-switch" title="Toggle Theme">
@@ -226,14 +208,11 @@
     <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
   </a>
 
-  <!-- Preclinic Style Admin Dropdown -->
   <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-2" style="width: 220px;">
-    <!-- Profile Header Info -->
     <li class="px-3 py-2 bg-light drop rounded mb-2">
       <span class="d-block fw-bold text-dark fs-6">Mahnoor Asif</span>
       <small class="text-muted">Administrator</small>
     </li>
-    
     <li>
       <a class="dropdown-item rounded py-2" href="#">
         <i class="fa-regular fa-user me-2 text-primary"></i> Profile Settings
@@ -244,23 +223,18 @@
         <i class="fa-solid fa-gear me-2 text-secondary"></i> Account Settings
       </a>
     </li>
-    
-    <!-- Quick Toggle Notifications -->
     <li class="dropdown-item rounded py-2 d-flex align-items-center justify-content-between">
-      <span class="not"><i class="fa-regular fa-bell me-2" ></i> Notifications</span>
+      <span class="not"><i class="fa-regular fa-bell me-2"></i> Notifications</span>
       <div class="form-check form-switch m-0">
         <input class="form-check-input" type="checkbox" id="notifSwitch" checked style="cursor: pointer;">
       </div>
     </li>
-
     <li>
       <a class="dropdown-item rounded py-2" href="../invoices.html">
         <i class="fa-solid fa-receipt me-2 text-success"></i> Transactions
       </a>
     </li>
-
     <li><hr class="dropdown-divider my-2"></li>
-
     <li>
       <a class="dropdown-item rounded py-2 text-danger fw-medium" href="login.html">
         <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
@@ -269,12 +243,7 @@
   </ul>
 </div>
       </div>
-
-
-
     </header>
-
-
 
 <div class="container-fluid py-4 px-4">
 
@@ -396,190 +365,33 @@
             <th class="text-center" style="min-width: 110px;">On/Off Duty</th>
           </tr>
         </thead>
-        <tbody>
-
-          <!-- Row: Dr. Michael Smith -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Michael+Smith&background=e0e7ff&color=4338ca&size=64" alt="Dr. Michael Smith" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Michael Smith</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Cardiology</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" checked style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
-          <!-- Row: Dr. Sarah Johnson -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=e0e7ff&color=4338ca&size=64" alt="Dr. Sarah Johnson" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Sarah Johnson</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Neurology</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-night">Night</span></td>
-            <td class="text-center"><span class="shift-badge shift-night">Night</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-night">Night</span></td>
-            <td class="text-center"><span class="shift-badge shift-night">Night</span></td>
-            <td class="text-center"><span class="shift-badge shift-night">Night</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" checked style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
-          <!-- Row: Dr. Adrian White -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Adrian+White&background=e0e7ff&color=4338ca&size=64" alt="Dr. Adrian White" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Adrian White</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Pediatrics</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" checked style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
-          <!-- Row: Dr. Ken Clark (Off-duty example) -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Ken+Clark&background=e0e7ff&color=4338ca&size=64" alt="Dr. Ken Clark" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Ken Clark</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Orthopedics</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
-          <!-- Row: Dr. Nida Farooq -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Nida+Farooq&background=e0e7ff&color=4338ca&size=64" alt="Dr. Nida Farooq" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Nida Farooq</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Dermatology</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-morning">Morning</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" checked style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
-          <!-- Row: Dr. Omar Siddiqui -->
-          <tr>
-            <td>
-              <div class="mv-person d-flex align-items-center gap-2">
-                <img src="https://ui-avatars.com/api/?name=Omar+Siddiqui&background=e0e7ff&color=4338ca&size=64" alt="Dr. Omar Siddiqui" class="rounded-circle doctor-avatar doctor-avatar-sm">
-                <div>
-                  <div class="name fw-semibold" style="font-size: 13.5px;">Dr. Omar Siddiqui</div>
-                  <div class="sub text-muted" style="font-size: 12px;">Dentistry</div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center"><span class="shift-badge shift-evening">Evening</span></td>
-            <td class="text-center"><span class="shift-badge shift-off">Off</span></td>
-            <td class="text-center">
-              <div class="form-check form-switch d-flex justify-content-center m-0">
-                <input class="form-check-input" type="checkbox" role="switch" checked style="cursor:pointer;">
-              </div>
-            </td>
-          </tr>
-
+        <tbody id="scheduleTableBody">
         </tbody>
       </table>
     </div>
   </div>
 
 </div>
+
   <!-- 4. Footer -->
-<footer class="admin-footer text-center py-3 border-top mt-auto">
+  <footer class="admin-footer text-center py-3 border-top mt-auto">
       <p class="text-muted mb-0" style="font-size: 13px;">2026 © Medivibe, All Rights Reserved</p>
-    </footer>
+  </footer>
   </main>
-  <!-- MAIN CONTENT AREA END -->
 </div>
 
-
-<!--   modals overalll -->
-
+<!-- Modals Overall -->
 <div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow">
-
       <div class="modal-header border-0 pb-0">
         <h5 class="modal-title fw-bold" id="addDoctorModalLabel">
           <i class="fa-solid fa-user-doctor text-primary me-2"></i> Add New Doctor
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
       <div class="modal-body pt-2">
         <form id="addDoctorForm" novalidate>
-
-          <!-- Profile Photo Upload -->
           <div class="d-flex align-items-center gap-3 mb-3">
             <img src="https://ui-avatars.com/api/?name=New+Doctor&background=e0e7ff&color=4338ca&size=64"
                  alt="New doctor avatar preview"
@@ -590,23 +402,17 @@
               <input class="form-control form-control-sm" type="file" id="doctorPhoto" name="doctorPhoto" accept="image/*">
             </div>
           </div>
-
-          <!-- Full Name -->
           <div class="mb-3">
             <label for="doctorFullName" class="form-label fw-semibold" style="font-size: 13px;">Full Name</label>
             <input type="text" class="form-control" id="doctorFullName" name="fullName" placeholder="e.g. Dr. Ayesha Khan" required>
           </div>
-
           <div class="row g-3">
-            <!-- Email -->
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="doctorEmail" class="form-label fw-semibold" style="font-size: 13px;">Email</label>
                 <input type="email" class="form-control" id="doctorEmail" name="email" placeholder="doctor@medivibe.com" required>
               </div>
             </div>
-
-            <!-- Phone -->
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="doctorPhone" class="form-label fw-semibold" style="font-size: 13px;">Phone</label>
@@ -614,8 +420,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Specialization -->
           <div class="mb-3">
             <label for="doctorSpecialization" class="form-label fw-semibold" style="font-size: 13px;">Specialization</label>
             <select class="form-select" id="doctorSpecialization" name="specialization" required>
@@ -629,17 +433,13 @@
               <option value="general">General Medicine</option>
             </select>
           </div>
-
           <div class="row g-3">
-            <!-- Room Number -->
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="doctorRoom" class="form-label fw-semibold" style="font-size: 13px;">Room Number</label>
                 <input type="text" class="form-control" id="doctorRoom" name="room" placeholder="e.g. 204-A" required>
               </div>
             </div>
-
-            <!-- Experience -->
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="doctorExperience" class="form-label fw-semibold" style="font-size: 13px;">Experience (Years)</label>
@@ -647,27 +447,19 @@
               </div>
             </div>
           </div>
-
         </form>
       </div>
-
       <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" style="font-size: 13px;">
-          Cancel
-        </button>
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" style="font-size: 13px;">Cancel</button>
         <button type="submit" form="addDoctorForm" class="mv-btn-gradient px-4 py-2 rounded-pill" style="font-size: 13px;">
           <i class="fa-solid fa-check me-1"></i> Save Doctor
         </button>
       </div>
-
     </div>
   </div>
 </div>
-</div>
 
-
-<!-- modal 2 -->
-
+<!-- Add Patient Modal -->
 <div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content border-0 rounded-4 shadow">
@@ -725,8 +517,7 @@
   </div>
 </div>
 
-<!-- modal 3 -->
-
+<!-- Add Department Modal -->
 <div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow">
@@ -757,7 +548,6 @@
               <textarea id="newDeptDescription" class="form-control rounded-4 px-3" rows="3" placeholder="Brief description of the department's function..."></textarea>
             </div>
           </div>
-
           <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
             <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
             <button type="submit" class="mv-btn-gradient">Create Department</button>
@@ -768,10 +558,7 @@
   </div>
 </div>
 
-
-<!-- modal 4  -->
-
-
+<!-- Book Appointment Modal -->
 <div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content border-0 rounded-4 shadow">
@@ -793,7 +580,6 @@
                 <option value="Sana Malik (#MRN-71203)">
               </datalist>
             </div>
-
             <div class="col-md-6">
               <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
               <select id="bookDepartment" class="form-select rounded-pill px-3" required>
@@ -804,19 +590,16 @@
                 <option value="pediatrics">Pediatrics</option>
               </select>
             </div>
-
             <div class="col-md-6">
               <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
               <select id="bookDoctor" class="form-select rounded-pill px-3" required>
                 <option selected disabled value="">Select Department First</option>
               </select>
             </div>
-
             <div class="col-md-3">
               <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
               <input type="date" class="form-control rounded-pill px-3" required>
             </div>
-
             <div class="col-md-3">
               <label class="form-label fw-semibold fs-7 text-secondary">Time Slot</label>
               <select class="form-select rounded-pill px-3" required>
@@ -828,13 +611,9 @@
                 <option value="16:00">04:00 PM</option>
               </select>
             </div>
-
             <div class="col-md-6">
               <label class="form-label fw-semibold fs-7 text-secondary">Consultation Fee</label>
-              <div class="input-group">
-                <span class="input-group-text bg-light border-end-0">Rs.</span>
-                <input type="number" id="bookFee" class="form-control border-start-0" placeholder="e.g. 2500" min="0" required>
-              </div>
+              <input type="number" id="bookFee" class="form-control rounded-pill px-3" placeholder="e.g. 2500" min="0" required>
             </div>
           </div>
         </form>
@@ -847,32 +626,10 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<!-- //// -->   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="glow-cursor-dot"></div>
-<div class="glow-cursor-trail"></div> -->
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-
-    <script type="module" src="../admin.js"></script>
+<script type="module" src="../admin.js"></script>
+<script type="module" src="doctors.js"></script>
 </body>
 </html>

@@ -26,7 +26,6 @@ const EMAILJS_TEMPLATE_ID = "template_lyw27fu";
 const EMAILJS_PUBLIC_KEY = "fpfhqXhDZbRehBJbL";
 
 // DOM Elements
-const tabLogin = document.getElementById("tab-login");
 const tabSignup = document.getElementById("tab-signup");
 const formLogin = document.getElementById("form-login");
 const formSignup = document.getElementById("form-signup");
@@ -74,8 +73,12 @@ function showAlert(msg, type = "error") {
     alertBox.className = `alert ${type}`;
 }
 
+const tabLogin = document.getElementById("tab-login");
+
+
+
 // Nav Tab Switchers
-tabLogin.addEventListener("click", () => {
+tabLogin?.addEventListener("click", () => {
     tabLogin.classList.add("active");
     tabSignup.classList.remove("active");
     formLogin.classList.remove("hidden");
@@ -83,7 +86,7 @@ tabLogin.addEventListener("click", () => {
     resetAlerts();
 });
 
-tabSignup.addEventListener("click", () => {
+tabSignup?.addEventListener("click", () => {
     if (activeRole === "ADMIN") return;
 
     tabSignup.classList.add("active");
@@ -94,7 +97,7 @@ tabSignup.addEventListener("click", () => {
 });
 
 // Role Switcher
-rolePills.forEach(pill => {
+rolePills?.forEach(pill => {
     pill.addEventListener("click", (e) => {
         rolePills.forEach(p => p.classList.remove("active"));
         const selected = e.currentTarget;
@@ -123,7 +126,7 @@ rolePills.forEach(pill => {
 // ----------------------------------------------------
 // IN-APP PASSWORD RESET (OTP FLOW)
 // ----------------------------------------------------
-forgotPasswordBtn.addEventListener("click", () => {
+forgotPasswordBtn?.addEventListener("click", () => {
     resetAlerts();
     const currentEmail = document.getElementById("login-email").value.trim();
     if (currentEmail) resetEmail.value = currentEmail;
@@ -133,12 +136,12 @@ forgotPasswordBtn.addEventListener("click", () => {
     resetModal.classList.remove("hidden");
 });
 
-closeResetModal.addEventListener("click", () => {
+closeResetModal?.addEventListener("click", () => {
     resetModal.classList.add("hidden");
 });
 
 // Step 1: Send OTP via EmailJS
-formStep1.addEventListener("submit", async (e) => {
+formStep1?.addEventListener("submit", async (e) => {
     e.preventDefault();
     step1Alert.classList.add("hidden");
 
@@ -190,7 +193,7 @@ formStep1.addEventListener("submit", async (e) => {
 });
 
 // Step 2: Verify Code and Update Password
-formStep2.addEventListener("submit", async (e) => {
+formStep2?.addEventListener("submit", async (e) => {
     e.preventDefault();
     step2Alert.classList.add("hidden");
 
@@ -231,7 +234,7 @@ formStep2.addEventListener("submit", async (e) => {
 // ----------------------------------------------------
 // GOOGLE SIGN IN
 // ----------------------------------------------------
-googleBtn.addEventListener("click", async () => {
+googleBtn?.addEventListener("click", async () => {
     resetAlerts();
 
     if (activeRole === "ADMIN") {
@@ -293,7 +296,7 @@ googleBtn.addEventListener("click", async () => {
 // ----------------------------------------------------
 // EMAIL/PASSWORD LOGIN
 // ----------------------------------------------------
-formLogin.addEventListener("submit", async (e) => {
+formLogin?.addEventListener("submit", async (e) => {
     e.preventDefault();
     resetAlerts();
 
@@ -352,7 +355,7 @@ formLogin.addEventListener("submit", async (e) => {
                 return;
             }
 
-            window.location.href = "admin-dashboard.html";
+            window.location.href = "/admin-dashbaord/admin.html";
         }
 
     } catch (err) {
@@ -381,7 +384,7 @@ formLogin.addEventListener("submit", async (e) => {
 // ----------------------------------------------------
 // EMAIL/PASSWORD SIGN UP
 // ----------------------------------------------------
-formSignup.addEventListener("submit", async (e) => {
+formSignup?.addEventListener("submit", async (e) => {
     e.preventDefault();
     resetAlerts();
 
@@ -429,7 +432,7 @@ formSignup.addEventListener("submit", async (e) => {
     }
 });
 
-recDocBtn.addEventListener("click", () => {
+recDocBtn?.addEventListener("click", () => {
     activeRole = "DOCTOR";
     rolePills.forEach(p => p.classList.toggle("active", p.dataset.role === "DOCTOR"));
     tabSignup.classList.remove("hidden");
@@ -438,7 +441,7 @@ recDocBtn.addEventListener("click", () => {
     tabSignup.click();
 });
 
-recPatBtn.addEventListener("click", () => {
+recPatBtn?.addEventListener("click", () => {
     activeRole = "PATIENT";
     rolePills.forEach(p => p.classList.toggle("active", p.dataset.role === "PATIENT"));
     tabSignup.classList.remove("hidden");
@@ -450,7 +453,7 @@ recPatBtn.addEventListener("click", () => {
 
 // //// check ///////////
 
-window.addEventListener("DOMContentLoaded", () => {
+window?.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const activeTab = urlParams.get('tab');
 
@@ -461,3 +464,48 @@ window.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 });
+
+
+
+
+
+// const logoutBtn = document.getElementById("logout-btn");
+
+// if (logoutBtn) {
+//     logoutBtn.addEventListener("click", async () => {
+//         try {
+//             await signOut(auth);
+//             window.location.href = "../authi.html?tab=login"; // Agar login page ek folder peche hai toh yeh path theek hai
+//         } catch (error) {
+//             console.error("Logout error:", error);
+//         }
+//     });
+// }
+
+
+
+
+
+// Logout button element ko pakrein
+const logoutBtn = document.getElementById("logout-btn");
+
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault(); // Page ko default refresh hone se rokega
+
+        try {
+            // Firebase ka signOut function call karein
+            await signOut(auth);
+            
+            console.log("Successfully signed out");
+
+            // Logout ke baad user ko login/auth page par redirect kar dein
+            // Agar aapki file ek folder bahar hai toh "../authi.html" use karein, agar same folder mein hai toh "authi.html"
+            window.location.href = "../authi.html"; 
+
+        } catch (error) {
+            console.error("Logout Error:", error);
+            alert("Logout nahi ho saka: " + error.message);
+        }
+    });
+}
