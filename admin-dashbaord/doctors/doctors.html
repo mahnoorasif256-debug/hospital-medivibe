@@ -402,16 +402,13 @@
     </footer>
 <!-- /container-fluid wrapper -->
 
-<!-- JavaScript for Dynamic Rendering & Search -->
-<script>
-  let doctorsData = [
-    { id: "doc1", name: "Dr. Michael Smith", specialization: "Cardiologist", department: "Cardiology", available: "Available : Thu, 05 Feb 2026", charge: "$300", image: "https://ui-avatars.com/api/?name=Michael+Smith&background=e0e7ff&color=4338ca&size=128", status: "active" },
-    { id: "doc2", name: "Dr. Sarah Johnson", specialization: "Surgeon", department: "Neurology", available: "Available : Mon, 09 Feb 2026", charge: "$500", image: "https://ui-avatars.com/api/?name=Sarah+Johnson&background=e0e7ff&color=4338ca&size=128", status: "active" },
-    { id: "doc3", name: "Dr. Adrian White", specialization: "Practitioner", department: "Pediatrics", available: "Available : Tue, 17 Feb 2026", charge: "$400", image: "https://ui-avatars.com/api/?name=Adrian+White&background=e0e7ff&color=4338ca&size=128", status: "active" },
-    { id: "doc4", name: "Dr. Ken Clark", specialization: "Dermatologist", department: "Orthopedics", available: "Available : Wed, 12 Feb 2026", charge: "$350", image: "https://ui-avatars.com/api/?name=Ken+Clark&background=e0e7ff&color=4338ca&size=128", status: "inactive" },
-    { id: "doc5", name: "Dr. Nida Farooq", specialization: "Skin Specialist", department: "Dermatology", available: "Available : Fri, 20 Feb 2026", charge: "$250", image: "https://ui-avatars.com/api/?name=Nida+Farooq&background=e0e7ff&color=4338ca&size=128", status: "active" },
-    { id: "doc6", name: "Dr. Omar Siddiqui", specialization: "Dental Surgeon", department: "Dentistry", available: "Available : Sat, 21 Feb 2026", charge: "$180", image: "https://ui-avatars.com/api/?name=Omar+Siddiqui&background=e0e7ff&color=4338ca&size=128", status: "active" },
-  ];
+<!-- JavaScript for Dynamic Rendering & Search (Firestore-wired) -->
+<script type="module">
+  import {
+    db, collection, getDocs, doc, updateDoc, query, where
+  } from "../firebase.config.js";
+
+  let doctorsData = [];
 
   const deptColors = {
     Cardiology:  { bg: "#e0f2fe", color: "#0284c7" },
@@ -420,25 +417,50 @@
     Orthopedics: { bg: "#fef3c7", color: "#b45309" },
     Dermatology: { bg: "#fce7f3", color: "#db2777" },
     Dentistry:   { bg: "#e0e7ff", color: "#4338ca" },
+    General:     { bg: "#eef2ff", color: "#4338ca" },
   };
+
+  // ---- Load real doctors from Firestore (users where role == DOCTOR) ----
+  async function loadDoctors() {
+    const q = query(collection(db, "users"), where("role", "==", "DOCTOR"));
+    const snap = await getDocs(q);
+    doctorsData = snap.docs.map(d => {
+      const data = d.data();
+      return {
+        id: d.id,
+        name: "Dr. " + (data.fullName || "Unknown"),
+        specialization: data.specialization || "General Practice",
+        department: data.department || "General",
+        licenseId: data.licenseId || "—",
+        email: data.email || "",
+        image: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.fullName || "Doctor")}&background=e0e7ff&color=4338ca&size=128`,
+        approvalStatus: data.status || "PENDING",      // PENDING | APPROVED
+        isActive: data.isActive !== false               // default true once approved
+      };
+    });
+    renderDoctors(doctorsData);
+  }
 
   function renderDoctors(data) {
     const container = document.getElementById('doctorsGridContainer');
-    const activeCount = data.filter(d => d.status === "active").length;
+    const activeCount = data.filter(d => d.approvalStatus === "APPROVED" && d.isActive).length;
     document.getElementById('totalDoctorsCount').innerText = activeCount;
     container.innerHTML = '';
 
     if (data.length === 0) {
-      container.innerHTML = `<div class="col-12 text-center py-5"><p class="text-muted">No doctors found matching your search.</p></div>`;
+      container.innerHTML = `<div class="col-12 text-center py-5"><p class="text-muted">No doctors found. New sign-ups will appear here for approval.</p></div>`;
       return;
     }
 
     data.forEach(doc => {
-      const dept = deptColors[doc.department] || { bg: "#eef2ff", color: "#4338ca" };
-      const statusPillClass = doc.status === "active" ? "status-completed" : "status-cancelled";
-      const statusLabel = doc.status === "active" ? "Active" : "Inactive";
-      const toggleLabel = doc.status === "active" ? "Inactivate" : "Activate";
-      const toggleIcon = doc.status === "active" ? "fa-ban" : "fa-check";
+      const dept = deptColors[doc.department] || deptColors.General;
+      const isPending = doc.approvalStatus === "PENDING";
+      const statusPillClass = isPending ? "status-cancelled" : (doc.isActive ? "status-completed" : "status-cancelled");
+      const statusLabel = isPending ? "Pending Approval" : (doc.isActive ? "Active" : "Inactive");
+
+      const actionMenu = isPending
+        ? `<li><a class="dropdown-item py-2 px-3 text-success" href="#" onclick="approveDoctor('${doc.id}'); return false;" style="font-size: 13px;"><i class="fa-solid fa-check me-2"></i> Approve Doctor</a></li>`
+        : `<li><a class="dropdown-item py-2 px-3 ${doc.isActive ? 'text-danger' : 'text-success'}" href="#" onclick="toggleDoctorStatus('${doc.id}'); return false;" style="font-size: 13px;"><i class="fa-solid ${doc.isActive ? 'fa-ban' : 'fa-check'} me-2"></i> ${doc.isActive ? 'Inactivate' : 'Activate'}</a></li>`;
 
       container.innerHTML += `
         <div class="col-xl-3 col-sm-6">
@@ -449,24 +471,21 @@
               <div class="dropdown">
                 <button class="btn btn-light btn-sm rounded-circle border-0 text-muted" type="button" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                 <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm rounded-3">
-                  <li><a class="dropdown-item py-2 px-3 text-dark" href="doctor-profile.html?id=${doc.id}" style="font-size: 13px;"><i class="fa-solid fa-eye me-2 text-primary"></i> View Details</a></li>
-                  <li><a class="dropdown-item py-2 px-3 ${doc.status === 'active' ? 'text-danger' : 'text-success'}" href="#" onclick="toggleDoctorStatus('${doc.id}'); return false;" style="font-size: 13px;"><i class="fa-solid ${toggleIcon} me-2"></i> ${toggleLabel}</a></li>
+                  ${actionMenu}
                 </ul>
               </div>
             </div>
 
             <div class="text-center mb-3">
-              <img src="${doc.image}" alt="${doc.name}" class="rounded-circle shadow-sm mb-3 doctor-dir-avatar" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(doc.name)}&background=e0e7ff&color=4338ca&size=128';">
-              <h5 class="fw-bold mb-1 text-dark" style="font-size: 16px;">
-                <a href="doctor-profile.html?id=${doc.id}" class="text-decoration-none text-dark stretched-link">${doc.name}</a>
-              </h5>
+              <img src="${doc.image}" alt="${doc.name}" class="rounded-circle shadow-sm mb-3 doctor-dir-avatar">
+              <h5 class="fw-bold mb-1 text-dark" style="font-size: 16px;">${doc.name}</h5>
               <span class="text-muted d-block mb-2" style="font-size: 13px;">${doc.specialization}</span>
               <span class="doctor-status-pill ${statusPillClass}">${statusLabel}</span>
             </div>
 
             <div class="doctor-dir-fee-box rounded-3 p-2 text-center mt-auto">
-              <span class="text-muted d-block mb-1">${doc.available}</span>
-              <span class="fw-bold text-dark">Starts From : <span class="text-primary">${doc.charge}</span></span>
+              <span class="text-muted d-block mb-1" style="font-size:11px;">${doc.email}</span>
+              <span class="fw-bold text-dark" style="font-size:12px;">License: <span class="text-primary">${doc.licenseId}</span></span>
             </div>
 
           </div>
@@ -474,8 +493,6 @@
       `;
     });
   }
-
-  renderDoctors(doctorsData);
 
   document.getElementById('doctorSearchInput').addEventListener('input', function (e) {
     const term = e.target.value.toLowerCase();
@@ -497,12 +514,30 @@
     renderDoctors(filtered);
   });
 
-  function toggleDoctorStatus(id) {
-    const doc = doctorsData.find(d => d.id === id);
-    if (!doc) return;
-    doc.status = doc.status === "active" ? "inactive" : "active";
-    document.getElementById('doctorSearchInput').dispatchEvent(new Event('input'));
-  }
+  // ---- Approve a pending doctor (this is what unblocks the Patient Dashboard) ----
+  window.approveDoctor = async function (id) {
+    try {
+      await updateDoc(doc(db, "users", id), { status: "APPROVED" });
+      await loadDoctors();
+    } catch (err) {
+      console.error(err);
+      alert("Could not approve doctor: " + err.message);
+    }
+  };
+
+  window.toggleDoctorStatus = async function (id) {
+    const d = doctorsData.find(x => x.id === id);
+    if (!d) return;
+    try {
+      await updateDoc(doc(db, "users", id), { isActive: !d.isActive });
+      await loadDoctors();
+    } catch (err) {
+      console.error(err);
+      alert("Could not update status: " + err.message);
+    }
+  };
+
+  loadDoctors();
 </script>
 
   </main>
@@ -819,5 +854,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 
     <script type="module" src="../admin.js"></script>
+    <script type="module" src="doctors.js"></script>
 </body>
 </html>

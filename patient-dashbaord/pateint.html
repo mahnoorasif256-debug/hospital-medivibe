@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard | Medivibe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/global.css">
+<style>
+  body { font-family: 'Roboto', sans-serif; background: #f8fafc; }
+
+  .dash-header {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 14px 0;
+  }
+  .dash-logo img { height: 40px; }
+  .dash-user-name { font-weight: 700; color: #0f172a; font-size: 14px; }
+  .dash-user-role { font-size: 11.5px; color: #94a3b8; text-transform: uppercase; letter-spacing: .4px; }
+
+  .dash-stat-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .dash-stat-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; flex-shrink: 0;
+  }
+  .dash-stat-value { font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.1; }
+  .dash-stat-label { font-size: 12.5px; color: #94a3b8; font-weight: 600; }
+
+  .dash-section-title { font-size: 19px; font-weight: 800; color: #0f172a; }
+  .dash-section-sub { font-size: 13px; color: #94a3b8; }
+
+  .doctor-search-bar {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 50px;
+    padding: 4px 4px 4px 18px; display: flex; align-items: center; gap: 10px; max-width: 420px;
+  }
+  .doctor-search-bar input { border: none; outline: none; flex: 1; font-size: 14px; background: transparent; }
+  .doctor-search-bar i { color: #94a3b8; }
+
+  .doctor-card {
+    background: #fff; border-radius: 16px; border: 1px solid #e2e8f0;
+    padding: 20px; height: 100%; transition: box-shadow .2s ease, transform .2s ease; position: relative;
+  }
+  .doctor-card:hover { box-shadow: 0 10px 25px rgba(15,23,42,.08); transform: translateY(-3px); }
+  .doctor-card-avatar {
+    width: 62px; height: 62px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+    border: 2px solid #f1f5f9;
+  }
+  .fav-toggle-btn {
+    position: absolute; top: 16px; right: 16px;
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #e2e8f0; background: #fff; color: #cbd5e1; cursor: pointer;
+    transition: all .2s ease;
+  }
+  .fav-toggle-btn.active { color: #ef4444; border-color: #fecaca; background: #fef2f2; }
+  .fav-toggle-btn:hover { transform: scale(1.08); }
+
+  .doctor-status-badge {
+    font-size: 10.5px; font-weight: 700; color: #16a34a;
+    background: #dcfce7; padding: 3px 10px; border-radius: 50px; display: inline-block;
+  }
+
+  .pagination-controls button {
+    width: 34px; height: 34px; border-radius: 10px; border: 1px solid #e2e8f0;
+    background: #fff; color: #334155; font-weight: 600; font-size: 13px;
+  }
+  .pagination-controls button.active { background: #135dd8; color: #fff; border-color: #135dd8; }
+  .pagination-controls button:disabled { opacity: .4; }
+
+  .mv-card-white { background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; padding: 22px; }
+
+  .apt-status-pill { font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 50px; }
+  .apt-pending   { background: #fef3c7; color: #b45309; }
+  .apt-confirmed { background: #dbeafe; color: #1d4ed8; }
+  .apt-completed { background: #dcfce7; color: #16a34a; }
+  .apt-cancelled { background: #fee2e2; color: #ef4444; }
+
+  .empty-state { text-align: center; padding: 40px 20px; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="dash-header">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a href="../index.html" class="dash-logo text-decoration-none"><img src="../images/logo.png" alt="Medivibe"></a>
+    <div class="d-flex align-items-center gap-3">
+      <div class="text-end">
+        <div class="dash-user-name" id="headerUserName">Loading...</div>
+        <div class="dash-user-role">Patient</div>
+      </div>
+      <img id="headerUserAvatar" src="" alt="" class="rounded-circle" width="42" height="42" style="object-fit:cover;">
+      <button class="btn btn-sm btn-outline-danger rounded-pill px-3" id="logoutBtn"><i class="fa-solid fa-right-from-bracket me-1"></i> Logout</button>
+    </div>
+  </div>
+</header>
+
+<div class="container py-4">
+
+  <!-- Welcome -->
+  <h3 class="fw-bold text-dark mb-1" id="welcomeText">Welcome back!</h3>
+  <p class="text-secondary mb-4">Find trusted doctors, book appointments, and manage your favorites — all in one place.</p>
+
+  <!-- Stats -->
+  <div class="row g-3 mb-5">
+    <div class="col-md-4">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:#e0f2fe; color:#0284c7;"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+          <div class="dash-stat-value" id="statTotalApts">0</div>
+          <div class="dash-stat-label">Total Appointments</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:#fef3c7; color:#b45309;"><i class="fa-solid fa-hourglass-half"></i></div>
+        <div>
+          <div class="dash-stat-value" id="statUpcomingApts">0</div>
+          <div class="dash-stat-label">Upcoming</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="dash-stat-card">
+        <div class="dash-stat-icon" style="background:#fee2e2; color:#ef4444;"><i class="fa-solid fa-heart"></i></div>
+        <div>
+          <div class="dash-stat-value" id="statFavCount">0</div>
+          <div class="dash-stat-label">Favorite Doctors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Find a Doctor -->
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+    <div>
+      <div class="dash-section-title">Find a Doctor</div>
+      <div class="dash-section-sub">Search and book from our approved doctors.</div>
+    </div>
+    <div class="doctor-search-bar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="doctorSearchInput" placeholder="Search by doctor name...">
+    </div>
+  </div>
+
+  <div class="row g-3 mb-3" id="doctorsGrid"></div>
+  <div id="doctorsEmptyState" class="empty-state d-none">
+    <i class="fa-solid fa-user-doctor fs-2 d-block mb-2"></i>
+    No doctors found.
+  </div>
+  <div class="d-flex justify-content-center gap-2 pagination-controls mb-5" id="doctorsPagination"></div>
+
+  <!-- My Favorite Doctors -->
+  <div class="dash-section-title mb-1">My Favorite Doctors</div>
+  <div class="dash-section-sub mb-3">Doctors you've bookmarked for quick access.</div>
+  <div class="row g-3 mb-5" id="favoritesGrid"></div>
+  <div id="favoritesEmptyState" class="empty-state d-none mb-5">
+    <i class="fa-regular fa-heart fs-2 d-block mb-2"></i>
+    No favorite doctors yet — tap the heart icon on any doctor to save them here.
+  </div>
+
+  <!-- My Appointments -->
+  <div class="dash-section-title mb-1">My Appointments</div>
+  <div class="dash-section-sub mb-3">Track the status of your booking requests.</div>
+  <div class="mv-card-white">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr class="text-uppercase text-secondary" style="font-size:11px;">
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th class="text-end">Action</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsTableBody"></tbody>
+      </table>
+    </div>
+    <div id="appointmentsEmptyState" class="empty-state d-none">
+      <i class="fa-regular fa-calendar fs-2 d-block mb-2"></i>
+      No appointments yet — book one from the doctors list above.
+    </div>
+  </div>
+
+</div>
+
+<!-- Book Appointment Modal -->
+<div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold">Book Appointment with <span id="bookModalDoctorName" class="text-primary"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="bookForm">
+          <input type="hidden" id="bookDoctorId">
+          <input type="hidden" id="bookDoctorName">
+          <div class="mb-3">
+            <label class="form-label fw-semibold small">Date</label>
+            <input type="date" id="bookDate" class="form-control rounded-pill px-3" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold small">Time</label>
+            <input type="time" id="bookTime" class="form-control rounded-pill px-3" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold small">Reason for Visit</label>
+            <textarea id="bookReason" class="form-control rounded-4 px-3" rows="3" placeholder="Briefly describe your concern..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold" id="bookSubmitBtn">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+import {
+  auth, db, onAuthStateChanged, signOut,
+  doc, getDoc, setDoc, updateDoc, collection, getDocs, addDoc, query, where, orderBy,
+  serverTimestamp, arrayUnion, arrayRemove
+} from "../admin-dashbaord/firebase.config.js";
+
+let currentUser = null;
+let currentUserData = null;
+let allDoctors = [];
+let favoriteIds = [];
+let allAppointments = [];
+
+const PAGE_SIZE = 6;
+let currentPage = 1;
+
+function avatarUrl(name) {
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name || "User")}&background=135dd8&color=ffffff&size=128`;
+}
+
+// ---------- AUTH GATE ----------
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.replace("../authi.html");
+    return;
+  }
+  currentUser = user;
+
+  const userSnap = await getDoc(doc(db, "users", user.uid));
+  if (!userSnap.exists() || userSnap.data().role !== "PATIENT") {
+    // Not a patient account — send back to auth
+    window.location.replace("../authi.html");
+    return;
+  }
+  currentUserData = userSnap.data();
+  favoriteIds = currentUserData.favorites || [];
+
+  document.getElementById("headerUserName").textContent = currentUserData.fullName || "Patient";
+  document.getElementById("welcomeText").textContent = `Welcome back, ${(currentUserData.fullName || "there").split(" ")[0]}!`;
+  document.getElementById("headerUserAvatar").src = avatarUrl(currentUserData.fullName);
+
+  await loadDoctors();
+  await loadAppointments();
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.replace("../authi.html");
+});
+
+// ---------- LOAD DOCTORS ----------
+async function loadDoctors() {
+  const q = query(collection(db, "users"), where("role", "==", "DOCTOR"), where("status", "==", "APPROVED"));
+  const snap = await getDocs(q);
+  allDoctors = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  renderDoctors();
+  renderFavorites();
+}
+
+function doctorCardHtml(doc, isFavContext = false) {
+  const isFav = favoriteIds.includes(doc.id);
+  return `
+    <div class="col-md-6 col-lg-4">
+      <div class="doctor-card">
+        <button type="button" class="fav-toggle-btn ${isFav ? 'active' : ''}" data-doctor-id="${doc.id}" data-doctor-name="${doc.fullName || ''}" title="Toggle favorite">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <img src="${avatarUrl(doc.fullName)}" class="doctor-card-avatar" alt="${doc.fullName || ''}">
+          <div>
+            <h6 class="fw-bold text-dark mb-1">${doc.fullName || "Doctor"}</h6>
+            <span class="doctor-status-badge"><i class="fa-solid fa-circle-check me-1"></i>Approved</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary w-100 rounded-pill btn-sm book-btn" data-doctor-id="${doc.id}" data-doctor-name="${doc.fullName || ''}">
+          <i class="fa-solid fa-calendar-plus me-1"></i> Book Appointment
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderDoctors() {
+  const term = (document.getElementById("doctorSearchInput").value || "").toLowerCase().trim();
+  const filtered = allDoctors.filter(d => (d.fullName || "").toLowerCase().includes(term));
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+  const grid = document.getElementById("doctorsGrid");
+  grid.innerHTML = pageItems.map(d => doctorCardHtml(d)).join("");
+  document.getElementById("doctorsEmptyState").classList.toggle("d-none", filtered.length > 0);
+
+  renderPagination(totalPages);
+  bindDoctorCardEvents();
+}
+
+function renderPagination(totalPages) {
+  const el = document.getElementById("doctorsPagination");
+  if (totalPages <= 1) { el.innerHTML = ""; return; }
+
+  let html = `<button ${currentPage === 1 ? 'disabled' : ''} id="pgPrev"><i class="fa-solid fa-chevron-left"></i></button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    html += `<button class="pg-num ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+  }
+  html += `<button ${currentPage === totalPages ? 'disabled' : ''} id="pgNext"><i class="fa-solid fa-chevron-right"></i></button>`;
+  el.innerHTML = html;
+
+  document.getElementById("pgPrev")?.addEventListener("click", () => { currentPage--; renderDoctors(); });
+  document.getElementById("pgNext")?.addEventListener("click", () => { currentPage++; renderDoctors(); });
+  el.querySelectorAll(".pg-num").forEach(btn => {
+    btn.addEventListener("click", () => { currentPage = Number(btn.dataset.page); renderDoctors(); });
+  });
+}
+
+function renderFavorites() {
+  const favDoctors = allDoctors.filter(d => favoriteIds.includes(d.id));
+  document.getElementById("favoritesGrid").innerHTML = favDoctors.map(d => doctorCardHtml(d, true)).join("");
+  document.getElementById("favoritesEmptyState").classList.toggle("d-none", favDoctors.length > 0);
+  document.getElementById("statFavCount").textContent = favDoctors.length;
+  bindDoctorCardEvents();
+}
+
+function bindDoctorCardEvents() {
+  document.querySelectorAll(".fav-toggle-btn").forEach(btn => {
+    btn.onclick = () => toggleFavorite(btn.dataset.doctorId, btn.dataset.doctorName);
+  });
+  document.querySelectorAll(".book-btn").forEach(btn => {
+    btn.onclick = () => openBookModal(btn.dataset.doctorId, btn.dataset.doctorName);
+  });
+}
+
+async function toggleFavorite(doctorId, doctorName) {
+  const userRef = doc(db, "users", currentUser.uid);
+  const isFav = favoriteIds.includes(doctorId);
+
+  try {
+    await updateDoc(userRef, {
+      favorites: isFav ? arrayRemove(doctorId) : arrayUnion(doctorId)
+    });
+    favoriteIds = isFav ? favoriteIds.filter(id => id !== doctorId) : [...favoriteIds, doctorId];
+    renderDoctors();
+    renderFavorites();
+  } catch (err) {
+    console.error("Favorite toggle error:", err);
+    alert("Could not update favorites: " + err.message);
+  }
+}
+
+document.getElementById("doctorSearchInput").addEventListener("input", () => {
+  currentPage = 1;
+  renderDoctors();
+});
+
+// ---------- BOOK APPOINTMENT ----------
+function openBookModal(doctorId, doctorName) {
+  document.getElementById("bookDoctorId").value = doctorId;
+  document.getElementById("bookDoctorName").value = doctorName;
+  document.getElementById("bookModalDoctorName").textContent = doctorName;
+  document.getElementById("bookForm").reset();
+  new bootstrap.Modal(document.getElementById("bookModal")).show();
+}
+
+document.getElementById("bookForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const submitBtn = document.getElementById("bookSubmitBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Booking...";
+
+  try {
+    await addDoc(collection(db, "appointments"), {
+      patientId: currentUser.uid,
+      patientName: currentUserData.fullName || "Patient",
+      doctorId: document.getElementById("bookDoctorId").value,
+      doctorName: document.getElementById("bookDoctorName").value,
+      date: document.getElementById("bookDate").value,
+      time: document.getElementById("bookTime").value,
+      reason: document.getElementById("bookReason").value.trim(),
+      status: "Pending",
+      createdAt: serverTimestamp()
+    });
+
+    bootstrap.Modal.getInstance(document.getElementById("bookModal")).hide();
+    await loadAppointments();
+    alert("Appointment request sent! You'll see it in 'My Appointments' below.");
+  } catch (err) {
+    console.error("Booking error:", err);
+    alert("Could not book appointment: " + err.message);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Confirm Booking";
+  }
+});
+
+// ---------- MY APPOINTMENTS ----------
+async function loadAppointments() {
+  const q = query(collection(db, "appointments"), where("patientId", "==", currentUser.uid));
+  const snap = await getDocs(q);
+  allAppointments = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  allAppointments.sort((a, b) => (a.date || "").localeCompare(b.date || ""));
+  renderAppointments();
+}
+
+const statusClass = { Pending: "apt-pending", Confirmed: "apt-confirmed", Completed: "apt-completed", Cancelled: "apt-cancelled" };
+
+function renderAppointments() {
+  const tbody = document.getElementById("appointmentsTableBody");
+  const today = new Date().toISOString().slice(0, 10);
+
+  document.getElementById("statTotalApts").textContent = allAppointments.length;
+  document.getElementById("statUpcomingApts").textContent =
+    allAppointments.filter(a => a.date >= today && a.status !== "Cancelled").length;
+
+  if (allAppointments.length === 0) {
+    tbody.innerHTML = "";
+    document.getElementById("appointmentsEmptyState").classList.remove("d-none");
+    return;
+  }
+  document.getElementById("appointmentsEmptyState").classList.add("d-none");
+
+  tbody.innerHTML = allAppointments.map(a => `
+    <tr>
+      <td class="fw-semibold">${a.doctorName || "-"}</td>
+      <td>${a.date || "-"}</td>
+      <td>${a.time || "-"}</td>
+      <td class="text-secondary" style="font-size:13px; max-width:200px;">${a.reason || "—"}</td>
+      <td><span class="apt-status-pill ${statusClass[a.status] || 'apt-pending'}">${a.status || "Pending"}</span></td>
+      <td class="text-end">
+        ${a.status === "Pending" ? `<button class="btn btn-sm btn-outline-danger rounded-pill cancel-apt-btn" data-id="${a.id}">Cancel</button>` : ""}
+      </td>
+    </tr>
+  `).join("");
+
+  document.querySelectorAll(".cancel-apt-btn").forEach(btn => {
+    btn.onclick = async () => {
+      if (!confirm("Cancel this appointment?")) return;
+      await updateDoc(doc(db, "appointments", btn.dataset.id), { status: "Cancelled" });
+      await loadAppointments();
+    };
+  });
+}
+</script>
+</body>
+</html>
