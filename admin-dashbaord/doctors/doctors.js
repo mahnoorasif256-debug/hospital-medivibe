@@ -3,9 +3,9 @@
 //  Handles: Directory, Profile, Add Doctor, Update, Delete, Schedule Matrix
 // ============================================================
 
-import { db } from "../firebase.config.js";
+import { auth, db } from "../firebase.config.js";
 import {
-  collection, getDocs, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, query, where
+  collection, getDocs, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, query, where, orderBy
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -451,6 +451,131 @@ function setupAddScheduleForm() {
 }
 
 
+
+// ================= 5. IN-APP MESSAGING (Send Message modal) =================
+function avatarInitial(name) {
+  return (name || "A").trim().charAt(0).toUpperCase();
+}
+
+function formatMessageTime(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return "";
+  return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+async function loadMessageHistory(doctorId) {
+  const container = document.getElementById('messageHistoryContainer');
+  if (!container) return;
+
+  container.innerHTML = `<p class="text-muted text-center py-3 mb-0" style="font-size: 13px;">Loading messages…</p>`;
+
+  try {
+    const q = query(collection(db, "messages"), where("doctorId", "==", doctorId), orderBy("createdAt", "asc"));
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      container.innerHTML = `<p class="text-muted text-center py-3 mb-0" style="font-size: 13px;">No messages yet — say hello!</p>`;
+      return;
+    }
+
+    container.innerHTML = snap.docs.map(docSnap => {
+      const m = docSnap.data();
+      const isFromAdmin = m.senderRole === "ADMIN";
+      return `
+        <div class="d-flex ${isFromAdmin ? 'justify-content-end' : 'justify-content-start'} mb-2">
+          <div style="max-width: 78%;">
+            <div class="rounded-4 px-3 py-2" style="font-size: 13px; background:${isFromAdmin ? '#4f46e5' : '#f1f5f9'}; color:${isFromAdmin ? '#fff' : '#1e293b'};">
+              ${m.text}
+            </div>
+            <div class="text-muted mt-1" style="font-size: 10.5px; text-align:${isFromAdmin ? 'right' : 'left'};">
+              ${m.senderName || (isFromAdmin ? 'Admin' : 'Doctor')} · ${formatMessageTime(m.createdAt)}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    container.scrollTop = container.scrollHeight;
+
+  } catch (err) {
+    console.error("Error loading message history:", err);
+    container.innerHTML = `<p class="text-danger text-center py-3 mb-0" style="font-size: 13px;">Could not load messages.</p>`;
+  }
+}
+
+function setupMessageButton() {
+  const messageBtn = document.getElementById('messageDoctorBtn');
+  const modalEl = document.getElementById('sendMessageModal');
+  const sendBtn = document.getElementById('sendMessageBtn');
+  const textEl = document.getElementById('messageText');
+  const nameLabel = document.getElementById('sendMessageDoctorName');
+  if (!messageBtn || !modalEl || !sendBtn || !textEl) return; // is page pe messaging modal nahi hai
+
+  messageBtn.onclick = () => {
+    const profilePage = document.getElementById('doctorProfilePage');
+    const doctorId = profilePage?.dataset.doctorId;
+
+    if (!doctorId) {
+      alert("Doctor profile abhi load nahi hui — thodi der intezaar kar ke dobara try karein.");
+      return;
+    }
+
+    if (nameLabel) {
+      const nameEl = document.getElementById('profileName');
+      nameLabel.textContent = nameEl ? nameEl.textContent.trim() : "Doctor";
+    }
+
+    modalEl.dataset.doctorId = doctorId;
+    loadMessageHistory(doctorId);
+
+    new bootstrap.Modal(modalEl).show();
+  };
+
+  if (sendBtn.dataset.bound) return;
+  sendBtn.dataset.bound = "true";
+
+  sendBtn.addEventListener('click', async () => {
+    const doctorId = modalEl.dataset.doctorId;
+    const text = textEl.value.trim();
+
+    if (!doctorId) {
+      alert("Doctor ID not found.");
+      return;
+    }
+    if (!text) {
+      alert("Message likhna zaroori hai.");
+      return;
+    }
+
+    const originalText = sendBtn.innerHTML;
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = "Sending...";
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        doctorId,
+        text,
+        senderRole: "ADMIN",
+        senderName: auth.currentUser?.displayName || auth.currentUser?.email || "Admin",
+        senderId: auth.currentUser?.uid || null,
+        read: false,
+        createdAt: new Date().toISOString()
+      });
+
+      textEl.value = "";
+      await loadMessageHistory(doctorId);
+
+    } catch (err) {
+      console.error("Error sending message:", err);
+      alert("Message send nahi ho saka: " + err.message);
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.innerHTML = originalText;
+    }
+  });
+}
+
 // ================= GLOBAL EVENT LISTENER =================
 window.addEventListener('DOMContentLoaded', () => {
   loadDoctorsDirectory();
@@ -459,9 +584,8 @@ window.addEventListener('DOMContentLoaded', () => {
   setupAddDoctorForm();
   loadDoctorSchedules();
   setupAddScheduleForm();
+  setupMessageButton();
 });
-
-
 
 
 // Event delegation for doctor duty toggle switches
@@ -473,7 +597,7 @@ document.addEventListener('change', async (e) => {
     try {
       console.log("Toggle changed for:", doctorId, "Active:", isActive);
       const scheduleRef = doc(db, "schedules", doctorId);
-      
+
       if (!isActive) {
         await setDoc(scheduleRef, {
           doctorId,
@@ -499,30 +623,3 @@ document.addEventListener('change', async (e) => {
     }
   }
 });
-
-
-
-
-// --- FOOLPROOF MESSAGE BUTTON ---
-    const messageBtn = document.getElementById('messageDoctorBtn');
-    if (messageBtn && !messageBtn.dataset.bound) {
-      messageBtn.dataset.bound = "true"; // Taake event double bar attach na ho
-      
-      messageBtn.onclick = () => {
-        // Direct page par mojood elements se email aur name utha lein
-        const emailEl = document.getElementById('profileEmail');
-        const nameEl = document.getElementById('profileName');
-        
-        const email = emailEl ? emailEl.textContent.trim() : '';
-        const name = nameEl ? nameEl.textContent.trim() : 'Doctor';
-
-        if (!email || email === "N/A" || email === "—") {
-          alert("Doctor's email is not available on the profile.");
-          return;
-        }
-
-        const subject = encodeURIComponent("Inquiry from Admin - Medidash");
-        const body = encodeURIComponent(`Hello ${name},\n\n`);
-        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-      };
-    }
