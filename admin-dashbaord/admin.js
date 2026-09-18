@@ -1,6 +1,6 @@
 import { auth, db } from "./firebase.config.js"; 
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, getDoc , collection, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, getDoc , collection, getDocs, onSnapshot, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // ================= AUTHENTICATION CHECK =================
 onAuthStateChanged(auth, async (user) => {
@@ -27,24 +27,81 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 // ================= LIVE KPI CARDS =================
+let miniChartRegistry = {};
+
+// 6-point gentle upward trend jo asal current value par khatam ho —
+// (Firestore mein din-ba-din history nahi hai, isliye sparkline ka shape
+//  approximate hai lekin last point hamesha real count hota hai)
+function trendTowards(endValue) {
+  const safeEnd = Math.max(Number(endValue) || 0, 1);
+  const start = Math.round(safeEnd * 0.4);
+  const points = [];
+  for (let i = 0; i < 6; i++) {
+    points.push(Math.round(start + ((safeEnd - start) * i) / 5));
+  }
+  return points;
+}
+
+function renderMiniChart(canvasId, dataPoints, color) {
+  const canvasEl = document.getElementById(canvasId);
+  if (!canvasEl || typeof Chart === 'undefined') return;
+
+  if (miniChartRegistry[canvasId]) {
+    miniChartRegistry[canvasId].destroy();
+  }
+
+  miniChartRegistry[canvasId] = new Chart(canvasEl, {
+    type: 'line',
+    data: {
+      labels: dataPoints.map((_, i) => i),
+      datasets: [{
+        data: dataPoints,
+        borderColor: color,
+        backgroundColor: color + '22',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: { x: { display: false }, y: { display: false } }
+    }
+  });
+}
+
 async function loadLiveDashboardStats() {
     try {
         const usersSnapshot = await getDocs(collection(db, "users"));
         let totalDoctors = 0;
-        let totalPatients = 0;
 
         usersSnapshot.forEach((docSnap) => {
             const data = docSnap.data();
             const role = (data.role || "").toUpperCase();
             if (role === "DOCTOR") totalDoctors++;
-            if (role === "PATIENT") totalPatients++;
         });
 
-        const docCountElem = document.getElementById("totalDoctorsCount");
-        const patCountElem = document.getElementById("totalPatientsCount");
+        // Patients "users" collection mein nahi, balke apni alag "patients"
+        // collection mein hain, isliye unhe alag se count karte hain.
+        let totalPatients = 0;
+        try {
+            const patientsSnapshot = await getDocs(collection(db, "patients"));
+            totalPatients = patientsSnapshot.size;
+        } catch (err) {
+            console.error("Patients count load karne mein error aaya:", err);
+        }
+
+        const docCountElem = document.getElementById("kpiDoctorsCount");
+        const patCountElem = document.getElementById("kpiPatientsCount");
 
         if (docCountElem) docCountElem.innerText = totalDoctors;
         if (patCountElem) patCountElem.innerText = totalPatients;
+
+        renderMiniChart('doctorsMiniChart', trendTowards(totalDoctors), '#0d6efd');
+        renderMiniChart('patientsMiniChart', trendTowards(totalPatients), '#ef4444');
 
     } catch (err) {
         console.error("Stats load karne mein error aaya:", err);
@@ -55,7 +112,69 @@ window.addEventListener('DOMContentLoaded', () => {
     loadLiveDashboardStats();
     loadAppointmentsFromFirestore();
     loadInvoicesFromFirestore();
+    initStaticAnalyticsCharts();
+    loadTopDoctorsWidget();
 });
+
+// ================= DOCTORS DIRECTORY WIDGET (Dashboard) =================
+// NOTE: Firestore doctor documents mein abhi "rating" field nahi hai,
+// isliye jab wo field maujood na ho to 4.5 ko placeholder rating maana hai.
+async function loadTopDoctorsWidget() {
+  const container = document.getElementById('topDoctorsContainer');
+  if (!container) return; // is page pe doctors widget nahi hai
+
+  function avatarUrl(name) {
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name || "Doctor")}&background=e0e7ff&color=4338ca&size=128`;
+  }
+
+  function starsHtml(rating) {
+    const full = Math.round(rating);
+    let html = '';
+    for (let i = 1; i <= 5; i++) {
+      html += `<i class="fa-${i <= full ? 'solid' : 'regular'} fa-star"></i>`;
+    }
+    return html;
+  }
+
+  try {
+    const doctorsQuery = query(collection(db, "users"), where("role", "==", "DOCTOR"));
+    const snapshot = await getDocs(doctorsQuery);
+
+    if (snapshot.empty) {
+      container.innerHTML = `<div class="col-12 text-center text-muted py-3">Koi doctor nahi mila.</div>`;
+      return;
+    }
+
+    const doctors = snapshot.docs.slice(0, 4); // dashboard par sirf 4 dikhane hain
+
+    container.innerHTML = doctors.map((docSnap) => {
+      const data = docSnap.data();
+      const name = data.fullName ? `Dr. ${data.fullName}` : "Dr. Unknown";
+      const specialization = data.specialization || "General Practice";
+      const rating = data.rating || 4.5;
+      const image = data.photoURL || avatarUrl(data.fullName);
+
+      return `
+        <div class="col-xl-3 col-md-6">
+          <div class="doctor-mini-card">
+            <img src="${image}" class="doctor-avatar" alt="${name}">
+            <div>
+              <p class="doctor-name">${name}</p>
+              <span class="doctor-spec-badge" style="background:#e0f2fe; color:#0284c7;">${specialization}</span>
+              <div class="doctor-stars">
+                ${starsHtml(rating)}
+                <span class="text-muted" style="font-size:11px;">(${rating})</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+  } catch (err) {
+    console.error("Top doctors widget load karne mein error aaya:", err);
+  }
+}
 
 // ================= RECENT APPOINTMENTS WIDGET =================
 function loadAppointmentsFromFirestore() {
@@ -68,6 +187,10 @@ function loadAppointmentsFromFirestore() {
 
   onSnapshot(collection(db, "appointments"), (snapshot) => {
     tableBody.innerHTML = "";
+
+    const appointmentsCountElem = document.getElementById('kpiAppointmentsCount');
+    if (appointmentsCountElem) appointmentsCountElem.innerText = snapshot.size;
+    renderMiniChart('appointmentsMiniChart', trendTowards(snapshot.size), '#0dcaf0');
 
     if (snapshot.empty) {
       tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">No appointments found.</td></tr>`;
@@ -122,6 +245,53 @@ function loadAppointmentsFromFirestore() {
 }
 
 // ================= NAVIGATION & THEME TOGGLE =================
+
+// ---- Hospital Visits + Operation Success charts ----
+// NOTE: Firestore mein abhi per-day "in-patient/out-patient" ya "operation
+// success" ka koi collection nahi hai, isliye ye demo/placeholder data se
+// bane hain — jab wo data available ho to yahan real query laga dena.
+function initStaticAnalyticsCharts() {
+  const visitsEl = document.getElementById('hospitalVisitsChart');
+  if (visitsEl && typeof Chart !== 'undefined') {
+    new Chart(visitsEl, {
+      type: 'bar',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [
+          { label: 'In-Patient', data: [18, 22, 19, 25, 20, 14, 12], backgroundColor: '#0d6efd', borderRadius: 6 },
+          { label: 'Out-Patient', data: [32, 28, 35, 30, 38, 24, 20], backgroundColor: '#00b4d8', borderRadius: 6 }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false } },
+          y: { beginAtZero: true, grid: { color: '#f1f5f9' } }
+        }
+      }
+    });
+  }
+
+  const successEl = document.getElementById('operationSuccessChart');
+  if (successEl && typeof Chart !== 'undefined') {
+    new Chart(successEl, {
+      type: 'doughnut',
+      data: {
+        labels: ['Success', 'Other'],
+        datasets: [{ data: [94, 6], backgroundColor: ['#16a34a', '#e2e8f0'], borderWidth: 0 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '75%',
+        plugins: { legend: { display: false }, tooltip: { enabled: false } }
+      }
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const allNavLinks = document.querySelectorAll('.nav-link');
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
@@ -308,7 +478,8 @@ let invoicesData = [
 
 async function loadInvoicesFromFirestore() {
   const tbody = document.getElementById('invoicesTableBody');
-  if (!tbody) return;
+  const chartCanvas = document.getElementById('revenueExpensesChart');
+  if (!tbody && !chartCanvas) return; // is page pe na table hai na chart
 
   try {
     const querySnapshot = await getDocs(collection(db, "invoices"));
@@ -323,6 +494,48 @@ async function loadInvoicesFromFirestore() {
   }
   renderSummaryCounters();
   renderInvoices(invoicesData);
+  renderRevenueExpensesChart(invoicesData);
+}
+
+// ---- Revenue & Expenses chart: revenue asal invoices se, expenses
+// abhi tak koi collection na hone ki wajah se revenue ka 55% placeholder hai ----
+let revenueExpensesChartInstance = null;
+function renderRevenueExpensesChart(data) {
+  const el = document.getElementById('revenueExpensesChart');
+  if (!el || typeof Chart === 'undefined') return;
+
+  const monthlyRevenue = {};
+  data.forEach(inv => {
+    const monthKey = (inv.created || '').slice(0, 7); // "YYYY-MM"
+    if (!monthKey) return;
+    monthlyRevenue[monthKey] = (monthlyRevenue[monthKey] || 0) + (Number(inv.amount) || 0);
+  });
+
+  const months = Object.keys(monthlyRevenue).sort();
+  const revenueValues = months.map(m => monthlyRevenue[m]);
+  const expenseValues = revenueValues.map(v => Math.round(v * 0.55));
+
+  if (revenueExpensesChartInstance) revenueExpensesChartInstance.destroy();
+
+  revenueExpensesChartInstance = new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: months.length ? months : ['No data'],
+      datasets: [
+        { label: 'Revenue', data: revenueValues.length ? revenueValues : [0], backgroundColor: '#16a34a', borderRadius: 6 },
+        { label: 'Expenses', data: expenseValues.length ? expenseValues : [0], backgroundColor: '#ef4444', borderRadius: 6 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false } },
+        y: { beginAtZero: true, grid: { color: '#f1f5f9' } }
+      }
+    }
+  });
 }
 
 function renderInvoices(data) {
@@ -378,4 +591,6 @@ function renderSummaryCounters() {
   document.getElementById('statTotalEarningsSub').textContent = `PKR ${(total * PKR_RATE).toLocaleString()}`;
   document.getElementById('statPaidAmount').textContent = `$${paidTotal.toLocaleString()}`;
   document.getElementById('statOutstandingAmount').textContent = `$${unpaidTotal.toLocaleString()}`;
+
+  renderMiniChart('revenueMiniChart', trendTowards(total), '#16a34a');
 }
