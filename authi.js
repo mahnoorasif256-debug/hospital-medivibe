@@ -355,7 +355,7 @@ formLogin?.addEventListener("submit", async (e) => {
                 return;
             }
 
-            window.location.href = "admin-dashbaord/admin.html";
+            window.location.href = "./admin-dashbaord/admin.html";
         }
 
     } catch (err) {
