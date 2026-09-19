@@ -40,7 +40,7 @@ if (logoutBtn) {
             console.log("Admin successfully logged out.");
             
             // Absolute path use karein taake har page se theek redirect ho
-            window.location.replace("/authi.html"); 
+            window.location.replace("../authi.html"); 
         } catch (error) {
             console.error("Logout error:", error);
             alert("Logout nahi ho saka: " + error.message);
