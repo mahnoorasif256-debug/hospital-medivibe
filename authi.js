@@ -486,25 +486,21 @@ window?.addEventListener("DOMContentLoaded", () => {
 
 
 
-// Logout button element ko pakrein
+// ================= LOGOUT FUNCTIONALITY =================
 const logoutBtn = document.getElementById("logout-btn");
 
 if (logoutBtn) {
     logoutBtn.addEventListener("click", async (e) => {
-        e.preventDefault(); // Page ko default refresh hone se rokega
+        e.preventDefault(); // Default link behavior roke ga
 
         try {
-            // Firebase ka signOut function call karein
-            await signOut(auth);
+            await signOut(auth); // Firebase se session khatam karega
+            console.log("Admin successfully logged out.");
             
-            console.log("Successfully signed out");
-
-            // Logout ke baad user ko login/auth page par redirect kar dein
-            // Agar aapki file ek folder bahar hai toh "../authi.html" use karein, agar same folder mein hai toh "authi.html"
-            window.location.href = "../authi.html"; 
-
+            // Login / Auth portal par redirect kar dega
+            window.location.replace("../authi.html"); 
         } catch (error) {
-            console.error("Logout Error:", error);
+            console.error("Logout error:", error);
             alert("Logout nahi ho saka: " + error.message);
         }
     });
