@@ -40,7 +40,13 @@ if (logoutBtn) {
             console.log("Admin successfully logged out.");
             
             // Absolute path use karein taake har page se theek redirect ho
-          window.location.replace(new URL("../authi.html", import.meta.url).href);
+          // window.location.replace(new URL("../authi.html", import.meta.url).href);
+          // Is line ko yeh kar dein:
+// Yeh code local aur live dono jagah khud hi sahi path utha lega
+const isGitHubPages = window.location.hostname.includes("github.io");
+const basePath = isGitHubPages ? "/hospital-medivibe" : "";
+window.location.replace(basePath + "/authi.html");
+
         } catch (error) {
             console.error("Logout error:", error);
             alert("Logout nahi ho saka: " + error.message);
