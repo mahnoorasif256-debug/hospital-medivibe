@@ -355,7 +355,7 @@ formLogin?.addEventListener("submit", async (e) => {
                 return;
             }
 
-            window.location.href = "/admin-dashbaord/admin.html";
+            window.location.href = "admin-dashbaord/admin.html";
         }
 
     } catch (err) {
@@ -464,23 +464,6 @@ window?.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 });
-
-
-
-
-
-// const logoutBtn = document.getElementById("logout-btn");
-
-// if (logoutBtn) {
-//     logoutBtn.addEventListener("click", async () => {
-//         try {
-//             await signOut(auth);
-//             window.location.href = "../authi.html?tab=login"; // Agar login page ek folder peche hai toh yeh path theek hai
-//         } catch (error) {
-//             console.error("Logout error:", error);
-//         }
-//     });
-// }
 
 
 
