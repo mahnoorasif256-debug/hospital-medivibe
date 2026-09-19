@@ -265,7 +265,7 @@
     <li><hr class="dropdown-divider my-2"></li>
 
     <li>
-      <a class="dropdown-item rounded py-2 text-danger fw-medium" href="login.html">
+      <a class="dropdown-item rounded py-2 text-danger fw-medium" href="#" id="logout-btn">
         <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
       </a>
     </li>
@@ -533,102 +533,6 @@
                 </td>
               </tr>
 
-              <!-- <tr>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
-                    <div>
-                      <span class="name">Fatima Sheikh</span>
-                      <span class="sub">Patient ID #P-2291</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
-                    <div>
-                      <span class="name">Dr. Sara Khan</span>
-                      <span class="sub">Cardiologist</span>
-                    </div>
-                  </div>
-                </td>
-                <td><span class="dept-tag">Cardiology</span></td>
-                <td>05 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">06:30 PM</span></td>
-                <td><span class="status-pill status-checked-in">Checked In</span></td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="">
-                    <div>
-                      <span class="name">Usman Tariq</span>
-                      <span class="sub">Patient ID #P-2292</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-                    <div>
-                      <span class="name">Dr. Ahmed Raza</span>
-                      <span class="sub">Neurologist</span>
-                    </div>
-                  </div>
-                </td>
-                <td><span class="dept-tag" style="background:#fee2e2;color:#ef4444;">Neurology</span></td>
-                <td>05 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">04:10 PM</span></td>
-                <td><span class="status-pill status-in-consultation">In Consultation</span></td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="">
-                    <div>
-                      <span class="name">Zainab Malik</span>
-                      <span class="sub">Patient ID #P-2293</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
-                    <div>
-                      <span class="name">Dr. Ayesha Malik</span>
-                      <span class="sub">Pediatrician</span>
-                    </div>
-                  </div>
-                </td>
-                <td><span class="dept-tag" style="background:#dcfce7;color:#16a34a;">Pediatrics</span></td>
-                <td>04 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">11:00 AM</span></td>
-                <td><span class="status-pill status-completed">Completed</span></td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="">
-                    <div>
-                      <span class="name">Hamza Iqbal</span>
-                      <span class="sub">Patient ID #P-2294</span>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="mv-person">
-                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="">
-                    <div>
-                      <span class="name">Dr. Bilal Hussain</span>
-                      <span class="sub">Orthopedic</span>
-                    </div>
-                  </div>
-                </td>
-                <td><span class="dept-tag" style="background:#fef3c7;color:#b45309;">Orthopedics</span></td>
-                <td>04 Apr 2025 <br><span class="text-muted" style="font-size:11.5px;">02:45 PM</span></td>
-                <td><span class="status-pill status-cancelled">Cancelled</span></td>
-              </tr> -->
-
             </tbody>
           </table>
         </div>
@@ -833,7 +737,10 @@
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Department Name</label>
-              <input type="text" id="newDeptName" class="form-control rounded-pill px-3" placeholder="e.g. Dermatology" required>
+              <!-- Yahan input ki jagah select dropdown kar diya hai -->
+              <select id="newDeptName" class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Department</option>
+              </select>
             </div>
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Head of Department (HOD)</label>

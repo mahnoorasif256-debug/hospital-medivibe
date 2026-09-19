@@ -317,7 +317,7 @@
     <li><hr class="dropdown-divider my-2"></li>
 
     <li>
-      <a class="dropdown-item rounded py-2 text-danger fw-medium" href="login.html">
+      <a class="dropdown-item rounded py-2 text-danger fw-medium"  href="#" id="logout-btn">
         <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
       </a>
     </li>
@@ -430,7 +430,10 @@
         id: d.id,
         name: "Dr. " + (data.fullName || "Unknown"),
         specialization: data.specialization || "General Practice",
-        department: data.department || "General",
+        department: (() => {
+          const raw = (data.department || data.specialization || "General").trim();
+          return raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
+        })(),
         licenseId: data.licenseId || "—",
         email: data.email || "",
         image: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.fullName || "Doctor")}&background=e0e7ff&color=4338ca&size=128`,
@@ -438,7 +441,7 @@
         isActive: data.isActive !== false               // default true once approved
       };
     });
-    renderDoctors(doctorsData);
+    applyFilters();
   }
 
   function renderDoctors(data) {
@@ -494,25 +497,19 @@
     });
   }
 
-  document.getElementById('doctorSearchInput').addEventListener('input', function (e) {
-    const term = e.target.value.toLowerCase();
-    const deptVal = document.getElementById('departmentFilter').value;
+  function applyFilters() {
+    const term = document.getElementById('doctorSearchInput').value.toLowerCase().trim();
+    const dept = document.getElementById('departmentFilter').value.toLowerCase();
+
     const filtered = doctorsData.filter(d =>
       (d.name.toLowerCase().includes(term) || d.specialization.toLowerCase().includes(term)) &&
-      (deptVal === "" || d.department === deptVal)
+      (dept === "" || d.department.toLowerCase() === dept)
     );
     renderDoctors(filtered);
-  });
+  }
 
-  document.getElementById('departmentFilter').addEventListener('change', function (e) {
-    const dept = e.target.value;
-    const term = document.getElementById('doctorSearchInput').value.toLowerCase();
-    const filtered = doctorsData.filter(d =>
-      (dept === "" || d.department === dept) &&
-      (d.name.toLowerCase().includes(term) || d.specialization.toLowerCase().includes(term))
-    );
-    renderDoctors(filtered);
-  });
+  document.getElementById('doctorSearchInput').addEventListener('input', applyFilters);
+  document.getElementById('departmentFilter').addEventListener('change', applyFilters);
 
   // ---- Approve a pending doctor (this is what unblocks the Patient Dashboard) ----
   window.approveDoctor = async function (id) {
@@ -723,7 +720,10 @@
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Department Name</label>
-              <input type="text" id="newDeptName" class="form-control rounded-pill px-3" placeholder="e.g. Dermatology" required>
+              <!-- Yahan input ki jagah select dropdown kar diya hai -->
+              <select id="newDeptName" class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Department</option>
+              </select>
             </div>
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Head of Department (HOD)</label>
@@ -749,7 +749,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- modal 4  -->
 

@@ -6,41 +6,35 @@
     <title>appointment schedule</title>
 
     <!-- Google Fonts: Roboto -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-                      <!--fontawesome cdn  -->
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-                 <!-- bootstrap cdn -->
+    <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-              <!-- global cdn  -->
+    <!-- Global CSS -->
     <link rel="stylesheet" href="../../css/global.css">
-
     <link rel="stylesheet" href="../admin.css">
 </head>
 <body>
 
-
-
 <div class="dashboard-container">
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-  <!-- SIDEBAR START (Dark Theme Ke Sath Unchanged) -->
+  <!-- SIDEBAR START -->
  <aside class="sidebar">
-    <!-- Logo Section -->
     <div class="sidebar-header">
       <img src="../../images/image.png" alt="Medivibe icon" class="footer-logo-icon" style="width:45px; height:auto;">
       <h2>Medivibe</h2>
        <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Collapse sidebar">
-    <i class="fa-solid fa-angle-left"></i>
-  </button>
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
     </div>
 
-    <!-- User Profile Card -->
     <div class="user-card">
       <div class="avatar">MA</div>
       <div class="user-info">
@@ -50,20 +44,15 @@
       </div>
     </div>
 
-    <!-- Navigation Section -->
     <div class="menu-section">
       <span class="menu-label">WORKSPACE</span>
-      
       <ul class="nav-list">
-        <!-- 1. Overview -->
         <li class="nav-item">
-          <a href="../admin.html" class="nav-link active">
+          <a href="../admin.html" class="nav-link">
             <i class="fa-solid fa-border-all"></i>
             <span>Overview</span>
           </a>
         </li>
-
-        <!-- 2. Doctors -->
         <li class="nav-item dropdown">
           <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="doctorsToggle">
             <i class="fa-solid fa-user-doctor"></i>
@@ -76,8 +65,6 @@
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDoctorModal">+ Add New Doctor</a></li>
           </ul>
         </li>
-
-        <!-- 3. Patients -->
         <li class="nav-item dropdown">
           <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="patientsToggle">
             <i class="fa-solid fa-users-rectangle"></i>
@@ -89,10 +76,8 @@
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addPatientModal">+ Register New Patient</a></li>
           </ul>
         </li>
-
-        <!-- 4. Appointments -->
         <li class="nav-item dropdown">
-          <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="appointmentsToggle">
+          <a href="javascript:void(0)" class="nav-link dropdown-toggle active" id="appointmentsToggle">
             <i class="fa-solid fa-calendar-check"></i>
             <span>Appointments</span>
           </a>
@@ -101,8 +86,6 @@
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal">+ Book Appointment</a></li>
           </ul>
         </li>
-
-        <!-- 5. Departments -->
         <li class="nav-item dropdown">
           <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="departmentsToggle">
             <i class="fa-solid fa-hospital-user"></i>
@@ -113,16 +96,12 @@
             <li><a href="#" data-bs-toggle="modal" data-bs-target="#addDepartmentModal">+ Add New Department</a></li>
           </ul>
         </li>
-
-        <!-- 6. Invoices -->
         <li class="nav-item">
           <a href="../invoices.html" class="nav-link">
             <i class="fa-solid fa-file-invoice-dollar"></i>
             <span>Invoices & Billing</span>
           </a>
         </li>
-
-        <!-- 7. Settings -->
         <li class="nav-item">
           <a href="../settings.html" class="nav-link">
             <i class="fa-solid fa-gear"></i>
@@ -137,386 +116,310 @@
   <!-- MAIN CONTENT AREA START -->
   <main class="main-content">
     
-    <!-- TOP HEADER (Naya Light Header) -->
     <header class="main-header">
        <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Menu">
-    <i class="fa-solid fa-bars"></i>
-  </button>
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-      <!-- Search Box (Left) -->
-<div class="header-search">
-  <input type="text" placeholder="Search patients, doctors, reports..." />
-  <i class="fa-solid fa-magnifying-glass search-icon"></i>
-</div>
-
-
-      <!-- Controls & Profile (Right) -->
-      <div class="header-actions">
-        <!-- appoirtment btn  -->
-<div class="button-icon" id="newAppointmentBtn" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal" role="button" tabindex="0">
-  <div class="icon">
-    <!-- Plus Icon for New Appointment -->
-    <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <line x1="12" y1="5" x2="12" y2="19"></line>
-      <line x1="5" y1="12" x2="19" y2="12"></line>
-    </svg>
-    <!-- Calendar/Check Icon for Book Now -->
-    <svg class="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
-      <line x1="16" y1="2" x2="16" y2="6"></line>
-      <line x1="8" y1="2" x2="8" y2="6"></line>
-      <line x1="3" y1="10" x2="21" y2="10"></line>
-      <path d="M9 16l2 2 4-4"></path>
-    </svg>
-  </div>
-  <div class="cube">
-    <span class="side front">NEW APPOINTMENT</span>
-    <span class="side top">BOOK NOW</span>
-  </div>
-</div>
-
-        <!-- Notification Bell -->
-
-                            
-<!-- Notification Dropdown Wrapper -->
-<div class="dropdown notification-dropdown">
-  
-  <!-- Trigger Button -->
-  <button type="button"  class="notification-btn border-0 bg-transparent p-0 position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
-    <i class="fa-regular fa-bell"></i>
-    <span class="notification-dot"></span>
-  </button>
-
-  <!-- Popup Dropdown Menu -->
-  <div class="dropdown-menu dropdown-menu-end notif-dropdown-menu shadow-lg border-0 p-0" aria-labelledby="notifDropdown">
-    <!-- Header -->
-    <div class="notif-header d-flex align-items-center justify-content-between px-3 py-2 border-bottom">
-      <h6 class="m-0 fw-bold fs-6">Notifications</h6>
-    </div>
-
-    <!-- JS Injected List (Is ID me sara dynamic list render hoga) -->
-    <div class="notif-body" id="notifContainer"></div>
-
-    <!-- Footer Link -->
-    <div class="notif-footer text-center py-2 px-3 border-top bg-light">
-      <a href="../notifications.html" class="text-primary fw-medium fs-7 ">View All Notifications</a>
-    </div>
-  </div>
-
-</div>
-
-
-           <!--notification  end -->
-
-        <!-- Dark/Light Mode Toggle -->
-    <label class="ui-switch" title="Toggle Theme">
-  <input type="checkbox" id="theme-toggle">
-  <div class="slider">
-    <div class="circle"></div>
-  </div>
-</label>
-
-        <!-- Admin Profile Dropdown -->
-       <div class="dropdown profile-dropdown">
-  <a href="#" class="profile-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    <img src="../../images/adminpic.webp" class="avatar-img">
-    <div class="user-info-text">
-      <span class="user-name">Mahnoor Asif</span>
-      <span class="user-role">Administrator</span>
-    </div>
-    <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-  </a>
-
-  <!-- Preclinic Style Admin Dropdown -->
-  <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-2" style="width: 220px;">
-    <!-- Profile Header Info -->
-    <li class="px-3 py-2 bg-light rounded mb-2">
-      <span class="d-block fw-bold text-dark fs-6">Mahnoor Asif</span>
-      <small class="text-muted">Administrator</small>
-    </li>
-    
-    <li>
-      <a class="dropdown-item rounded py-2" href="../profile.html">
-        <i class="fa-regular fa-user me-2 text-primary"></i> Profile Settings
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item rounded py-2" href="../settings.html">
-        <i class="fa-solid fa-gear me-2 text-secondary"></i> Account Settings
-      </a>
-    </li>
-    
-    <!-- Quick Toggle Notifications -->
-    <li class="dropdown-item rounded py-2 d-flex align-items-center justify-content-between">
-      <span><i class="fa-regular fa-bell me-2 text-warning"></i> Notifications</span>
-      <div class="form-check form-switch m-0">
-        <input class="form-check-input" type="checkbox" id="notifSwitch" checked style="cursor: pointer;">
+      <div class="header-search">
+        <input type="text" placeholder="Search patients, doctors, reports..." />
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
       </div>
-    </li>
 
-    <li>
-      <a class="dropdown-item rounded py-2" href="../invoices.html">
-        <i class="fa-solid fa-receipt me-2 text-success"></i> Transactions
-      </a>
-    </li>
+      <div class="header-actions">
+        <div class="button-icon" id="newAppointmentBtn" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal" role="button" tabindex="0">
+          <div class="icon">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <svg class="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+              <path d="M9 16l2 2 4-4"></path>
+            </svg>
+          </div>
+          <div class="cube">
+            <span class="side front">NEW APPOINTMENT</span>
+            <span class="side top">BOOK NOW</span>
+          </div>
+        </div>
 
-    <li><hr class="dropdown-divider my-2"></li>
+        <div class="dropdown notification-dropdown">
+          <button type="button" class="notification-btn border-0 bg-transparent p-0 position-relative" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end notif-dropdown-menu shadow-lg border-0 p-0" aria-labelledby="notifDropdown">
+            <div class="notif-header d-flex align-items-center justify-content-between px-3 py-2 border-bottom">
+              <h6 class="m-0 fw-bold fs-6">Notifications</h6>
+            </div>
+            <div class="notif-body" id="notifContainer"></div>
+            <div class="notif-footer text-center py-2 px-3 border-top bg-light">
+              <a href="../notifications.html" class="text-primary fw-medium fs-7">View All Notifications</a>
+            </div>
+          </div>
+        </div>
 
-    <li>
-      <a class="dropdown-item rounded py-2 text-danger fw-medium" href="login.html">
-        <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
-      </a>
-    </li>
-  </ul>
-</div>
+        <label class="ui-switch" title="Toggle Theme">
+          <input type="checkbox" id="theme-toggle">
+          <div class="slider">
+            <div class="circle"></div>
+          </div>
+        </label>
 
-
-
-
+        <div class="dropdown profile-dropdown">
+          <a href="#" class="profile-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../../images/adminpic.webp" class="avatar-img">
+            <div class="user-info-text">
+              <span class="user-name">Mahnoor Asif</span>
+              <span class="user-role">Administrator</span>
+            </div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 p-2" style="width: 220px;">
+            <li class="px-3 py-2 bg-light rounded mb-2">
+              <span class="d-block fw-bold text-dark fs-6">Mahnoor Asif</span>
+              <small class="text-muted">Administrator</small>
+            </li>
+            <li>
+              <a class="dropdown-item rounded py-2" href="../profile.html">
+                <i class="fa-regular fa-user me-2 text-primary"></i> Profile Settings
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item rounded py-2" href="../settings.html">
+                <i class="fa-solid fa-gear me-2 text-secondary"></i> Account Settings
+              </a>
+            </li>
+            <li class="dropdown-item rounded py-2 d-flex align-items-center justify-content-between">
+              <span><i class="fa-regular fa-bell me-2 text-warning"></i> Notifications</span>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="notifSwitch" checked style="cursor: pointer;">
+              </div>
+            </li>
+            <li>
+              <a class="dropdown-item rounded py-2" href="../invoices.html">
+                <i class="fa-solid fa-receipt me-2 text-success"></i> Transactions
+              </a>
+            </li>
+            <li><hr class="dropdown-divider my-2"></li>
+            <li>
+              <a class="dropdown-item rounded py-2 text-danger fw-medium" href="#" id="logout-btn">
+                <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
 
     <!-- DASHBOARD BODY CONTENT -->
+    <div class="container-fluid py-4 px-4">
 
-<div class="container-fluid py-4 px-4">
-
-  <!-- Page Header & Action -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <div>
-      <h2 class="fw-bold text-dark mb-1" style="font-size: 24px;">Master Schedule</h2>
-      <p class="text-muted mb-0" style="font-size: 13.5px;">View, filter, and manage all hospital appointments in real time.</p>
-    </div>
-    <div>
-      <button class="mv-btn-gradient" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal">
-        <i class="fa-solid fa-calendar-plus me-2"></i> Book Appointment
-      </button>
-    </div>
-  </div>
-
-  <!-- Multi-Filters Bar -->
-  <div class="mv-card p-3 mb-3">
-    <div class="row g-3 align-items-end">
-      <div class="col-md-3">
-        <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
-        <input type="date" id="filterDate" class="form-control rounded-3">
-      </div>
-      <div class="col-md-3">
-        <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
-        <select id="filterDepartment" class="form-select rounded-3">
-          <option value="">All Departments</option>
-          <option value="cardiology">Cardiology</option>
-          <option value="orthopedics">Orthopedics</option>
-          <option value="dermatology">Dermatology</option>
-          <option value="pediatrics">Pediatrics</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
-        <select id="filterDoctor" class="form-select rounded-3">
-          <option value="">All Doctors</option>
-          <option value="dr-ayesha-khan">Dr. Ayesha Khan</option>
-          <option value="dr-bilal-ahmed">Dr. Bilal Ahmed</option>
-          <option value="dr-zainab-farooq">Dr. Zainab Farooq</option>
-          <option value="dr-hamza-sheikh">Dr. Hamza Sheikh</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <button id="clearFiltersBtn" class="btn btn-light rounded-3 w-100 fw-medium">
-          <i class="fa-solid fa-filter-circle-xmark me-2"></i>Clear Filters
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Master Booking Table Card -->
-  <div class="row">
-    <div class="col-12">
-      <div class="mv-card p-0 overflow-hidden">
-        <div class="p-3 border-bottom bg-light">
-          <h5 class="m-0 fw-bold fs-6 text-dark">Master Booking Table</h5>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold text-dark mb-1" style="font-size: 24px;">Master Schedule</h2>
+          <p class="text-muted mb-0" style="font-size: 13.5px;">View, filter, and manage all hospital appointments in real time.</p>
         </div>
-
-        <div class="table-responsive">
-          <table class="table table-hover align-middle mb-0" id="appointmentsTable">
-            <thead class="table-light text-uppercase fs-8 text-muted">
-              <tr>
-                <th class="py-3 ps-4">Appointment ID</th>
-                <th class="py-3">Patient</th>
-                <th class="py-3">Doctor</th>
-                <th class="py-3">Department</th>
-                <th class="py-3">Time Slot</th>
-                <th class="py-3">Fee</th>
-                <th class="py-3 text-end pe-4" style="min-width: 160px;">Status</th>
-              </tr>
-            </thead>
-            <tbody id="appointmentsTableBody">
-              <!-- Filled dynamically by appointment.js. This placeholder is replaced
-                   as soon as the page loads (loading state, then real/empty state). -->
-              <tr id="appointmentsInitialRow">
-                <td colspan="7" class="text-center text-muted py-4">
-                  <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                  Loading appointments...
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div>
+          <button class="mv-btn-gradient" data-bs-toggle="modal" data-bs-target="#bookAppointmentModal">
+            <i class="fa-solid fa-calendar-plus me-2"></i> Book Appointment
+          </button>
         </div>
-
-        <!-- Empty state (shown by JS when filters have no match) -->
-        <div id="noAppointmentsFound" class="text-center text-muted py-5 d-none">
-          <i class="fa-solid fa-calendar-xmark fs-3 mb-2 d-block"></i>
-          No appointments match the selected filters.
-        </div>
-
       </div>
-    </div>
-  </div>
 
-</div>
-<!-- DASHBOARD BODY CONTENT END -->
-
-<!-- ========================================== -->
-<!-- MODAL: #bookAppointmentModal (Walk-in Slot Booking) -->
-<!-- ========================================== -->
-<div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content border-0 rounded-4 shadow">
-      <div class="modal-header border-bottom px-4 py-3">
-        <h5 class="modal-title fw-bold text-dark" id="bookAppointmentModalLabel">
-          <i class="fa-solid fa-calendar-plus me-2 text-primary"></i> Book New Appointment
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <form id="bookAppointmentForm" onsubmit="event.preventDefault();" novalidate>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label fw-semibold fs-7 text-secondary">Patient Name</label>
-              <input type="text" id="bookPatientName" class="form-control rounded-pill px-3" placeholder="e.g. Ali Khan or search MRN..." list="patientSuggestions" required>
-              <datalist id="patientSuggestions">
-                <option value="Fatima Noor (#MRN-84920)">
-                <option value="Ahmed Raza (#MRN-99421)">
-                <option value="Sana Malik (#MRN-71203)">
-              </datalist>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
-              <select id="bookDepartment" class="form-select rounded-pill px-3" required>
-                <option selected disabled value="">Select Department</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="orthopedics">Orthopedics</option>
-                <option value="dermatology">Dermatology</option>
-                <option value="pediatrics">Pediatrics</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
-              <select id="bookDoctor" class="form-select rounded-pill px-3" required>
-                <option selected disabled value="">Select Department First</option>
-              </select>
-            </div>
-
-            <div class="col-md-3">
-              <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
-              <input type="date" id="bookDate" class="form-control rounded-pill px-3" required>
-            </div>
-
-            <div class="col-md-3">
-              <label class="form-label fw-semibold fs-7 text-secondary">Time Slot</label>
-              <select id="bookTimeSlot" class="form-select rounded-pill px-3" required>
-                <option selected disabled value="">Select Slot</option>
-                <option value="09:00">09:00 AM</option>
-                <option value="10:30">10:30 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="14:30">02:30 PM</option>
-                <option value="16:00">04:00 PM</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label fw-semibold fs-7 text-secondary">Consultation Fee</label>
-              <div class="input-group">
-                <span class="input-group-text bg-light border-end-0">Rs.</span>
-                <input type="number" id="bookFee" class="form-control border-start-0" placeholder="e.g. 2500" min="0" required>
-              </div>
-            </div>
+      <!-- Multi-Filters Bar (Dynamic Dropdowns) -->
+      <div class="mv-card p-3 mb-3">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-3">
+            <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
+            <input type="date" id="filterDate" class="form-control rounded-3">
           </div>
-        </form>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
+            <select id="filterDepartment" class="form-select rounded-3">
+              <option value="">All Departments</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
+            <select id="filterDoctor" class="form-select rounded-3">
+              <option value="">All Doctors</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <button id="clearFiltersBtn" class="btn btn-light rounded-3 w-100 fw-medium">
+              <i class="fa-solid fa-filter-circle-xmark me-2"></i>Clear Filters
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer border-top px-4 py-3">
-        <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="mv-btn-gradient" id="confirmBookingBtn">Confirm Booking</button>
+
+      <!-- Master Booking Table Card -->
+      <div class="row">
+        <div class="col-12">
+          <div class="mv-card p-0 overflow-hidden">
+            <div class="p-3 border-bottom bg-light">
+              <h5 class="m-0 fw-bold fs-6 text-dark">Master Booking Table</h5>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0" id="appointmentsTable">
+                <thead class="table-light text-uppercase fs-8 text-muted">
+                  <tr>
+                    <th class="py-3 ps-4">Appointment ID</th>
+                    <th class="py-3">Patient</th>
+                    <th class="py-3">Doctor</th>
+                    <th class="py-3">Department</th>
+                    <th class="py-3">Time Slot</th>
+                    <th class="py-3">Fee</th>
+                    <th class="py-3 text-end" style="min-width: 160px;">Status</th>
+                    <th class="py-3 text-end pe-4" style="width: 70px;">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="appointmentsTableBody">
+                  <tr id="appointmentsInitialRow">
+                    <td colspan="8" class="text-center text-muted py-4">
+                      <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      Loading appointments...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty state -->
+            <div id="noAppointmentsFound" class="text-center text-muted py-5 d-none">
+              <i class="fa-solid fa-calendar-xmark fs-3 mb-2 d-block"></i>
+              No appointments match the selected filters.
+            </div>
+
+            <!-- PAGINATION CONTAINER -->
+            <div class="d-flex justify-content-between align-items-center px-4 py-3 border-top bg-white" id="paginationContainer">
+              <span class="text-muted fs-7" id="paginationInfo">Showing 0 to 0 of 0 entries</span>
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm mb-0" id="paginationList"></ul>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- DASHBOARD BODY CONTENT END -->
+
+    <!-- MODAL: #bookAppointmentModal -->
+    <div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 rounded-4 shadow">
+          <div class="modal-header border-bottom px-4 py-3">
+            <h5 class="modal-title fw-bold text-dark" id="bookAppointmentModalLabel">
+              <i class="fa-solid fa-calendar-plus me-2 text-primary"></i> Book New Appointment
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="bookAppointmentForm" onsubmit="event.preventDefault();" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Patient Name</label>
+                  <input type="text" id="bookPatientName" name="bookPatientName" class="form-control rounded-pill px-3" placeholder="e.g. Ali Khan or search MRN..." list="patientSuggestions" autocomplete="off" required>
+                  <datalist id="patientSuggestions">
+                  </datalist>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Department</label>
+                  <select id="bookDepartment" class="form-select rounded-pill px-3" required>
+                    <option selected disabled value="">Select Department</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Doctor</label>
+                  <select id="bookDoctor" class="form-select rounded-pill px-3" required>
+                    <option selected disabled value="">Select Department First</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Date</label>
+                  <input type="date" id="bookDate" class="form-control rounded-pill px-3" required>
+                </div>
+
+                <div class="col-md-3">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Time Slot</label>
+                  <select id="bookTimeSlot" class="form-select rounded-pill px-3" required>
+                    <option selected disabled value="">Select Slot</option>
+                    <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                    <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                    <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                    <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                    <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold fs-7 text-secondary">Consultation Fee</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">Rs.</span>
+                    <input type="number" id="bookFee" class="form-control border-start-0" placeholder="e.g. 2500" min="0" required>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer border-top px-4 py-3">
+            <button type="button" class="btn btn-light rounded-pill px-4 fw-medium" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="mv-btn-gradient" id="confirmBookingBtn">Confirm Booking</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-                <!-- footer  -->
-
-                
-<footer class="admin-footer text-center py-3 border-top mt-auto">
+    <!-- Footer -->
+    <footer class="admin-footer text-center py-3 border-top mt-auto">
       <p class="text-muted mb-0" style="font-size: 13px;">2026 © Medivibe, All Rights Reserved</p>
     </footer>
   </main>
   <!-- MAIN CONTENT AREA END -->
 </div>
 
-
-
-<!--   modals overalll -->
-
-<div class="modal fade" id="addDoctorModal" tabindex="-1" aria-labelledby="addDoctorModalLabel" aria-hidden="true">
+<!-- MODALS OVERALL -->
+<div class="modal fade" id="addDoctorModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow">
-
       <div class="modal-header border-0 pb-0">
-        <h5 class="modal-title fw-bold" id="addDoctorModalLabel">
-          <i class="fa-solid fa-user-doctor text-primary me-2"></i> Add New Doctor
-        </h5>
+        <h5 class="modal-title fw-bold"><i class="fa-solid fa-user-doctor text-primary me-2"></i> Add New Doctor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
       <div class="modal-body pt-2">
         <form id="addDoctorForm" novalidate>
-
-          <!-- Profile Photo Upload -->
           <div class="d-flex align-items-center gap-3 mb-3">
-            <img src="https://ui-avatars.com/api/?name=New+Doctor&background=e0e7ff&color=4338ca&size=64"
-                 alt="New doctor avatar preview"
-                 id="addDoctorAvatarPreview"
-                 class="rounded-circle doctor-avatar doctor-avatar-sm">
+            <img src="https://ui-avatars.com/api/?name=New+Doctor&background=e0e7ff&color=4338ca&size=64" id="addDoctorAvatarPreview" class="rounded-circle doctor-avatar doctor-avatar-sm">
             <div class="flex-fill">
               <label for="doctorPhoto" class="form-label fw-semibold mb-1" style="font-size: 13px;">Profile Photo</label>
               <input class="form-control form-control-sm" type="file" id="doctorPhoto" name="doctorPhoto" accept="image/*">
             </div>
           </div>
-
-          <!-- Full Name -->
           <div class="mb-3">
             <label for="doctorFullName" class="form-label fw-semibold" style="font-size: 13px;">Full Name</label>
             <input type="text" class="form-control" id="doctorFullName" name="fullName" placeholder="e.g. Dr. Ayesha Khan" required>
           </div>
-
           <div class="row g-3">
-            <!-- Email -->
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="doctorEmail" class="form-label fw-semibold" style="font-size: 13px;">Email</label>
-                <input type="email" class="form-control" id="doctorEmail" name="email" placeholder="doctor@medivibe.com" required>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="doctorEmail" class="form-label fw-semibold" style="font-size: 13px;">Email</label>
+              <input type="email" class="form-control" id="doctorEmail" name="email" placeholder="doctor@medivibe.com" required>
             </div>
-
-            <!-- Phone -->
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="doctorPhone" class="form-label fw-semibold" style="font-size: 13px;">Phone</label>
-                <input type="tel" class="form-control" id="doctorPhone" name="phone" placeholder="+92 3XX XXXXXXX" required>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="doctorPhone" class="form-label fw-semibold" style="font-size: 13px;">Phone</label>
+              <input type="tel" class="form-control" id="doctorPhone" name="phone" placeholder="+92 3XX XXXXXXX" required>
             </div>
           </div>
-
-          <!-- Specialization -->
           <div class="mb-3">
             <label for="doctorSpecialization" class="form-label fw-semibold" style="font-size: 13px;">Specialization</label>
             <select class="form-select" id="doctorSpecialization" name="specialization" required>
@@ -530,52 +433,31 @@
               <option value="general">General Medicine</option>
             </select>
           </div>
-
           <div class="row g-3">
-            <!-- Room Number -->
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="doctorRoom" class="form-label fw-semibold" style="font-size: 13px;">Room Number</label>
-                <input type="text" class="form-control" id="doctorRoom" name="room" placeholder="e.g. 204-A" required>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="doctorRoom" class="form-label fw-semibold" style="font-size: 13px;">Room Number</label>
+              <input type="text" class="form-control" id="doctorRoom" name="room" placeholder="e.g. 204-A" required>
             </div>
-
-            <!-- Experience -->
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="doctorExperience" class="form-label fw-semibold" style="font-size: 13px;">Experience (Years)</label>
-                <input type="number" class="form-control" id="doctorExperience" name="experience" min="0" max="60" placeholder="e.g. 8" required>
-              </div>
+            <div class="col-md-6 mb-3">
+              <label for="doctorExperience" class="form-label fw-semibold" style="font-size: 13px;">Experience (Years)</label>
+              <input type="number" class="form-control" id="doctorExperience" name="experience" min="0" max="60" placeholder="e.g. 8" required>
             </div>
           </div>
-
         </form>
       </div>
-
       <div class="modal-footer border-0 pt-0">
-        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" style="font-size: 13px;">
-          Cancel
-        </button>
-        <button type="submit" form="addDoctorForm" class="mv-btn-gradient px-4 py-2 rounded-pill" style="font-size: 13px;">
-          <i class="fa-solid fa-check me-1"></i> Save Doctor
-        </button>
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" style="font-size: 13px;">Cancel</button>
+        <button type="submit" form="addDoctorForm" class="mv-btn-gradient px-4 py-2 rounded-pill" style="font-size: 13px;"><i class="fa-solid fa-check me-1"></i> Save Doctor</button>
       </div>
-
     </div>
   </div>
 </div>
-</div>
 
-
-<!-- modal 2 -->
-
-<div class="modal fade" id="addPatientModal" tabindex="-1" aria-labelledby="addPatientModalLabel" aria-hidden="true">
+<div class="modal fade" id="addPatientModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content border-0 rounded-4 shadow">
       <div class="modal-header border-bottom px-4 py-3">
-        <h5 class="modal-title fw-bold text-dark" id="addPatientModalLabel">
-          <i class="fa-solid fa-hospital-user me-2 text-primary"></i> Walk-In Patient Instant Registration
-        </h5>
+        <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-hospital-user me-2 text-primary"></i> Walk-In Patient Instant Registration</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
@@ -597,14 +479,10 @@
               <label class="form-label fw-semibold fs-7 text-secondary">Blood Group</label>
               <select class="form-select rounded-pill px-3" required>
                 <option selected disabled>Select Blood Group</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
               </select>
             </div>
             <div class="col-md-4">
@@ -626,8 +504,6 @@
   </div>
 </div>
 
-<!-- modal 3 -->
-
 <div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow">
@@ -642,7 +518,9 @@
           <div class="row g-3">
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Department Name</label>
-              <input type="text" id="newDeptName" class="form-control rounded-pill px-3" placeholder="e.g. Dermatology" required>
+              <select id="newDeptName" class="form-select rounded-pill px-3" required>
+                <option selected disabled value="">Select Department</option>
+              </select>
             </div>
             <div class="col-12">
               <label class="form-label fw-semibold fs-7 text-secondary">Head of Department (HOD)</label>
@@ -669,24 +547,10 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<!-- //// -->   
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
-
-    <script type="module" src="appointment.js"></script>
-    <script type="module" src="../admin.js"></script>
+<script type="module" src="appointment.js"></script>
+<script type="module" src="../admin.js"></script>
 </body>
 </html>
